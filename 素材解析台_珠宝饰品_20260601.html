@@ -1,0 +1,3664 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>素材解析台 · 珠宝饰品行业周报 · 20260601</title>
+<style>
+    :root {
+        --bg: #F7F9FC;
+        --card-bg: #FFFFFF;
+        --text-primary: #1A1A1A;
+        --text-secondary: #666666;
+        --border: #E8ECF0;
+        --accent-blue: #1F4E79;
+        --accent-mid: #2E75B6;
+        --accent-light: #8FAADC;
+        --accent-pale: #C7D8EE;
+        --green: #2E7D32;
+        --red: #C62828;
+        --orange: #E65100;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: "Microsoft YaHei", "PingFang SC", -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text-primary);
+        line-height: 1.6;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 32px 24px;
+    }
+    
+    /* ── Header ── */
+    .header {
+        text-align: center;
+        padding: 40px 0 32px;
+        border-bottom: 2px solid var(--accent-blue);
+        margin-bottom: 40px;
+    }
+    .header h1 {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--accent-blue);
+        margin-bottom: 8px;
+    }
+    .header .subtitle {
+        font-size: 14px;
+        color: var(--text-secondary);
+    }
+    .header .stats-row {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        margin-top: 20px;
+    }
+    .header .stat-item {
+        text-align: center;
+    }
+    .header .stat-value {
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--accent-blue);
+    }
+    .header .stat-label {
+        font-size: 13px;
+        color: var(--text-secondary);
+    }
+    
+    /* ── Section ── */
+    .section {
+        margin-bottom: 48px;
+    }
+    .section-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--accent-blue);
+        margin-bottom: 20px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
+    }
+    .section-title .emoji {
+        margin-right: 8px;
+    }
+    .section-title .count {
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--text-secondary);
+        margin-left: 8px;
+    }
+    
+    /* ── Insight Cards ── */
+    .insight-card {
+        background: var(--card-bg);
+        border-radius: 10px;
+        padding: 18px 22px;
+        margin-bottom: 12px;
+        border-left: 4px solid var(--accent-mid);
+        box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .insight-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--accent-blue);
+        margin-bottom: 6px;
+    }
+    .insight-content {
+        font-size: 14px;
+        color: var(--text-primary);
+        line-height: 1.7;
+    }
+    
+    /* ── Category Card ── */
+    .cat-card {
+        background: var(--card-bg);
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        border: 1px solid var(--border);
+    }
+    .cat-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--accent-pale);
+    }
+    .cat-emoji {
+        font-size: 24px;
+    }
+    .cat-name {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--accent-blue);
+    }
+    .cat-count {
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-left: auto;
+    }
+    
+    /* ── Metrics Grid ── */
+    .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+    .metric {
+        text-align: center;
+        padding: 10px 4px;
+        background: #F0F4F8;
+        border-radius: 8px;
+    }
+    .metric-value {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--accent-blue);
+    }
+    .metric-label {
+        font-size: 11px;
+        color: var(--text-secondary);
+        margin-top: 2px;
+    }
+    .ctr-compare {
+        font-size: 12px;
+        font-weight: 600;
+    }
+    
+    /* ── Framework ── */
+    .framework {
+        background: linear-gradient(135deg, #F0F4F8 0%, #E8ECF0 100%);
+        border-radius: 8px;
+        padding: 14px 18px;
+        margin-bottom: 12px;
+    }
+    .framework-warn {
+        background: #FFF8E1;
+        border-left: 3px solid #FFB300;
+    }
+    .fw-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--accent-blue);
+        margin-right: 8px;
+    }
+    .fw-steps {
+        font-size: 14px;
+        color: var(--text-primary);
+        line-height: 1.8;
+    }
+    .fw-steps::before { content: ''; }
+    
+    /* ── Style Tags ── */
+    .style-tags {
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-bottom: 10px;
+    }
+    .style-label {
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+    
+    /* ── Market Distribution ── */
+    .mkt-dist {
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-bottom: 12px;
+    }
+    .mkt-label {
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+    
+    /* ── Top Table ── */
+    .top-table-wrap {
+        overflow-x: auto;
+        margin-top: 12px;
+    }
+    .top-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+    }
+    .top-table th {
+        background: var(--accent-blue);
+        color: #fff;
+        padding: 8px 10px;
+        text-align: left;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+    .top-table td {
+        padding: 7px 10px;
+        border-bottom: 1px solid var(--border);
+    }
+    .top-table tr:hover td {
+        background: #F0F4F8;
+    }
+    .rank { text-align: center; font-weight: 600; color: var(--accent-mid); }
+    .dpa-name { max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .mkt-name { white-space: nowrap; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .tag-cell { font-size: 11px; color: var(--accent-mid); }
+    
+    /* ── Guide Cards ── */
+    .guide-card {
+        background: var(--card-bg);
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        border: 1px solid var(--accent-pale);
+    }
+    .guide-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+    }
+    .guide-emoji { font-size: 22px; }
+    .guide-cat { font-size: 17px; font-weight: 700; color: var(--accent-blue); }
+    .guide-benchmarks { font-size: 12px; color: var(--green); margin-left: auto; }
+    .guide-framework { margin-bottom: 14px; }
+    .guide-fw-title { font-size: 13px; font-weight: 600; color: var(--accent-blue); margin-bottom: 8px; }
+    .guide-steps { display: flex; flex-direction: column; gap: 6px; }
+    .guide-step {
+        display: flex; align-items: center; gap: 10px;
+        background: #F0F4F8; border-radius: 6px; padding: 8px 14px;
+    }
+    .step-num {
+        font-size: 12px; font-weight: 700; color: #fff;
+        background: var(--accent-mid); border-radius: 4px; padding: 2px 8px;
+        white-space: nowrap;
+    }
+    .step-text { font-size: 14px; }
+    .guide-tips { background: #FFF8E1; border-radius: 8px; padding: 14px 18px; }
+    .tip-title { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+    .guide-tips ul { padding-left: 18px; }
+    .guide-tips li { font-size: 13px; line-height: 1.8; color: var(--text-primary); }
+    
+    /* ── Footer ── */
+    .footer {
+        text-align: center;
+        padding: 32px 0;
+        margin-top: 48px;
+        border-top: 1px solid var(--border);
+        font-size: 13px;
+        color: var(--text-secondary);
+    }
+    
+    @media (max-width: 768px) {
+        .metrics-grid { grid-template-columns: repeat(3, 1fr); }
+        .header .stats-row { gap: 16px; }
+        .header .stat-value { font-size: 24px; }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Header -->
+    <div class="header">
+        <h1>素材解析台 · 珠宝饰品行业周报</h1>
+        <div class="subtitle">20260601 · 近7天素材数据 · 基于DPA商品+营销对象分类</div>
+        <div class="stats-row">
+            <div class="stat-item">
+                <div class="stat-value">1000</div>
+                <div class="stat-label">总素材数</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" style="color:var(--red)">363</div>
+                <div class="stat-label">起量素材</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">31</div>
+                <div class="stat-label">品类数</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">289</div>
+                <div class="stat-label">营销对象</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 全局洞察 -->
+    <div class="section">
+        <div class="section-title"><span class="emoji">📊</span>全局起量洞察</div>
+        
+    <div class="insight-card">
+        <div class="insight-title">🔥 起量素材整体特征</div>
+        <div class="insight-content">起量素材平均CTR 15.50%（大盘 10.69%，高出 45%），3s完播率 45.1%（大盘 39.3%），ROI 7.93（大盘 6.98）。起量素材在点击率和完播率上显著领先，说明前3秒抓手+完播钩子是关键。</div>
+    </div>
+    <div class="insight-card">
+        <div class="insight-title">🕶️ 墨镜/太阳镜：素颜/妆容痛点</div>
+        <div class="insight-content">起量素材CTR 4.21% vs 品类平均 3.04%，框架：素颜/妆容痛点 → 戴上后颜值反差 → 功能卖点（防UV/偏光）→ 多场景实测 → 限时价格</div>
+    </div>
+    <div class="insight-card">
+        <div class="insight-title">✨ 耳饰：气质场景开篇</div>
+        <div class="insight-content">起量素材CTR 4.91% vs 品类平均 4.02%，框架：气质场景开篇 → 产品质感特写 → 高级穿搭搭配 → 社交场合展示 → 质价反差促单</div>
+    </div>
+    <div class="insight-card">
+        <div class="insight-title">📿 项链：气质场景开篇</div>
+        <div class="insight-content">起量素材CTR 33.35% vs 品类平均 25.74%，框架：气质场景开篇 → 产品质感特写 → 高级穿搭搭配 → 社交场合展示 → 质价反差促单</div>
+    </div>
+    <div class="insight-card">
+        <div class="insight-title">🤍 珍珠项链：产品特写开篇</div>
+        <div class="insight-content">起量素材CTR 10.13% vs 品类平均 8.24%，框架：产品特写开篇 → 材质工艺展示 → 佩戴效果对比 → 信任背书叠加 → 促单收尾</div>
+    </div>
+    <div class="insight-card">
+        <div class="insight-title">👓 老花镜/眼镜：中老年用眼痛点</div>
+        <div class="insight-content">起量素材CTR 4.36% vs 品类平均 3.62%，框架：中老年用眼痛点 → 产品功能演示（防蓝光/远近两用）→ 真实使用场景 → 效果对比 → 限时优惠</div>
+    </div>
+    <div class="insight-card">
+        <div class="insight-title">💰 高ROI品类排行</div>
+        <div class="insight-content">起量素材ROI最高的品类：翡翠/和田玉手镯(ROI 72.45)、水晶/宝石饰品(ROI 61.16)、玉石手串(ROI 35.08)。这些品类素材更应侧重转化引导而非纯曝光。</div>
+    </div>
+    </div>
+
+    <!-- 按品类拆解 -->
+    <div class="section">
+        <div class="section-title"><span class="emoji">🛒</span>按品类拆解 · 31 个品类<span class="count">（按总消耗降序）</span></div>
+        
+    <div class="cat-card" id="cat-0">
+        <div class="cat-header">
+            <span class="cat-emoji">🕶️</span>
+            <span class="cat-name">墨镜/太阳镜</span>
+            <span class="cat-count">📦 104 条素材 · 🔥 32 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥465,267</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">3.04%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 4.21% ↑39%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">34.8%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">6.4s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">2.27</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">31%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">素颜/妆容痛点 → 戴上后颜值反差 → 功能卖点（防UV/偏光）→ 多场景实测 → 限时价格</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>颜值反差x功能实测、场景切换x功能演示、高点击素材、高完播素材、长停留素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>也古轻奢服配(16条/¥144548)、男女通用太阳镜(8条/¥33496)、方形女太阳镜(6条/¥32675)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="女款无框镶钻复古感百搭渐变">女款无框镶钻复古感百搭渐变</td>
+                <td class="mkt-name">方形女太阳镜</td>
+                <td class="num">¥21577</td>
+                <td class="num">5.21%</td>
+                <td class="num">29.9%</td>
+                <td class="num">7.7s</td>
+                <td class="num">1.51</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="巴宝莎Baporssa妆容感素颜墨镜无框复古高级感女士防紫外线太阳镜修饰脸型美颜太阳镜修容感">巴宝莎Baporssa妆容感素颜墨镜无框复古高级感女士防紫外线太阳镜修...</td>
+                <td class="mkt-name">巴宝莎韩老板</td>
+                <td class="num">¥17925</td>
+                <td class="num">2.03%</td>
+                <td class="num">27.9%</td>
+                <td class="num">5.5s</td>
+                <td class="num">3.44</td>
+                <td class="tag-cell">高转化型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="巴宝莎β钛尼龙偏光墨镜反光太阳镜尼龙眼镜轻巧轻薄防强光远光修饰脸型">巴宝莎β钛尼龙偏光墨镜反光太阳镜尼龙眼镜轻巧轻薄防强光远光修饰脸型</td>
+                <td class="mkt-name">Baporssa小滢</td>
+                <td class="num">¥12616</td>
+                <td class="num">2.36%</td>
+                <td class="num">60.5%</td>
+                <td class="num">8.8s</td>
+                <td class="num">2.36</td>
+                <td class="tag-cell">高留存型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="【明星同款】宝朴户外钓鱼专用偏光太阳镜可调节抗冲击路亚">【明星同款】宝朴户外钓鱼专用偏光太阳镜可调节抗冲击路亚</td>
+                <td class="mkt-name">宝朴太阳镜</td>
+                <td class="num">¥12611</td>
+                <td class="num">3.23%</td>
+                <td class="num">56.9%</td>
+                <td class="num">9.7s</td>
+                <td class="num">2.49</td>
+                <td class="tag-cell">跑量型、高留存型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="[智能感光变色墨镜]室内室外日用两用太阳镜时尚减龄无框显瘦太阳镜防紫外线大圆脸自带妆容滤镜女款">[智能感光变色墨镜]室内室外日用两用太阳镜时尚减龄无框显瘦太阳镜防紫外...</td>
+                <td class="mkt-name">也古轻奢服配</td>
+                <td class="num">¥12250</td>
+                <td class="num">2.66%</td>
+                <td class="num">63.7%</td>
+                <td class="num">7.9s</td>
+                <td class="num">2.00</td>
+                <td class="tag-cell">跑量型、高留存型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-1">
+        <div class="cat-header">
+            <span class="cat-emoji">✨</span>
+            <span class="cat-name">耳饰</span>
+            <span class="cat-count">📦 86 条素材 · 🔥 35 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥423,889</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">4.02%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 4.91% ↑22%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">38.8%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">7.2s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">2.15</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">41%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">气质场景开篇 → 产品质感特写 → 高级穿搭搭配 → 社交场合展示 → 质价反差促单</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>气质场景x质价反差、长停留素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>女耳环/耳坠(25条/¥163476)、女耳钉(14条/¥112747)、白岚/BAILAN女银耳钉(10条/¥24848)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="【百年经典】皇家贵族高级感轻奢设计简约复古耳环新款珠珠耳钉HN">【百年经典】皇家贵族高级感轻奢设计简约复古耳环新款珠珠耳钉HN</td>
+                <td class="mkt-name">女耳钉</td>
+                <td class="num">¥52654</td>
+                <td class="num">4.17%</td>
+                <td class="num">31.0%</td>
+                <td class="num">6.3s</td>
+                <td class="num">1.57</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="气质百搭椭圆耳环">气质百搭椭圆耳环</td>
+                <td class="mkt-name">女耳环/耳坠</td>
+                <td class="num">¥29209</td>
+                <td class="num">5.76%</td>
+                <td class="num">47.4%</td>
+                <td class="num">9.3s</td>
+                <td class="num">1.71</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="转运珠耳环69.9－LP">转运珠耳环69.9－LP</td>
+                <td class="mkt-name">女耳环/耳坠</td>
+                <td class="num">¥29013</td>
+                <td class="num">3.51%</td>
+                <td class="num">38.4%</td>
+                <td class="num">8.4s</td>
+                <td class="num">1.29</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="转运珠耳环69.9－LP">转运珠耳环69.9－LP</td>
+                <td class="mkt-name">女耳环/耳坠</td>
+                <td class="num">¥20684</td>
+                <td class="num">2.27%</td>
+                <td class="num">53.1%</td>
+                <td class="num">11.4s</td>
+                <td class="num">1.29</td>
+                <td class="tag-cell">高留存型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="925银耳针复古老钱风高级感气质优雅东方半绿耳钉耳饰耳环">925银耳针复古老钱风高级感气质优雅东方半绿耳钉耳饰耳环</td>
+                <td class="mkt-name">P&N女耳钉</td>
+                <td class="num">¥20166</td>
+                <td class="num">5.18%</td>
+                <td class="num">32.1%</td>
+                <td class="num">7.0s</td>
+                <td class="num">3.03</td>
+                <td class="tag-cell">跑量型、高转化型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-2">
+        <div class="cat-header">
+            <span class="cat-emoji">📿</span>
+            <span class="cat-name">项链</span>
+            <span class="cat-count">📦 117 条素材 · 🔥 43 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥354,750</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">25.74%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 33.35% ↑30%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">44.2%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">30.3s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">1.78</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">37%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">气质场景开篇 → 产品质感特写 → 高级穿搭搭配 → 社交场合展示 → 质价反差促单</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>气质场景x质价反差、高点击素材、长停留素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>男女通用项链(18条/¥77853)、男女通用颈饰(19条/¥66354)、女项链(14条/¥36709)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="平平安安平安果项链">平平安安平安果项链</td>
+                <td class="mkt-name">男女通用项链</td>
+                <td class="num">¥18456</td>
+                <td class="num">12.82%</td>
+                <td class="num">68.9%</td>
+                <td class="num">25.0s</td>
+                <td class="num">1.76</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="【师傅推荐】2026款青绿色吊坠精工雕刻时尚吊坠男女随身挂件">【师傅推荐】2026款青绿色吊坠精工雕刻时尚吊坠男女随身挂件</td>
+                <td class="mkt-name">男女通用颈饰</td>
+                <td class="num">¥15595</td>
+                <td class="num">35.00%</td>
+                <td class="num">50.9%</td>
+                <td class="num">59.7s</td>
+                <td class="num">1.13</td>
+                <td class="tag-cell">跑量型、高留存型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="合金吊坠【鸿福来】叶子如来佛吊坠单坠佛牌项坠国潮配项链">合金吊坠【鸿福来】叶子如来佛吊坠单坠佛牌项坠国潮配项链</td>
+                <td class="mkt-name">男女通用单吊坠</td>
+                <td class="num">¥10422</td>
+                <td class="num">59.41%</td>
+                <td class="num">38.9%</td>
+                <td class="num">63.8s</td>
+                <td class="num">1.23</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="观世音吊坠佛坠">观世音吊坠佛坠</td>
+                <td class="mkt-name">男女通用颈饰</td>
+                <td class="num">¥7179</td>
+                <td class="num">49.66%</td>
+                <td class="num">42.8%</td>
+                <td class="num">57.5s</td>
+                <td class="num">1.62</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="【师傅推荐】2026款青绿色吊坠精工雕刻时尚吊坠男女随身挂件">【师傅推荐】2026款青绿色吊坠精工雕刻时尚吊坠男女随身挂件</td>
+                <td class="mkt-name">男女通用颈饰</td>
+                <td class="num">¥7049</td>
+                <td class="num">37.84%</td>
+                <td class="num">49.5%</td>
+                <td class="num">46.1s</td>
+                <td class="num">1.15</td>
+                <td class="tag-cell">跑量型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-3">
+        <div class="cat-header">
+            <span class="cat-emoji">🤍</span>
+            <span class="cat-name">珍珠项链</span>
+            <span class="cat-count">📦 36 条素材 · 🔥 15 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥321,439</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">8.24%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 10.13% ↑23%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">43.6%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">10.8s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">2.48</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">42%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">产品特写开篇 → 材质工艺展示 → 佩戴效果对比 → 信任背书叠加 → 促单收尾</div>
+        </div>
+        
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>女项链(21条/¥254978)、项链(3条/¥20622)、时尚饰品(2条/¥14763)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="紫色皇冠珍珠项链">紫色皇冠珍珠项链</td>
+                <td class="mkt-name">女项链</td>
+                <td class="num">¥74835</td>
+                <td class="num">9.84%</td>
+                <td class="num">43.7%</td>
+                <td class="num">12.7s</td>
+                <td class="num">1.98</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="法式轻奢皇冠珍珠项链">法式轻奢皇冠珍珠项链</td>
+                <td class="mkt-name">女项链</td>
+                <td class="num">¥12780</td>
+                <td class="num">11.23%</td>
+                <td class="num">43.1%</td>
+                <td class="num">13.5s</td>
+                <td class="num">1.90</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="四叶花玻璃珍珠项链">四叶花玻璃珍珠项链</td>
+                <td class="mkt-name">项链</td>
+                <td class="num">¥12704</td>
+                <td class="num">9.14%</td>
+                <td class="num">44.9%</td>
+                <td class="num">12.2s</td>
+                <td class="num">1.94</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="小米珠珍珠项链">小米珠珍珠项链</td>
+                <td class="mkt-name">女项链</td>
+                <td class="num">¥11301</td>
+                <td class="num">9.65%</td>
+                <td class="num">37.4%</td>
+                <td class="num">9.9s</td>
+                <td class="num">2.11</td>
+                <td class="tag-cell">跑量型、高转化型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="碎银珍珠项链爆款">碎银珍珠项链爆款</td>
+                <td class="mkt-name">时尚饰品</td>
+                <td class="num">¥9332</td>
+                <td class="num">9.16%</td>
+                <td class="num">36.6%</td>
+                <td class="num">9.5s</td>
+                <td class="num">1.85</td>
+                <td class="tag-cell">跑量型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-4">
+        <div class="cat-header">
+            <span class="cat-emoji">👓</span>
+            <span class="cat-name">老花镜/眼镜</span>
+            <span class="cat-count">📦 76 条素材 · 🔥 28 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥274,618</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">3.62%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 4.36% ↑20%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">39.1%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">7.8s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">1.68</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">37%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">中老年用眼痛点 → 产品功能演示（防蓝光/远近两用）→ 真实使用场景 → 效果对比 → 限时优惠</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>痛点场景x功能解决、高完播素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>美妆老花镜(10条/¥71522)、男女通用老花眼镜(15条/¥60953)、男老花眼镜(11条/¥47117)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="时尚减龄高清养眼小字放大防蓝光花镜中老年专用老花眼镜">时尚减龄高清养眼小字放大防蓝光花镜中老年专用老花眼镜</td>
+                <td class="mkt-name">美妆老花镜</td>
+                <td class="num">¥23452</td>
+                <td class="num">4.93%</td>
+                <td class="num">34.2%</td>
+                <td class="num">7.9s</td>
+                <td class="num">2.00</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="高档老花镜时尚简约显年轻优雅大气时尚远近两用">高档老花镜时尚简约显年轻优雅大气时尚远近两用</td>
+                <td class="mkt-name">男女通用老花眼镜</td>
+                <td class="num">¥21735</td>
+                <td class="num">4.01%</td>
+                <td class="num">26.3%</td>
+                <td class="num">8.9s</td>
+                <td class="num">1.52</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="时尚减龄高清养眼小字放大防蓝光花镜中老年专用老花眼镜">时尚减龄高清养眼小字放大防蓝光花镜中老年专用老花眼镜</td>
+                <td class="mkt-name">美妆老花镜</td>
+                <td class="num">¥9780</td>
+                <td class="num">4.16%</td>
+                <td class="num">45.0%</td>
+                <td class="num">6.7s</td>
+                <td class="num">1.93</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="时尚减龄高清养眼小字放大防蓝光花镜中老年专用老花眼镜">时尚减龄高清养眼小字放大防蓝光花镜中老年专用老花眼镜</td>
+                <td class="mkt-name">美妆老花镜</td>
+                <td class="num">¥7998</td>
+                <td class="num">4.97%</td>
+                <td class="num">46.9%</td>
+                <td class="num">8.1s</td>
+                <td class="num">1.95</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="男士老花镜时尚半框商务1">男士老花镜时尚半框商务1</td>
+                <td class="mkt-name">男老花眼镜</td>
+                <td class="num">¥7891</td>
+                <td class="num">3.50%</td>
+                <td class="num">38.1%</td>
+                <td class="num">9.8s</td>
+                <td class="num">1.00</td>
+                <td class="tag-cell">跑量型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-5">
+        <div class="cat-header">
+            <span class="cat-emoji">🏮</span>
+            <span class="cat-name">文创/香道/茶道</span>
+            <span class="cat-count">📦 46 条素材 · 🔥 14 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥187,847</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">7.10%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 17.56% ↑147%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">36.5%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">13.8s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">5.20</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">30%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">文化场景/意境开篇 → 工艺细节展示 → 使用仪式感 → 寓意解读 → 礼盒/送礼场景</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>文化意境x仪式感、高点击素材、高完播素材、长停留素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>普陀禅海文创阁(6条/¥88841)、普陀圣境文创(5条/¥16419)、文化创意礼品(4条/¥16338)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="[年香福绕]普陀直发文创新款小老虎宝宝手工编织绳端午节五彩绳亲子">[年香福绕]普陀直发文创新款小老虎宝宝手工编织绳端午节五彩绳亲子</td>
+                <td class="mkt-name">普陀禅海文创阁</td>
+                <td class="num">¥30085</td>
+                <td class="num">2.97%</td>
+                <td class="num">59.2%</td>
+                <td class="num">6.3s</td>
+                <td class="num">1.53</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="[程雷专属]【新西兰头茬皇后红玫瑰苹果】果香浓郁 酸脆爆汁 顺丰包邮">[程雷专属]【新西兰头茬皇后红玫瑰苹果】果香浓郁 酸脆爆汁 顺丰包邮</td>
+                <td class="mkt-name">豆豆姐姐Rahma</td>
+                <td class="num">¥9024</td>
+                <td class="num">4.53%</td>
+                <td class="num">—</td>
+                <td class="num">—</td>
+                <td class="num">5.29</td>
+                <td class="tag-cell">跑量型、高点击型、高转化型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="[年香福绕]普陀直发文创新款小老虎宝宝手工编织绳端午节五彩绳亲子">[年香福绕]普陀直发文创新款小老虎宝宝手工编织绳端午节五彩绳亲子</td>
+                <td class="mkt-name">文化创意礼品</td>
+                <td class="num">¥8074</td>
+                <td class="num">2.67%</td>
+                <td class="num">25.7%</td>
+                <td class="num">4.0s</td>
+                <td class="num">1.47</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="《上岸锦鲤》普陀山文创上岸锦鲤手绳 传统手工编织文创手绳">《上岸锦鲤》普陀山文创上岸锦鲤手绳 传统手工编织文创手绳</td>
+                <td class="mkt-name">文化创意礼品</td>
+                <td class="num">¥5616</td>
+                <td class="num">3.93%</td>
+                <td class="num">47.2%</td>
+                <td class="num">6.2s</td>
+                <td class="num">2.13</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="时尚吊坠 【师傅推荐】古法爆闪八方来才印章小合金吊坠男女同款">时尚吊坠 【师傅推荐】古法爆闪八方来才印章小合金吊坠男女同款</td>
+                <td class="mkt-name">男女通用单吊坠</td>
+                <td class="num">¥4012</td>
+                <td class="num">43.57%</td>
+                <td class="num">54.5%</td>
+                <td class="num">71.2s</td>
+                <td class="num">1.42</td>
+                <td class="tag-cell">跑量型、高点击型、高留存型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-6">
+        <div class="cat-header">
+            <span class="cat-emoji">👒</span>
+            <span class="cat-name">防晒帽</span>
+            <span class="cat-count">📦 19 条素材 · 🔥 8 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥142,612</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">3.17%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 4.32% ↑36%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">30.5%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">6.4s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">5.48</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">42%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">户外场景引入 → 大帽檐遮阳效果 → 颜值展示 → 便携可折叠 → 促销收尾</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>场景引入x颜值功能、高点击素材、长停留素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>女防晒渔夫帽(3条/¥77558)、女渔夫帽(7条/¥44369)、男防晒渔夫帽(3条/¥10784)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="韩版条纹防晒帽">韩版条纹防晒帽</td>
+                <td class="mkt-name">女防晒渔夫帽</td>
+                <td class="num">¥70511</td>
+                <td class="num">4.31%</td>
+                <td class="num">36.8%</td>
+                <td class="num">10.3s</td>
+                <td class="num">1.71</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="【轻奢名品】日系显脸小渔 夫帽女2026新款夏季户外百 搭遮阳帽3210688036086445263 女渔夫帽">【轻奢名品】日系显脸小渔 夫帽女2026新款夏季户外百 搭遮阳帽321...</td>
+                <td class="mkt-name">女渔夫帽</td>
+                <td class="num">¥18702</td>
+                <td class="num">2.83%</td>
+                <td class="num">38.2%</td>
+                <td class="num">9.2s</td>
+                <td class="num">1.23</td>
+                <td class="tag-cell">跑量型、高留存型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="【轻奢名品】日系显脸小渔 夫帽女2026新款夏季户外百 搭遮阳帽3210688036086445263 女渔夫帽">【轻奢名品】日系显脸小渔 夫帽女2026新款夏季户外百 搭遮阳帽321...</td>
+                <td class="mkt-name">女渔夫帽</td>
+                <td class="num">¥13424</td>
+                <td class="num">2.70%</td>
+                <td class="num">35.5%</td>
+                <td class="num">6.9s</td>
+                <td class="num">1.07</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="2026新款灯罩帽子大帽檐环绕遮阳防晒帽可折叠大头围渔夫太阳帽">2026新款灯罩帽子大帽檐环绕遮阳防晒帽可折叠大头围渔夫太阳帽</td>
+                <td class="mkt-name">男防晒渔夫帽</td>
+                <td class="num">¥7103</td>
+                <td class="num">6.15%</td>
+                <td class="num">38.7%</td>
+                <td class="num">8.1s</td>
+                <td class="num">2.48</td>
+                <td class="tag-cell">跑量型、高点击型、高转化型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="韩版条纹防晒帽">韩版条纹防晒帽</td>
+                <td class="mkt-name">女防晒渔夫帽</td>
+                <td class="num">¥5130</td>
+                <td class="num">5.58%</td>
+                <td class="num">38.7%</td>
+                <td class="num">9.5s</td>
+                <td class="num">1.83</td>
+                <td class="tag-cell">跑量型、高点击型、高留存型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-7">
+        <div class="cat-header">
+            <span class="cat-emoji">📦</span>
+            <span class="cat-name">其他</span>
+            <span class="cat-count">📦 58 条素材 · 🔥 21 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥142,519</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">23.91%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 36.87% ↑54%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">40.3%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">31.2s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">4.32</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">36%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">产品亮点开篇 → 功能/效果展示 → 场景化体验 → 用户口碑 → 促单收尾</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>高点击素材、长停留素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>吊坠/金珠(12条/¥28102)、单吊坠(6条/¥27827)、男女通用单吊坠(9条/¥18705)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="男树脂单吊坠男树脂单吊坠">男树脂单吊坠男树脂单吊坠</td>
+                <td class="mkt-name">男树脂单吊坠</td>
+                <td class="num">¥9519</td>
+                <td class="num">28.68%</td>
+                <td class="num">50.1%</td>
+                <td class="num">27.3s</td>
+                <td class="num">1.29</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="吊坠203">吊坠203</td>
+                <td class="mkt-name">江苏健康广播-山海集</td>
+                <td class="num">¥7295</td>
+                <td class="num">1.91%</td>
+                <td class="num">—</td>
+                <td class="num">—</td>
+                <td class="num">19.21</td>
+                <td class="tag-cell">高转化型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="感温变色财源抱珠貔貅吊坠男女同款小众变色吊坠 温感变色抱珠貔貅">感温变色财源抱珠貔貅吊坠男女同款小众变色吊坠 温感变色抱珠貔貅</td>
+                <td class="mkt-name">男女通用单吊坠</td>
+                <td class="num">¥5738</td>
+                <td class="num">53.71%</td>
+                <td class="num">56.2%</td>
+                <td class="num">89.0s</td>
+                <td class="num">1.20</td>
+                <td class="tag-cell">跑量型、高点击型、高留存型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="合金吊坠 【师傅推荐】龙牌吊坠镂空龙行天下金色方牌霸气吊坠">合金吊坠 【师傅推荐】龙牌吊坠镂空龙行天下金色方牌霸气吊坠</td>
+                <td class="mkt-name">吊坠/金珠</td>
+                <td class="num">¥5607</td>
+                <td class="num">20.79%</td>
+                <td class="num">49.1%</td>
+                <td class="num">33.5s</td>
+                <td class="num">1.23</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="男树脂单吊坠男树脂单吊坠">男树脂单吊坠男树脂单吊坠</td>
+                <td class="mkt-name">男树脂单吊坠</td>
+                <td class="num">¥4031</td>
+                <td class="num">42.16%</td>
+                <td class="num">63.2%</td>
+                <td class="num">37.4s</td>
+                <td class="num">1.48</td>
+                <td class="tag-cell">跑量型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-8">
+        <div class="cat-header">
+            <span class="cat-emoji">💍</span>
+            <span class="cat-name">戒指</span>
+            <span class="cat-count">📦 47 条素材 · 🔥 17 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥129,774</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">14.35%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 25.62% ↑79%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">50.3%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">20.4s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">1.45</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">36%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">气质场景开篇 → 产品质感特写 → 高级穿搭搭配 → 社交场合展示 → 质价反差促单</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>气质场景x质价反差、高点击素材、长停留素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>男女通用戒指/指环(15条/¥43696)、男戒指/指环(15条/¥37378)、女戒指/指环(7条/¥25840)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="百合花朵戒指金色">百合花朵戒指金色</td>
+                <td class="mkt-name">女戒指/指环</td>
+                <td class="num">¥11312</td>
+                <td class="num">8.36%</td>
+                <td class="num">58.0%</td>
+                <td class="num">14.8s</td>
+                <td class="num">1.74</td>
+                <td class="tag-cell">跑量型、高转化型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="【高档霸气】时尚经典霸气十足不掉色帝王男戒送礼自戴皆可KL 银色高贵帝王戒【赠精美礼盒】 开口可调节">【高档霸气】时尚经典霸气十足不掉色帝王男戒送礼自戴皆可KL 银色高贵帝...</td>
+                <td class="mkt-name">男戒指/指环</td>
+                <td class="num">¥8489</td>
+                <td class="num">8.18%</td>
+                <td class="num">46.6%</td>
+                <td class="num">12.5s</td>
+                <td class="num">1.73</td>
+                <td class="tag-cell">跑量型、高转化型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="男女通用戒指/指环男女通用戒指/指环">男女通用戒指/指环男女通用戒指/指环</td>
+                <td class="mkt-name">男女通用戒指/指环</td>
+                <td class="num">¥6436</td>
+                <td class="num">61.94%</td>
+                <td class="num">42.5%</td>
+                <td class="num">40.2s</td>
+                <td class="num">1.53</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="【师傅推荐】精美男士戒指时尚情侣经典可调节霸气金色绿宝石戒指">【师傅推荐】精美男士戒指时尚情侣经典可调节霸气金色绿宝石戒指</td>
+                <td class="mkt-name">男镀金戒指/指环</td>
+                <td class="num">¥5953</td>
+                <td class="num">40.28%</td>
+                <td class="num">36.4%</td>
+                <td class="num">39.9s</td>
+                <td class="num">1.26</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="百合花朵戒指金色">百合花朵戒指金色</td>
+                <td class="mkt-name">女戒指/指环</td>
+                <td class="num">¥5119</td>
+                <td class="num">9.88%</td>
+                <td class="num">56.1%</td>
+                <td class="num">14.3s</td>
+                <td class="num">1.51</td>
+                <td class="tag-cell">跑量型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-9">
+        <div class="cat-header">
+            <span class="cat-emoji">🪵</span>
+            <span class="cat-name">手串/文玩</span>
+            <span class="cat-count">📦 51 条素材 · 🔥 16 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥129,241</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">7.93%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 12.92% ↑63%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">45.7%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">14.4s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">2.31</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">31%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">文化/寓意开篇 → 材质细节特写 → 盘玩效果展示 → 社群认同感 → 收藏价值/限时</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>文化背书x盘玩展示、高点击素材、长停留素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>男女通用手串(15条/¥51071)、菩提手串(11条/¥22749)、金丝楠木手串(4条/¥14741)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="广东省中药研究所宫鸿燕禧珠麝香合香珠手串赠欢宜香手串">广东省中药研究所宫鸿燕禧珠麝香合香珠手串赠欢宜香手串</td>
+                <td class="mkt-name">男女通用手串</td>
+                <td class="num">¥14777</td>
+                <td class="num">4.51%</td>
+                <td class="num">62.5%</td>
+                <td class="num">8.5s</td>
+                <td class="num">2.07</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="广东省中药研究所宫鸿燕禧珠麝香合香珠手串赠欢宜香手串">广东省中药研究所宫鸿燕禧珠麝香合香珠手串赠欢宜香手串</td>
+                <td class="mkt-name">男女通用手串</td>
+                <td class="num">¥8354</td>
+                <td class="num">3.11%</td>
+                <td class="num">48.2%</td>
+                <td class="num">8.7s</td>
+                <td class="num">2.08</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="中药手串[花蕊夫人]非遗古法天然草本合香珠手串香道国风中老年药香文玩">中药手串[花蕊夫人]非遗古法天然草本合香珠手串香道国风中老年药香文玩</td>
+                <td class="mkt-name">男女通用手串</td>
+                <td class="num">¥7998</td>
+                <td class="num">3.15%</td>
+                <td class="num">59.5%</td>
+                <td class="num">8.4s</td>
+                <td class="num">1.19</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="奶油玉化菩提手串">奶油玉化菩提手串</td>
+                <td class="mkt-name">菩提手串</td>
+                <td class="num">¥4428</td>
+                <td class="num">37.69%</td>
+                <td class="num">70.1%</td>
+                <td class="num">49.8s</td>
+                <td class="num">0.95</td>
+                <td class="tag-cell">跑量型、高点击型、高留存型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="【七星尊者-李文华】爆红写实橄榄核手串文玩橄榄核雕收藏男士文玩手串">【七星尊者-李文华】爆红写实橄榄核手串文玩橄榄核雕收藏男士文玩手串</td>
+                <td class="mkt-name">梵境手作</td>
+                <td class="num">¥3419</td>
+                <td class="num">1.58%</td>
+                <td class="num">—</td>
+                <td class="num">—</td>
+                <td class="num">3.29</td>
+                <td class="tag-cell">高转化型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-10">
+        <div class="cat-header">
+            <span class="cat-emoji">👖</span>
+            <span class="cat-name">腰带/皮带</span>
+            <span class="cat-count">📦 47 条素材 · 🔥 22 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥119,701</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">1.95%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 2.39% ↑23%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">30.3%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">5.8s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">1.87</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">47%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">穿搭痛点（腰围不合适/没气质）→ 产品功能展示（免打孔/自动扣）→ 上身效果 → 多场景搭配 → 促销</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>穿搭痛点x功能展示、高完播素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>古格缇/GUGETI腰带/皮带/腰链(16条/¥58262)、CalermKeens官方专柜店(8条/¥18771)、Calerm Keens腰带/皮带/腰链(4条/¥8987)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="[正品保障]古格缇新款男女专利推拉扣弹力腰带可微调户外运动休闲很显档次">[正品保障]古格缇新款男女专利推拉扣弹力腰带可微调户外运动休闲很显档次</td>
+                <td class="mkt-name">古格缇/GUGETI腰带/皮带</td>
+                <td class="num">¥8230</td>
+                <td class="num">2.29%</td>
+                <td class="num">32.8%</td>
+                <td class="num">5.9s</td>
+                <td class="num">1.71</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="[正品保障]古格缇新款男女专利推拉扣弹力腰带可微调户外运动休闲很显档次">[正品保障]古格缇新款男女专利推拉扣弹力腰带可微调户外运动休闲很显档次</td>
+                <td class="mkt-name">古格缇/GUGETI腰带/皮带</td>
+                <td class="num">¥5203</td>
+                <td class="num">2.04%</td>
+                <td class="num">24.9%</td>
+                <td class="num">4.6s</td>
+                <td class="num">1.78</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="十年不断裂《国家专利》真牛皮男士皮带自动扣单层纯牛皮手工腰带">十年不断裂《国家专利》真牛皮男士皮带自动扣单层纯牛皮手工腰带</td>
+                <td class="mkt-name">Calerm Keens腰带/</td>
+                <td class="num">¥4008</td>
+                <td class="num">2.34%</td>
+                <td class="num">40.0%</td>
+                <td class="num">5.9s</td>
+                <td class="num">2.15</td>
+                <td class="tag-cell">跑量型、高点击型、高转化型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="Calermkeens明星同款《真牛皮》女士皮带自动扣真皮腰带国家专利免打孔情人节日礼物">Calermkeens明星同款《真牛皮》女士皮带自动扣真皮腰带国家专利...</td>
+                <td class="mkt-name">Calerm Keens女腰带</td>
+                <td class="num">¥3630</td>
+                <td class="num">2.14%</td>
+                <td class="num">64.1%</td>
+                <td class="num">3.3s</td>
+                <td class="num">1.45</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="[正品保障]古格缇新款男女专利推拉扣弹力腰带可微调户外运动休闲很显档次">[正品保障]古格缇新款男女专利推拉扣弹力腰带可微调户外运动休闲很显档次</td>
+                <td class="mkt-name">古格缇/GUGETI腰带/皮带</td>
+                <td class="num">¥3357</td>
+                <td class="num">1.94%</td>
+                <td class="num">44.8%</td>
+                <td class="num">7.1s</td>
+                <td class="num">1.38</td>
+                <td class="tag-cell">跑量型、高留存型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-11">
+        <div class="cat-header">
+            <span class="cat-emoji">💚</span>
+            <span class="cat-name">翡翠/和田玉吊坠</span>
+            <span class="cat-count">📦 48 条素材 · 🔥 13 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥106,499</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">10.02%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 24.55% ↑145%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">42.9%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">31.3s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">30.99</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">27%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">寓意故事引入 → 产品特写展示 → 佩戴上身效果 → 鉴定证书/权威背书 → 转化引导</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>寓意故事x权威背书、高点击素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>和田玉单吊坠(8条/¥28398)、V姐珠宝-(6条/¥15033)、闲值珠宝(3条/¥7027)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="金镶玉吊坠和田玉佛公挂件">金镶玉吊坠和田玉佛公挂件</td>
+                <td class="mkt-name">和田玉单吊坠</td>
+                <td class="num">¥7159</td>
+                <td class="num">34.65%</td>
+                <td class="num">59.4%</td>
+                <td class="num">38.7s</td>
+                <td class="num">1.42</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="和田玉观音吊坠苏工雕刻首饰玉坠珠宝吊坠礼物">和田玉观音吊坠苏工雕刻首饰玉坠珠宝吊坠礼物</td>
+                <td class="mkt-name">和田玉单吊坠</td>
+                <td class="num">¥7023</td>
+                <td class="num">41.70%</td>
+                <td class="num">40.1%</td>
+                <td class="num">40.9s</td>
+                <td class="num">1.40</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="【V姐珠宝】和田玉俄7碧玉单珠吊坠19.5mm-18K-HL5203">【V姐珠宝】和田玉俄7碧玉单珠吊坠19.5mm-18K-HL5203</td>
+                <td class="mkt-name">V姐珠宝-</td>
+                <td class="num">¥5144</td>
+                <td class="num">2.17%</td>
+                <td class="num">—</td>
+                <td class="num">—</td>
+                <td class="num">48.61</td>
+                <td class="tag-cell">高转化型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="金镶玉吊坠和田玉佛公挂件">金镶玉吊坠和田玉佛公挂件</td>
+                <td class="mkt-name">和田玉单吊坠</td>
+                <td class="num">¥3750</td>
+                <td class="num">38.14%</td>
+                <td class="num">59.2%</td>
+                <td class="num">40.7s</td>
+                <td class="num">0.96</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="和田玉观音吊坠苏工雕刻首饰玉坠珠宝吊坠礼物">和田玉观音吊坠苏工雕刻首饰玉坠珠宝吊坠礼物</td>
+                <td class="mkt-name">和田玉单吊坠</td>
+                <td class="num">¥3420</td>
+                <td class="num">43.35%</td>
+                <td class="num">49.1%</td>
+                <td class="num">62.3s</td>
+                <td class="num">0.96</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-12">
+        <div class="cat-header">
+            <span class="cat-emoji">💫</span>
+            <span class="cat-name">手链/手镯</span>
+            <span class="cat-count">📦 26 条素材 · 🔥 10 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥100,174</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">7.40%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 9.18% ↑24%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">46.3%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">14.1s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">8.40</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">38%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">产品开箱/特写 → 上身效果展示 → 多场景搭配 → 用户评价截取 → 限时优惠</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>长停留素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>时尚饰品(2条/¥24691)、男女通用镀金手镯/手环(4条/¥22206)、女手镯/手环(7条/¥17736)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="四叶草爱心手链爆款">四叶草爱心手链爆款</td>
+                <td class="mkt-name">时尚饰品</td>
+                <td class="num">¥13158</td>
+                <td class="num">9.13%</td>
+                <td class="num">58.3%</td>
+                <td class="num">30.6s</td>
+                <td class="num">1.63</td>
+                <td class="tag-cell">跑量型、高留存型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="四叶草爱心手链爆款">四叶草爱心手链爆款</td>
+                <td class="mkt-name">时尚饰品</td>
+                <td class="num">¥11532</td>
+                <td class="num">11.63%</td>
+                <td class="num">50.1%</td>
+                <td class="num">16.2s</td>
+                <td class="num">1.62</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="时尚飘花手镯1111">时尚飘花手镯1111</td>
+                <td class="mkt-name">男女通用镀金手镯/手环</td>
+                <td class="num">¥9878</td>
+                <td class="num">11.67%</td>
+                <td class="num">59.4%</td>
+                <td class="num">16.0s</td>
+                <td class="num">1.71</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="时尚飘花手镯1111">时尚飘花手镯1111</td>
+                <td class="mkt-name">男女通用镀金手镯/手环</td>
+                <td class="num">¥8964</td>
+                <td class="num">7.78%</td>
+                <td class="num">41.3%</td>
+                <td class="num">13.7s</td>
+                <td class="num">2.02</td>
+                <td class="tag-cell">跑量型、高转化型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="平安锁手链女款">平安锁手链女款</td>
+                <td class="mkt-name">手链</td>
+                <td class="num">¥4754</td>
+                <td class="num">10.03%</td>
+                <td class="num">47.4%</td>
+                <td class="num">12.9s</td>
+                <td class="num">1.92</td>
+                <td class="tag-cell">跑量型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-13">
+        <div class="cat-header">
+            <span class="cat-emoji">👜</span>
+            <span class="cat-name">箱包</span>
+            <span class="cat-count">📦 8 条素材 · 🔥 2 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥97,590</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">7.78%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 13.38% ↑72%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">51.6%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">14.8s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">2.54</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">25%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework framework-warn">
+            <span class="fw-label">⚠ 样本不足（<9条），框架仅供参考</span>
+        </div>
+        
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>双肩包(8条/¥97590)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="斜挎包双肩包2026春季爆款">斜挎包双肩包2026春季爆款</td>
+                <td class="mkt-name">双肩包</td>
+                <td class="num">¥2347</td>
+                <td class="num">18.46%</td>
+                <td class="num">46.4%</td>
+                <td class="num">21.3s</td>
+                <td class="num">3.53</td>
+                <td class="tag-cell">跑量型、高点击型、高转化型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="斜挎包双肩包2026春季爆款">斜挎包双肩包2026春季爆款</td>
+                <td class="mkt-name">双肩包</td>
+                <td class="num">¥1785</td>
+                <td class="num">8.29%</td>
+                <td class="num">66.7%</td>
+                <td class="num">21.2s</td>
+                <td class="num">2.55</td>
+                <td class="tag-cell">高点击型、高留存型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-14">
+        <div class="cat-header">
+            <span class="cat-emoji">🦵</span>
+            <span class="cat-name">护膝/运动防护</span>
+            <span class="cat-count">📦 35 条素材 · 🔥 13 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥97,245</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">2.83%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 3.41% ↑21%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">31.1%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">5.9s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">2.20</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">37%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">膝盖疼痛场景 → 产品防护原理 → 运动实测 → 舒适度展示 → 限时优惠</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>痛点场景x防护实测、高完播素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>康舒运动店(9条/¥28112)、泊伊尚品丝佳居家生活(9条/¥22793)、泊伊尚品弥珀居家生活(4条/¥19831)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="髌骨带男夏季专业级跑步羽毛球膝盖保护带女运动髌护带透气不闷汗">髌骨带男夏季专业级跑步羽毛球膝盖保护带女运动髌护带透气不闷汗</td>
+                <td class="mkt-name">康舒运动店</td>
+                <td class="num">¥6022</td>
+                <td class="num">3.41%</td>
+                <td class="num">24.8%</td>
+                <td class="num">4.7s</td>
+                <td class="num">2.66</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="髌骨带男夏季专业级跑步羽毛球膝盖保护带女运动髌护带透气不闷汗">髌骨带男夏季专业级跑步羽毛球膝盖保护带女运动髌护带透气不闷汗</td>
+                <td class="mkt-name">康舒运动店</td>
+                <td class="num">¥5791</td>
+                <td class="num">4.31%</td>
+                <td class="num">29.7%</td>
+                <td class="num">6.2s</td>
+                <td class="num">2.42</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="石墨烯护膝盖套保暖男女士远红外升温老人关节秋冬防寒防滑护腿套">石墨烯护膝盖套保暖男女士远红外升温老人关节秋冬防寒防滑护腿套</td>
+                <td class="mkt-name">金禧康运动护膝</td>
+                <td class="num">¥5103</td>
+                <td class="num">4.98%</td>
+                <td class="num">38.2%</td>
+                <td class="num">6.9s</td>
+                <td class="num">2.91</td>
+                <td class="tag-cell">跑量型、高点击型、高转化型、高留存型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="夏季空调房石墨烯护膝防滑远红外抗菌男女士老人关节护腿套">夏季空调房石墨烯护膝防滑远红外抗菌男女士老人关节护腿套</td>
+                <td class="mkt-name">金禧康腰膝护理</td>
+                <td class="num">¥4238</td>
+                <td class="num">5.18%</td>
+                <td class="num">37.8%</td>
+                <td class="num">7.2s</td>
+                <td class="num">3.28</td>
+                <td class="tag-cell">跑量型、高点击型、高转化型、高留存型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="髌骨带男夏季专业级跑步羽毛球膝盖保护带女运动髌护带透气不闷汗">髌骨带男夏季专业级跑步羽毛球膝盖保护带女运动髌护带透气不闷汗</td>
+                <td class="mkt-name">康舒运动店</td>
+                <td class="num">¥4225</td>
+                <td class="num">3.35%</td>
+                <td class="num">35.6%</td>
+                <td class="num">6.1s</td>
+                <td class="num">2.22</td>
+                <td class="tag-cell">跑量型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-15">
+        <div class="cat-header">
+            <span class="cat-emoji">🧴</span>
+            <span class="cat-name">防晒口罩/面罩</span>
+            <span class="cat-count">📦 27 条素材 · 🔥 9 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥94,638</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">2.19%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 2.49% ↑13%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">29.3%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">6.7s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">1.58</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">33%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">紫外线伤害痛点 → 产品功能展示（护眼角/透气）→ 佩戴实测 → 妆容不蹭 → 限时促销</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>场景痛点x功能实测、高完播素材、长停留素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>男女通用防晒口罩(6条/¥36048)、女防晒口罩(14条/¥34822)、莫代尔/MADALLO防晒口罩/防晒脖套(3条/¥15732)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="护颈防晒口罩可喝水">护颈防晒口罩可喝水</td>
+                <td class="mkt-name">男女通用防晒口罩</td>
+                <td class="num">¥12370</td>
+                <td class="num">1.67%</td>
+                <td class="num">49.9%</td>
+                <td class="num">18.1s</td>
+                <td class="num">1.48</td>
+                <td class="tag-cell">高留存型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="莫代尔冰丝防晒口罩全脸防紫外线全脸遮挡夏季透气脸基尼">莫代尔冰丝防晒口罩全脸防紫外线全脸遮挡夏季透气脸基尼</td>
+                <td class="mkt-name">莫代尔/MADALLO防晒口罩</td>
+                <td class="num">¥9578</td>
+                <td class="num">1.91%</td>
+                <td class="num">23.0%</td>
+                <td class="num">4.9s</td>
+                <td class="num">1.94</td>
+                <td class="tag-cell">高转化型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="莫代尔冰丝防晒口罩全脸防紫外线全脸遮挡夏季透气脸基尼">莫代尔冰丝防晒口罩全脸防紫外线全脸遮挡夏季透气脸基尼</td>
+                <td class="mkt-name">莫代尔/MADALLO防晒口罩</td>
+                <td class="num">¥4276</td>
+                <td class="num">2.47%</td>
+                <td class="num">23.0%</td>
+                <td class="num">5.2s</td>
+                <td class="num">2.26</td>
+                <td class="tag-cell">跑量型、高转化型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="26新款防晒面罩披肩女夏季遮阳防紫外线护颈透气户外骑行挂耳套头">26新款防晒面罩披肩女夏季遮阳防紫外线护颈透气户外骑行挂耳套头</td>
+                <td class="mkt-name">女防晒口罩</td>
+                <td class="num">¥2756</td>
+                <td class="num">3.97%</td>
+                <td class="num">39.9%</td>
+                <td class="num">8.5s</td>
+                <td class="num">3.66</td>
+                <td class="tag-cell">高点击型、高转化型、高留存型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="防晒面罩2026新款透气小香风女高品质夏季透气护眼角防晒薄款">防晒面罩2026新款透气小香风女高品质夏季透气护眼角防晒薄款</td>
+                <td class="mkt-name">女防晒口罩</td>
+                <td class="num">¥2623</td>
+                <td class="num">3.67%</td>
+                <td class="num">29.0%</td>
+                <td class="num">6.5s</td>
+                <td class="num">1.73</td>
+                <td class="tag-cell">高点击型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-16">
+        <div class="cat-header">
+            <span class="cat-emoji">💚</span>
+            <span class="cat-name">翡翠/和田玉手镯</span>
+            <span class="cat-count">📦 24 条素材 · 🔥 8 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥80,239</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">4.63%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 6.70% ↑45%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">24.1%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">7.6s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">61.26</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">33%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">痛点切入（送礼/转运）→ 产品多角度展示 → 真实佩戴场景 → 用户口碑证言 → 促销信息</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>痛点切入x场景展示、高点击素材、高完播素材、长停留素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>小徐珠宝优选(3条/¥17191)、小徐珠宝精选(1条/¥11135)、珍品轩珠宝-燕子说玉(3条/¥9964)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="和田玉手镯">和田玉手镯</td>
+                <td class="mkt-name">小徐珠宝精选</td>
+                <td class="num">¥11135</td>
+                <td class="num">4.57%</td>
+                <td class="num">—</td>
+                <td class="num">—</td>
+                <td class="num">98.89</td>
+                <td class="tag-cell">跑量型、高点击型、高转化型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="和田玉手镯">和田玉手镯</td>
+                <td class="mkt-name">小徐珠宝高端号</td>
+                <td class="num">¥7257</td>
+                <td class="num">4.63%</td>
+                <td class="num">16.7%</td>
+                <td class="num">5.8s</td>
+                <td class="num">72.20</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="和田玉手镯">和田玉手镯</td>
+                <td class="mkt-name">小徐珠宝优选</td>
+                <td class="num">¥6279</td>
+                <td class="num">4.36%</td>
+                <td class="num">9.4%</td>
+                <td class="num">3.7s</td>
+                <td class="num">114.08</td>
+                <td class="tag-cell">跑量型、高转化型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="和田玉手镯">和田玉手镯</td>
+                <td class="mkt-name">小徐珠宝优选</td>
+                <td class="num">¥5758</td>
+                <td class="num">4.95%</td>
+                <td class="num">—</td>
+                <td class="num">—</td>
+                <td class="num">27.13</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="和田玉手镯-DH26-YY-（直播间专属链接-勿拍）">和田玉手镯-DH26-YY-（直播间专属链接-勿拍）</td>
+                <td class="mkt-name">翡都嘟珠宝精选</td>
+                <td class="num">¥4906</td>
+                <td class="num">1.18%</td>
+                <td class="num">13.3%</td>
+                <td class="num">6.5s</td>
+                <td class="num">188.99</td>
+                <td class="tag-cell">高转化型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-17">
+        <div class="cat-header">
+            <span class="cat-emoji">💛</span>
+            <span class="cat-name">黄金饰品</span>
+            <span class="cat-count">📦 18 条素材 · 🔥 6 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥76,641</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">13.76%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 25.54% ↑86%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">40.7%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">19.6s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">1.74</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">33%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">寓意故事引入 → 产品特写展示 → 佩戴上身效果 → 鉴定证书/权威背书 → 转化引导</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>寓意故事x权威背书、痛点切入x场景展示、高点击素材、长停留素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>男女通用手串(10条/¥54745)、项链(3条/¥8529)、黄金平安扣(2条/¥7404)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="[麦玲玲设计] 招米三合貔貅男女同款铜合金饰品琉璃手串">[麦玲玲设计] 招米三合貔貅男女同款铜合金饰品琉璃手串</td>
+                <td class="mkt-name">男女通用手串</td>
+                <td class="num">¥13808</td>
+                <td class="num">3.94%</td>
+                <td class="num">42.3%</td>
+                <td class="num">10.9s</td>
+                <td class="num">1.95</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="[麦玲玲设计] 招米三合貔貅男女同款铜合金饰品琉璃手串">[麦玲玲设计] 招米三合貔貅男女同款铜合金饰品琉璃手串</td>
+                <td class="mkt-name">男女通用手串</td>
+                <td class="num">¥12195</td>
+                <td class="num">3.44%</td>
+                <td class="num">48.6%</td>
+                <td class="num">7.1s</td>
+                <td class="num">2.09</td>
+                <td class="tag-cell">高转化型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="金镶玉弥勒佛吊坠项链">金镶玉弥勒佛吊坠项链</td>
+                <td class="mkt-name">项链</td>
+                <td class="num">¥3717</td>
+                <td class="num">49.43%</td>
+                <td class="num">51.5%</td>
+                <td class="num">90.5s</td>
+                <td class="num">1.29</td>
+                <td class="tag-cell">跑量型、高点击型、高留存型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="男女通用平安扣">男女通用平安扣</td>
+                <td class="mkt-name">黄金平安扣</td>
+                <td class="num">¥3701</td>
+                <td class="num">42.82%</td>
+                <td class="num">52.7%</td>
+                <td class="num">60.2s</td>
+                <td class="num">0.81</td>
+                <td class="tag-cell">高点击型、高留存型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="[麦玲玲设计] 招米三合貔貅男女同款铜合金饰品琉璃手串">[麦玲玲设计] 招米三合貔貅男女同款铜合金饰品琉璃手串</td>
+                <td class="mkt-name">男女通用手串</td>
+                <td class="num">¥2754</td>
+                <td class="num">3.75%</td>
+                <td class="num">51.0%</td>
+                <td class="num">8.1s</td>
+                <td class="num">2.65</td>
+                <td class="tag-cell">高转化型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-18">
+        <div class="cat-header">
+            <span class="cat-emoji">🧣</span>
+            <span class="cat-name">丝巾/围巾</span>
+            <span class="cat-count">📦 10 条素材 · 🔥 5 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥75,407</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">4.27%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 5.12% ↑20%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">46.8%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">9.1s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">3.19</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">50%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">穿搭痛点/场景引入 → 系法教程 → 多风格搭配展示 → 材质特写 → 限时优惠</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>系法教学x多风格搭配、高完播素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>女围巾/丝巾(4条/¥46989)、P&N胸饰(1条/¥12572)、蚕丝女围巾/丝巾(2条/¥9870)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="p&n 铜合金合成锆石胸针 法式复古高级感百搭山茶花丝巾扣胸针">p&n 铜合金合成锆石胸针 法式复古高级感百搭山茶花丝巾扣胸针</td>
+                <td class="mkt-name">P&N胸饰</td>
+                <td class="num">¥12572</td>
+                <td class="num">3.82%</td>
+                <td class="num">30.3%</td>
+                <td class="num">9.1s</td>
+                <td class="num">2.58</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="加禾【简笔街景.夏】12姆米桑蚕丝双绉丝巾三角巾100方巾二分之一">加禾【简笔街景.夏】12姆米桑蚕丝双绉丝巾三角巾100方巾二分之一</td>
+                <td class="mkt-name">蚕丝女围巾/丝巾</td>
+                <td class="num">¥7341</td>
+                <td class="num">5.24%</td>
+                <td class="num">67.6%</td>
+                <td class="num">9.3s</td>
+                <td class="num">6.44</td>
+                <td class="tag-cell">跑量型、高点击型、高转化型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="[认准高定版]春夏串珠波点丝巾女系脖复古领巾高级感配饰百搭">[认准高定版]春夏串珠波点丝巾女系脖复古领巾高级感配饰百搭</td>
+                <td class="mkt-name">女围巾/丝巾</td>
+                <td class="num">¥4966</td>
+                <td class="num">5.61%</td>
+                <td class="num">41.0%</td>
+                <td class="num">10.7s</td>
+                <td class="num">1.68</td>
+                <td class="tag-cell">高点击型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="加禾【红蓝定律】春夏6姆米桑蚕丝流光绡丝巾小方巾65*65">加禾【红蓝定律】春夏6姆米桑蚕丝流光绡丝巾小方巾65*65</td>
+                <td class="mkt-name">蚕丝女围巾/丝巾</td>
+                <td class="num">¥2529</td>
+                <td class="num">5.85%</td>
+                <td class="num">72.1%</td>
+                <td class="num">11.0s</td>
+                <td class="num">4.64</td>
+                <td class="tag-cell">高留存型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="加禾【简笔街景.夏】12姆米桑蚕丝双绉丝巾三角巾100方巾二分之一">加禾【简笔街景.夏】12姆米桑蚕丝双绉丝巾三角巾100方巾二分之一</td>
+                <td class="mkt-name">杨杨-加禾丝绸</td>
+                <td class="num">¥1867</td>
+                <td class="num">5.08%</td>
+                <td class="num">74.9%</td>
+                <td class="num">12.0s</td>
+                <td class="num">5.41</td>
+                <td class="tag-cell">高留存型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-19">
+        <div class="cat-header">
+            <span class="cat-emoji">🎀</span>
+            <span class="cat-name">发饰/配饰</span>
+            <span class="cat-count">📦 28 条素材 · 🔥 8 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥73,586</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">31.55%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 72.68% ↑130%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">38.4%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">28.2s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">1.63</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">29%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">产品亮点开篇 → 功能/效果展示 → 场景化体验 → 用户口碑 → 促单收尾</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>高点击素材、长停留素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>时尚饰品(8条/¥26235)、麦玲玲Maklinghit(6条/¥16749)、发夹/发卡(3条/¥7064)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="创意复古龙年钥匙扣挂件十二生肖">创意复古龙年钥匙扣挂件十二生肖</td>
+                <td class="mkt-name">时尚饰品</td>
+                <td class="num">¥10883</td>
+                <td class="num">36.58%</td>
+                <td class="num">53.0%</td>
+                <td class="num">48.0s</td>
+                <td class="num">1.57</td>
+                <td class="tag-cell">跑量型、高留存型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="[麦玲玲设计] 2026年聚-进-招三合设计貔貅金发晶挂件十二生肖设计寓意">[麦玲玲设计] 2026年聚-进-招三合设计貔貅金发晶挂件十二生肖设计...</td>
+                <td class="mkt-name">手机挂件/挂绳/挂链</td>
+                <td class="num">¥5428</td>
+                <td class="num">1.63%</td>
+                <td class="num">24.5%</td>
+                <td class="num">4.4s</td>
+                <td class="num">2.49</td>
+                <td class="tag-cell">高转化型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="创意复古龙年钥匙扣挂件十二生肖">创意复古龙年钥匙扣挂件十二生肖</td>
+                <td class="mkt-name">时尚饰品</td>
+                <td class="num">¥5320</td>
+                <td class="num">50.28%</td>
+                <td class="num">53.0%</td>
+                <td class="num">46.6s</td>
+                <td class="num">2.08</td>
+                <td class="tag-cell">跑量型、高点击型、高转化型、高留存型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="干枯玫瑰~抓夹女温柔花朵盘发夹2026新款后脑勺鲨鱼夹高级感发饰">干枯玫瑰~抓夹女温柔花朵盘发夹2026新款后脑勺鲨鱼夹高级感发饰</td>
+                <td class="mkt-name">粉红娘娘/Pink Empre</td>
+                <td class="num">¥5073</td>
+                <td class="num">1.29%</td>
+                <td class="num">24.2%</td>
+                <td class="num">4.6s</td>
+                <td class="num">2.20</td>
+                <td class="tag-cell">高转化型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="五路财神双龙随身来财令牌挂件车内饰居家挂件钥匙扣">五路财神双龙随身来财令牌挂件车内饰居家挂件钥匙扣</td>
+                <td class="mkt-name">汽车挂件</td>
+                <td class="num">¥2512</td>
+                <td class="num">71.39%</td>
+                <td class="num">48.1%</td>
+                <td class="num">33.5s</td>
+                <td class="num">1.19</td>
+                <td class="tag-cell">高点击型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-20">
+        <div class="cat-header">
+            <span class="cat-emoji">💜</span>
+            <span class="cat-name">水晶/宝石饰品</span>
+            <span class="cat-count">📦 18 条素材 · 🔥 8 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥53,342</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">3.83%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 4.29% ↑12%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">36.1%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">9.0s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">40.01</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">44%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">寓意故事引入 → 产品特写展示 → 佩戴上身效果 → 鉴定证书/权威背书 → 转化引导</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>寓意故事x权威背书、长停留素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>睿泽珠宝鉴定(7条/¥25980)、水晶饰品(3条/¥8787)、东海水晶老花镜888(5条/¥8520)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="【睿泽珠宝鉴宝】水晶项链 多样性发一">【睿泽珠宝鉴宝】水晶项链 多样性发一</td>
+                <td class="mkt-name">睿泽珠宝鉴定</td>
+                <td class="num">¥8345</td>
+                <td class="num">4.66%</td>
+                <td class="num">—</td>
+                <td class="num">—</td>
+                <td class="num">53.12</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="【睿泽珠宝鉴宝】水晶项链 多样性发一">【睿泽珠宝鉴宝】水晶项链 多样性发一</td>
+                <td class="mkt-name">睿泽珠宝鉴定</td>
+                <td class="num">¥5659</td>
+                <td class="num">4.40%</td>
+                <td class="num">—</td>
+                <td class="num">—</td>
+                <td class="num">90.33</td>
+                <td class="tag-cell">跑量型、高转化型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="【睿泽珠宝鉴宝】水晶项链 多样性发一">【睿泽珠宝鉴宝】水晶项链 多样性发一</td>
+                <td class="mkt-name">睿泽珠宝鉴定</td>
+                <td class="num">¥5404</td>
+                <td class="num">4.88%</td>
+                <td class="num">27.2%</td>
+                <td class="num">29.3s</td>
+                <td class="num">103.33</td>
+                <td class="tag-cell">跑量型、高点击型、高转化型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="【升级老花镜】东海老花石头眼镜高清钛架超轻时尚护目耐刮眼镜">【升级老花镜】东海老花石头眼镜高清钛架超轻时尚护目耐刮眼镜</td>
+                <td class="mkt-name">东海水晶老花镜888</td>
+                <td class="num">¥2779</td>
+                <td class="num">4.83%</td>
+                <td class="num">29.6%</td>
+                <td class="num">6.0s</td>
+                <td class="num">3.06</td>
+                <td class="tag-cell">高点击型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="【睿泽珠宝鉴宝】水晶项链 多样性发一">【睿泽珠宝鉴宝】水晶项链 多样性发一</td>
+                <td class="mkt-name">睿泽珠宝鉴定</td>
+                <td class="num">¥2231</td>
+                <td class="num">4.39%</td>
+                <td class="num">41.7%</td>
+                <td class="num">7.8s</td>
+                <td class="num">81.62</td>
+                <td class="tag-cell">高转化型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-21">
+        <div class="cat-header">
+            <span class="cat-emoji">🧴</span>
+            <span class="cat-name">防晒袖套</span>
+            <span class="cat-count">📦 5 条素材 · 🔥 2 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥52,145</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">2.44%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 2.80% ↑14%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">26.6%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">5.7s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">19.06</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">40%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework framework-warn">
+            <span class="fw-label">⚠ 样本不足（<9条），框架仅供参考</span>
+        </div>
+        
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>男女通用防晒袖套(3条/¥45653)、女防晒袖套(1条/¥5406)、宝石严选阿里(1条/¥1086)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="2026新款防晒冰袖女夏季罗口宽松加大护臂冰丝套袖透气时尚开车防晒袖套">2026新款防晒冰袖女夏季罗口宽松加大护臂冰丝套袖透气时尚开车防晒袖套</td>
+                <td class="mkt-name">男女通用防晒袖套</td>
+                <td class="num">¥37804</td>
+                <td class="num">2.31%</td>
+                <td class="num">33.7%</td>
+                <td class="num">6.3s</td>
+                <td class="num">2.41</td>
+                <td class="tag-cell">跑量型、高留存型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="防晒袖套加长手臂套开车骑行新款冰丝防晒防紫外线手套夏季薄款女">防晒袖套加长手臂套开车骑行新款冰丝防晒防紫外线手套夏季薄款女</td>
+                <td class="mkt-name">女防晒袖套</td>
+                <td class="num">¥5406</td>
+                <td class="num">3.29%</td>
+                <td class="num">29.1%</td>
+                <td class="num">6.3s</td>
+                <td class="num">2.32</td>
+                <td class="tag-cell">高点击型、高留存型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-22">
+        <div class="cat-header">
+            <span class="cat-emoji">💎</span>
+            <span class="cat-name">时尚饰品</span>
+            <span class="cat-count">📦 21 条素材 · 🔥 8 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥49,695</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">44.02%<span class="ctr-compare" style="color:#C62828"> 起量素材CTR 42.44% ↓4%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">42.7%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">44.9s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">1.29</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">38%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">产品亮点开篇 → 功能/效果展示 → 场景化体验 → 用户口碑 → 促单收尾</div>
+        </div>
+        
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>男女通用单吊坠(10条/¥24415)、男女通用平安扣(5条/¥11063)、时尚饰品(5条/¥7121)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="[君御]蝴蝶收腰扣时尚免打孔牛仔裤腰围改小收紧可拆卸调节神器">[君御]蝴蝶收腰扣时尚免打孔牛仔裤腰围改小收紧可拆卸调节神器</td>
+                <td class="mkt-name">君御服饰配件</td>
+                <td class="num">¥7097</td>
+                <td class="num">1.64%</td>
+                <td class="num">33.5%</td>
+                <td class="num">7.1s</td>
+                <td class="num">1.67</td>
+                <td class="tag-cell">高转化型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="时尚吊坠 【师傅推荐】龙凤呈祥吊坠国潮平安扣男女通用">时尚吊坠 【师傅推荐】龙凤呈祥吊坠国潮平安扣男女通用</td>
+                <td class="mkt-name">男女通用单吊坠</td>
+                <td class="num">¥4763</td>
+                <td class="num">32.36%</td>
+                <td class="num">54.1%</td>
+                <td class="num">45.6s</td>
+                <td class="num">1.63</td>
+                <td class="tag-cell">高转化型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="时尚吊坠 【师傅推荐】龙凤呈祥吊坠国潮平安扣男女通用">时尚吊坠 【师傅推荐】龙凤呈祥吊坠国潮平安扣男女通用</td>
+                <td class="mkt-name">男女通用单吊坠</td>
+                <td class="num">¥4169</td>
+                <td class="num">32.19%</td>
+                <td class="num">47.5%</td>
+                <td class="num">45.6s</td>
+                <td class="num">1.79</td>
+                <td class="tag-cell">高转化型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="【师傅推荐】新款精美观音吊坠轻奢时尚百搭男女同款挂坠礼物">【师傅推荐】新款精美观音吊坠轻奢时尚百搭男女同款挂坠礼物</td>
+                <td class="mkt-name">男女通用单吊坠</td>
+                <td class="num">¥3220</td>
+                <td class="num">52.73%</td>
+                <td class="num">47.0%</td>
+                <td class="num">54.2s</td>
+                <td class="num">1.21</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="金色时尚吊坠 【师傅推荐】金色龙凤呈祥吊坠国潮平安扣男女通用">金色时尚吊坠 【师傅推荐】金色龙凤呈祥吊坠国潮平安扣男女通用</td>
+                <td class="mkt-name">男女通用平安扣</td>
+                <td class="num">¥3121</td>
+                <td class="num">56.42%</td>
+                <td class="num">39.5%</td>
+                <td class="num">60.8s</td>
+                <td class="num">1.05</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-23">
+        <div class="cat-header">
+            <span class="cat-emoji">💚</span>
+            <span class="cat-name">玉石手串</span>
+            <span class="cat-count">📦 12 条素材 · 🔥 5 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥30,732</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">4.00%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 4.96% ↑24%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">35.3%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">12.1s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">27.85</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">42%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">痛点切入（送礼/转运）→ 产品多角度展示 → 真实佩戴场景 → 用户口碑证言 → 促销信息</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>痛点切入x场景展示</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>女手串(1条/¥11402)、陆丽翡翠工作室(2条/¥6375)、天下藏收(1条/¥1970)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="一贝子竹节仿和田玉手串">一贝子竹节仿和田玉手串</td>
+                <td class="mkt-name">女手串</td>
+                <td class="num">¥11402</td>
+                <td class="num">9.62%</td>
+                <td class="num">40.1%</td>
+                <td class="num">13.0s</td>
+                <td class="num">2.03</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="天然和田玉手串SLHR014">天然和田玉手串SLHR014</td>
+                <td class="mkt-name">陆丽翡翠工作室</td>
+                <td class="num">¥5047</td>
+                <td class="num">3.30%</td>
+                <td class="num">—</td>
+                <td class="num">—</td>
+                <td class="num">67.49</td>
+                <td class="tag-cell">高转化型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="奇楠沉香翡翠手串圆形12mm单圈 多样性发一件 02">奇楠沉香翡翠手串圆形12mm单圈 多样性发一件 02</td>
+                <td class="mkt-name">天下藏收</td>
+                <td class="num">¥1970</td>
+                <td class="num">4.31%</td>
+                <td class="num">15.9%</td>
+                <td class="num">5.7s</td>
+                <td class="num">19.96</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="左氏珠宝 和田玉碧玉圆珠手串气质百搭4028">左氏珠宝 和田玉碧玉圆珠手串气质百搭4028</td>
+                <td class="mkt-name">左氏珠宝小左总</td>
+                <td class="num">¥1698</td>
+                <td class="num">5.14%</td>
+                <td class="num">50.0%</td>
+                <td class="num">17.5s</td>
+                <td class="num">32.04</td>
+                <td class="tag-cell">高点击型、高留存型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="925和田玉多宝手串 多样性发其一">925和田玉多宝手串 多样性发其一</td>
+                <td class="mkt-name">藏星缘石珠宝</td>
+                <td class="num">¥1681</td>
+                <td class="num">2.41%</td>
+                <td class="num">—</td>
+                <td class="num">—</td>
+                <td class="num">53.88</td>
+                <td class="tag-cell">高转化型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-24">
+        <div class="cat-header">
+            <span class="cat-emoji">🤍</span>
+            <span class="cat-name">珍珠耳饰</span>
+            <span class="cat-count">📦 14 条素材 · 🔥 5 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥25,492</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">3.17%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 3.93% ↑24%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">39.7%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">6.1s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">2.18</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">36%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">产品特写开篇 → 材质工艺展示 → 佩戴效果对比 → 信任背书叠加 → 促单收尾</div>
+        </div>
+        
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>白岚/BAILAN淡水珍珠珍珠耳环/耳坠(3条/¥6498)、女耳环/耳坠(3条/¥4724)、耳饰(3条/¥4558)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="猫眼星星珍珠耳钉女">猫眼星星珍珠耳钉女</td>
+                <td class="mkt-name">女耳钉</td>
+                <td class="num">¥3233</td>
+                <td class="num">6.61%</td>
+                <td class="num">45.4%</td>
+                <td class="num">9.4s</td>
+                <td class="num">1.31</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="白岚C型珍珠耳环女原创925银镀金珍珠耳钉气质轻奢小众设计精致耳饰ED1996">白岚C型珍珠耳环女原创925银镀金珍珠耳钉气质轻奢小众设计精致耳饰ED...</td>
+                <td class="mkt-name">白岚/BAILAN淡水珍珠珍珠</td>
+                <td class="num">¥3048</td>
+                <td class="num">4.08%</td>
+                <td class="num">57.7%</td>
+                <td class="num">3.9s</td>
+                <td class="num">2.48</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="白岚银瓦珍珠耳钉925银耳环耳饰耳坠女新款气质原创饰品ED4576">白岚银瓦珍珠耳钉925银耳环耳饰耳坠女新款气质原创饰品ED4576</td>
+                <td class="mkt-name">白岚/BAILAN淡水珍珠珍珠</td>
+                <td class="num">¥2475</td>
+                <td class="num">3.93%</td>
+                <td class="num">60.6%</td>
+                <td class="num">3.6s</td>
+                <td class="num">1.98</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="铜仿珍珠耳环经典百搭【KSKU】大颗圆润珍珠女优雅大气修饰脸型日常通勤高级感耳坠女">铜仿珍珠耳环经典百搭【KSKU】大颗圆润珍珠女优雅大气修饰脸型日常通勤...</td>
+                <td class="mkt-name">耳饰</td>
+                <td class="num">¥1955</td>
+                <td class="num">3.38%</td>
+                <td class="num">48.9%</td>
+                <td class="num">7.9s</td>
+                <td class="num">2.50</td>
+                <td class="tag-cell">跑量型、高留存型</td>
+            </tr><tr>
+                <td class="rank">5</td>
+                <td class="dpa-name" title="白岚间珠珍珠耳环925银女时尚气质耳钉小众设计感气质轻奢耳饰ED3295">白岚间珠珍珠耳环925银女时尚气质耳钉小众设计感气质轻奢耳饰ED329...</td>
+                <td class="mkt-name">白岚/BAILAN淡水珍珠珍珠</td>
+                <td class="num">¥1875</td>
+                <td class="num">1.63%</td>
+                <td class="num">25.2%</td>
+                <td class="num">3.7s</td>
+                <td class="num">3.39</td>
+                <td class="tag-cell">高转化型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-25">
+        <div class="cat-header">
+            <span class="cat-emoji">💚</span>
+            <span class="cat-name">翡翠/和田玉饰品</span>
+            <span class="cat-count">📦 10 条素材 · 🔥 4 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥20,280</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">20.00%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 30.07% ↑50%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">49.1%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">42.7s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">16.78</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">40%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework">
+            <span class="fw-label">📋 脚本框架</span>
+            <div class="fw-steps">产品特写开篇 → 材质工艺展示 → 佩戴效果对比 → 信任背书叠加 → 促单收尾</div>
+        </div>
+        <div class="style-tags"><span class="style-label">二级风格：</span>高点击素材</div>
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>男女通用对戒(2条/¥7216)、女耳环/耳坠(2条/¥4142)、翡翠饰品(2条/¥2761)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="金镶玉情侣对戒古法金镶嵌墨绿色玉髓指环首饰钻戒对戒礼物戒指">金镶玉情侣对戒古法金镶嵌墨绿色玉髓指环首饰钻戒对戒礼物戒指</td>
+                <td class="mkt-name">男女通用对戒</td>
+                <td class="num">¥5206</td>
+                <td class="num">47.14%</td>
+                <td class="num">55.8%</td>
+                <td class="num">79.9s</td>
+                <td class="num">1.38</td>
+                <td class="tag-cell">跑量型、高点击型、高留存型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="玉兰花玉石耳坠女">玉兰花玉石耳坠女</td>
+                <td class="mkt-name">女耳环/耳坠</td>
+                <td class="num">¥2517</td>
+                <td class="num">6.66%</td>
+                <td class="num">44.5%</td>
+                <td class="num">8.7s</td>
+                <td class="num">1.15</td>
+                <td class="tag-cell">跑量型</td>
+            </tr><tr>
+                <td class="rank">3</td>
+                <td class="dpa-name" title="金镶玉情侣对戒古法金镶嵌墨绿色玉髓指环首饰钻戒对戒礼物戒指">金镶玉情侣对戒古法金镶嵌墨绿色玉髓指环首饰钻戒对戒礼物戒指</td>
+                <td class="mkt-name">男女通用对戒</td>
+                <td class="num">¥2010</td>
+                <td class="num">33.01%</td>
+                <td class="num">66.8%</td>
+                <td class="num">69.4s</td>
+                <td class="num">1.19</td>
+                <td class="tag-cell">高留存型</td>
+            </tr><tr>
+                <td class="rank">4</td>
+                <td class="dpa-name" title="颈饰颈饰颈饰颈饰">颈饰颈饰颈饰颈饰</td>
+                <td class="mkt-name">翡翠饰品</td>
+                <td class="num">¥1830</td>
+                <td class="num">33.48%</td>
+                <td class="num">42.9%</td>
+                <td class="num">67.9s</td>
+                <td class="num">1.47</td>
+                <td class="tag-cell">高点击型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-26">
+        <div class="cat-header">
+            <span class="cat-emoji">🤍</span>
+            <span class="cat-name">珍珠饰品</span>
+            <span class="cat-count">📦 4 条素材 · 🔥 1 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥12,382</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">4.52%<span class="ctr-compare" style="color:#2E7D32"> 起量素材CTR 8.19% ↑81%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">41.2%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">5.3s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">106.79</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">25%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework framework-warn">
+            <span class="fw-label">⚠ 样本不足（<9条），框架仅供参考</span>
+        </div>
+        
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>翡都嘟珠宝-融媒体(1条/¥5084)、白岚/BAILAN手串(1条/¥5075)、白岚BAILAN(1条/¥1265)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="珍珠手串-A35-H-多样性/发其一">珍珠手串-A35-H-多样性/发其一</td>
+                <td class="mkt-name">翡都嘟珠宝-融媒体</td>
+                <td class="num">¥5084</td>
+                <td class="num">8.19%</td>
+                <td class="num">16.9%</td>
+                <td class="num">7.4s</td>
+                <td class="num">415.58</td>
+                <td class="tag-cell">跑量型、高点击型、高转化型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-27">
+        <div class="cat-header">
+            <span class="cat-emoji">🧴</span>
+            <span class="cat-name">防晒披肩</span>
+            <span class="cat-count">📦 1 条素材 · 🔥 1 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥7,121</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">2.99%<span class="ctr-compare" style="color:#C62828"> 起量素材CTR 2.99% ↓0%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">49.4%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">13.7s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">1.61</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">100%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework framework-warn">
+            <span class="fw-label">⚠ 样本不足（<9条），框架仅供参考</span>
+        </div>
+        
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>女防晒披肩/防晒斗篷(1条/¥7121)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="时尚女防晒披肩R">时尚女防晒披肩R</td>
+                <td class="mkt-name">女防晒披肩/防晒斗篷</td>
+                <td class="num">¥7121</td>
+                <td class="num">2.99%</td>
+                <td class="num">49.4%</td>
+                <td class="num">13.7s</td>
+                <td class="num">1.61</td>
+                <td class="tag-cell">跑量型、高点击型、高转化型、高留存型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-28">
+        <div class="cat-header">
+            <span class="cat-emoji">🧴</span>
+            <span class="cat-name">防晒用品</span>
+            <span class="cat-count">📦 1 条素材 · 🔥 1 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥4,083</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">2.36%<span class="ctr-compare" style="color:#C62828"> 起量素材CTR 2.36% ↓0%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">26.8%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">5.8s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">1.73</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">100%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework framework-warn">
+            <span class="fw-label">⚠ 样本不足（<9条），框架仅供参考</span>
+        </div>
+        
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>女防晒手套(1条/¥4083)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="j冰丝凉感防晒手套">j冰丝凉感防晒手套</td>
+                <td class="mkt-name">女防晒手套</td>
+                <td class="num">¥4083</td>
+                <td class="num">2.36%</td>
+                <td class="num">26.8%</td>
+                <td class="num">5.8s</td>
+                <td class="num">1.73</td>
+                <td class="tag-cell">跑量型、高点击型、高转化型、高留存型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-29">
+        <div class="cat-header">
+            <span class="cat-emoji">💚</span>
+            <span class="cat-name">玉石项链</span>
+            <span class="cat-count">📦 2 条素材 · 🔥 2 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥3,572</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">3.93%<span class="ctr-compare" style="color:#C62828"> 起量素材CTR 3.93% ↓0%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">47.5%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">7.0s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">16.12</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">100%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework framework-warn">
+            <span class="fw-label">⚠ 样本不足（<9条），框架仅供参考</span>
+        </div>
+        
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>嘉加翡翠(1条/¥2215)、左氏玉石饰品(1条/¥1357)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="-玉石珠链ZL599 鲜艳靓丽 精美百搭款 多样性发其一 玛瑙项链">-玉石珠链ZL599 鲜艳靓丽 精美百搭款 多样性发其一 玛瑙项链</td>
+                <td class="mkt-name">嘉加翡翠</td>
+                <td class="num">¥2215</td>
+                <td class="num">5.07%</td>
+                <td class="num">—</td>
+                <td class="num">—</td>
+                <td class="num">4.97</td>
+                <td class="tag-cell">跑量型、高点击型</td>
+            </tr><tr>
+                <td class="rank">2</td>
+                <td class="dpa-name" title="左氏珠宝 和田玉多宝圆珠项链百搭4040">左氏珠宝 和田玉多宝圆珠项链百搭4040</td>
+                <td class="mkt-name">左氏玉石饰品</td>
+                <td class="num">¥1357</td>
+                <td class="num">2.80%</td>
+                <td class="num">47.5%</td>
+                <td class="num">7.0s</td>
+                <td class="num">27.28</td>
+                <td class="tag-cell">高留存型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="cat-card" id="cat-30">
+        <div class="cat-header">
+            <span class="cat-emoji">👒</span>
+            <span class="cat-name">帽子</span>
+            <span class="cat-count">📦 1 条素材 · 🔥 1 条起量</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric">
+                <div class="metric-value">¥1,705</div>
+                <div class="metric-label">总消耗</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">1.50%<span class="ctr-compare" style="color:#C62828"> 起量素材CTR 1.50% ↓0%</span></div>
+                <div class="metric-label">平均CTR</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">34.0%</div>
+                <div class="metric-label">3s完播率</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">4.3s</div>
+                <div class="metric-label">平均播放时长</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">2.63</div>
+                <div class="metric-label">平均ROI</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">100%</div>
+                <div class="metric-label">起量率</div>
+            </div>
+        </div>
+        
+        <div class="framework framework-warn">
+            <span class="fw-label">⚠ 样本不足（<9条），框架仅供参考</span>
+        </div>
+        
+        <div class="mkt-dist"><span class="mkt-label">TOP客户：</span>锦纶男女通用棒球帽(1条/¥1705)</div>
+        
+        <div class="top-table-wrap">
+            <table class="top-table">
+                <thead><tr>
+                    <th>#</th><th>DPA商品名称</th><th>营销对象</th><th>消耗</th><th>CTR</th><th>3s完播</th><th>播放时长</th><th>ROI</th><th>起量标签</th>
+                </tr></thead>
+                <tbody><tr>
+                <td class="rank">1</td>
+                <td class="dpa-name" title="[轻薄透气]户外休闲运动帽春夏男女同款百搭轻薄透气速干棒球帽">[轻薄透气]户外休闲运动帽春夏男女同款百搭轻薄透气速干棒球帽</td>
+                <td class="mkt-name">锦纶男女通用棒球帽</td>
+                <td class="num">¥1705</td>
+                <td class="num">1.50%</td>
+                <td class="num">34.0%</td>
+                <td class="num">4.3s</td>
+                <td class="num">2.63</td>
+                <td class="tag-cell">跑量型、高点击型、高转化型、高留存型</td>
+            </tr></tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+
+    <!-- 落地指导 -->
+    <div class="section">
+        <div class="section-title"><span class="emoji">🎯</span>各品类素材制作落地指导<span class="count">（起量素材≥2条的品类）</span></div>
+        
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">🕶️</span>
+                <span class="guide-cat">墨镜/太阳镜</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 4.2%、3s完播 ≥ 46%、ROI ≥ 2.3</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">素颜/妆容痛点</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">戴上后颜值反差</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">功能卖点（防UV/偏光）→ 多场景实测</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">限时价格</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现素颜/妆容痛点的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：9s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">✨</span>
+                <span class="guide-cat">耳饰</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 4.9%、3s完播 ≥ 44%、ROI ≥ 2.4</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">气质场景开篇</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">产品质感特写</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">高级穿搭搭配</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">社交场合展示</span></div><div class="guide-step"><span class="step-num">Step 5</span><span class="step-text">质价反差促单</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现气质场景开篇的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：9s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">📿</span>
+                <span class="guide-cat">项链</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 33.4%、3s完播 ≥ 45%、ROI ≥ 2.0</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">气质场景开篇</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">产品质感特写</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">高级穿搭搭配</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">社交场合展示</span></div><div class="guide-step"><span class="step-num">Step 5</span><span class="step-text">质价反差促单</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现气质场景开篇的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：41s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">🤍</span>
+                <span class="guide-cat">珍珠项链</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 10.1%、3s完播 ≥ 50%、ROI ≥ 1.9</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">产品特写开篇</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">材质工艺展示</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">佩戴效果对比</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">信任背书叠加</span></div><div class="guide-step"><span class="step-num">Step 5</span><span class="step-text">促单收尾</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现产品特写开篇的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：13s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">👓</span>
+                <span class="guide-cat">老花镜/眼镜</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 4.4%、3s完播 ≥ 48%、ROI ≥ 1.7</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">中老年用眼痛点</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">产品功能演示（防蓝光/远近两用）→ 真实使用场景</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">效果对比</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">限时优惠</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现中老年用眼痛点的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：9s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">🏮</span>
+                <span class="guide-cat">文创/香道/茶道</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 17.6%、3s完播 ≥ 46%、ROI ≥ 6.5</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">文化场景/意境开篇</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">工艺细节展示</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">使用仪式感</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">寓意解读</span></div><div class="guide-step"><span class="step-num">Step 5</span><span class="step-text">礼盒/送礼场景</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现文化场景/意境开篇的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：35s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">👒</span>
+                <span class="guide-cat">防晒帽</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 4.3%、3s完播 ≥ 36%、ROI ≥ 2.0</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">户外场景引入</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">大帽檐遮阳效果</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">颜值展示</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">便携可折叠</span></div><div class="guide-step"><span class="step-num">Step 5</span><span class="step-text">促销收尾</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现户外场景引入的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：8s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">📦</span>
+                <span class="guide-cat">其他</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 36.9%、3s完播 ≥ 45%、ROI ≥ 5.2</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">产品亮点开篇</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">功能/效果展示</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">场景化体验</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">用户口碑</span></div><div class="guide-step"><span class="step-num">Step 5</span><span class="step-text">促单收尾</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现产品亮点开篇的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：50s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">💍</span>
+                <span class="guide-cat">戒指</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 25.6%、3s完播 ≥ 50%、ROI ≥ 1.5</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">气质场景开篇</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">产品质感特写</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">高级穿搭搭配</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">社交场合展示</span></div><div class="guide-step"><span class="step-num">Step 5</span><span class="step-text">质价反差促单</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现气质场景开篇的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：34s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">🪵</span>
+                <span class="guide-cat">手串/文玩</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 12.9%、3s完播 ≥ 56%、ROI ≥ 3.4</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">文化/寓意开篇</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">材质细节特写</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">盘玩效果展示</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">社群认同感</span></div><div class="guide-step"><span class="step-num">Step 5</span><span class="step-text">收藏价值/限时</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现文化/寓意开篇的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：22s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">👖</span>
+                <span class="guide-cat">腰带/皮带</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 2.4%、3s完播 ≥ 37%、ROI ≥ 1.8</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">穿搭痛点（腰围不合适/没气质）→ 产品功能展示（免打孔/自动扣）→ 上身效果</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">多场景搭配</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">促销</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现穿搭痛点（腰围不合适/没气质）→ 产品功能展示（免打孔/自动扣）→ 上身效果的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：7s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">💚</span>
+                <span class="guide-cat">翡翠/和田玉吊坠</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 24.6%、3s完播 ≥ 45%、ROI ≥ 28.7</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">寓意故事引入</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">产品特写展示</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">佩戴上身效果</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">鉴定证书/权威背书</span></div><div class="guide-step"><span class="step-num">Step 5</span><span class="step-text">转化引导</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现寓意故事引入的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：41s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">💫</span>
+                <span class="guide-cat">手链/手镯</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 9.2%、3s完播 ≥ 56%、ROI ≥ 1.7</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">产品开箱/特写</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">上身效果展示</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">多场景搭配</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">用户评价截取</span></div><div class="guide-step"><span class="step-num">Step 5</span><span class="step-text">限时优惠</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现产品开箱/特写的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：19s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">🦵</span>
+                <span class="guide-cat">护膝/运动防护</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 3.4%、3s完播 ≥ 39%、ROI ≥ 2.4</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">膝盖疼痛场景</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">产品防护原理</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">运动实测</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">舒适度展示</span></div><div class="guide-step"><span class="step-num">Step 5</span><span class="step-text">限时优惠</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现膝盖疼痛场景的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：7s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">🧴</span>
+                <span class="guide-cat">防晒口罩/面罩</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 2.5%、3s完播 ≥ 40%、ROI ≥ 1.9</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">紫外线伤害痛点</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">产品功能展示（护眼角/透气）→ 佩戴实测</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">妆容不蹭</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">限时促销</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现紫外线伤害痛点的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：8s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">💚</span>
+                <span class="guide-cat">翡翠/和田玉手镯</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 6.7%、3s完播 ≥ 25%、ROI ≥ 72.5</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">痛点切入（送礼/转运）→ 产品多角度展示</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">真实佩戴场景</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">用户口碑证言</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">促销信息</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现痛点切入（送礼/转运）→ 产品多角度展示的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：10s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">💛</span>
+                <span class="guide-cat">黄金饰品</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 25.5%、3s完播 ≥ 50%、ROI ≥ 1.7</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">寓意故事引入</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">产品特写展示</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">佩戴上身效果</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">鉴定证书/权威背书</span></div><div class="guide-step"><span class="step-num">Step 5</span><span class="step-text">转化引导</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现寓意故事引入的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：39s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">🧣</span>
+                <span class="guide-cat">丝巾/围巾</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 5.1%、3s完播 ≥ 57%、ROI ≥ 4.1</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">穿搭痛点/场景引入</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">系法教程</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">多风格搭配展示</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">材质特写</span></div><div class="guide-step"><span class="step-num">Step 5</span><span class="step-text">限时优惠</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现穿搭痛点/场景引入的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：10s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">🎀</span>
+                <span class="guide-cat">发饰/配饰</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 72.7%、3s完播 ≥ 44%、ROI ≥ 1.9</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">产品亮点开篇</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">功能/效果展示</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">场景化体验</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">用户口碑</span></div><div class="guide-step"><span class="step-num">Step 5</span><span class="step-text">促单收尾</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现产品亮点开篇的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：43s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">💜</span>
+                <span class="guide-cat">水晶/宝石饰品</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 4.3%、3s完播 ≥ 40%、ROI ≥ 61.2</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">寓意故事引入</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">产品特写展示</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">佩戴上身效果</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">鉴定证书/权威背书</span></div><div class="guide-step"><span class="step-num">Step 5</span><span class="step-text">转化引导</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现寓意故事引入的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：12s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">💎</span>
+                <span class="guide-cat">时尚饰品</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 42.4%、3s完播 ≥ 45%、ROI ≥ 1.4</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">产品亮点开篇</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">功能/效果展示</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">场景化体验</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">用户口碑</span></div><div class="guide-step"><span class="step-num">Step 5</span><span class="step-text">促单收尾</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现产品亮点开篇的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：51s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">💚</span>
+                <span class="guide-cat">玉石手串</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 5.0%、3s完播 ≥ 35%、ROI ≥ 35.1</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">痛点切入（送礼/转运）→ 产品多角度展示</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">真实佩戴场景</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">用户口碑证言</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">促销信息</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现痛点切入（送礼/转运）→ 产品多角度展示的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：12s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">🤍</span>
+                <span class="guide-cat">珍珠耳饰</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 3.9%、3s完播 ≥ 48%、ROI ≥ 2.3</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">产品特写开篇</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">材质工艺展示</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">佩戴效果对比</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">信任背书叠加</span></div><div class="guide-step"><span class="step-num">Step 5</span><span class="step-text">促单收尾</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现产品特写开篇的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：6s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="guide-card">
+            <div class="guide-header">
+                <span class="guide-emoji">💚</span>
+                <span class="guide-cat">翡翠/和田玉饰品</span>
+                <span class="guide-benchmarks">对标指标：CTR ≥ 30.1%、3s完播 ≥ 52%、ROI ≥ 1.3</span>
+            </div>
+            <div class="guide-framework">
+                <div class="guide-fw-title">推荐脚本框架：</div>
+                <div class="guide-steps"><div class="guide-step"><span class="step-num">Step 1</span><span class="step-text">产品特写开篇</span></div><div class="guide-step"><span class="step-num">Step 2</span><span class="step-text">材质工艺展示</span></div><div class="guide-step"><span class="step-num">Step 3</span><span class="step-text">佩戴效果对比</span></div><div class="guide-step"><span class="step-num">Step 4</span><span class="step-text">信任背书叠加</span></div><div class="guide-step"><span class="step-num">Step 5</span><span class="step-text">促单收尾</span></div></div>
+            </div>
+            <div class="guide-tips">
+                <div class="tip-title">💡 落地建议：</div>
+                <ul>
+                    <li>开篇3秒必须出现产品特写开篇的核心画面，CTR达标的关键</li>
+                    <li>中段节奏控制：每5-8秒一个信息点切换，维持完播率</li>
+                    <li>结尾10秒必须有明确的转化引导（价格/福利/限时）</li>
+                    <li>素材时长建议：56s 左右（起量素材平均播放时长参考）</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        素材解析台 · 珠宝饰品行业周报 · 20260601
+    </div>
+</div>
+</body>
+</html>
