@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🕶️ 墨镜/太阳镜 · 素材解析台</title>
+<style>
+:root{
+  --bg:#0f1219;--card-bg:#1a1f2e;--card-hover:#222840;
+  --t1:#e8eaed;--t2:#9aa0b0;--t3:#5c6370;
+  --accent:#6c8cc7;--accent2:#8faadc;--pink:#d64d73;--info:#9dbcff;
+  --border:#2a3042;--border-light:#333a50;--line:#1f2937;
+  --badge-A:#e74c3c;--badge-B:#f39c12;--badge-C:#27ae60;
+  --badge-D:#2980b9;--badge-E:#8e44ad;--badge-F:#16a085;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Microsoft YaHei","PingFang SC",-apple-system,sans-serif;
+     background:var(--bg);color:var(--t1);line-height:1.7;font-size:14px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;color:var(--accent2)}
+
+.container{max-width:1200px;margin:0 auto;padding:24px 20px}
+.nav{margin-bottom:16px;font-size:13px;color:var(--t2)}
+.nav a{color:var(--accent);margin-right:12px}
+.nav a:hover{color:var(--accent2)}
+
+.header{padding:24px 0 18px;margin-bottom:22px;border-bottom:1px solid var(--border)}
+.header .grp-tag{font-size:12px;color:var(--accent);background:rgba(108,140,199,.12);
+  padding:2px 10px;border-radius:3px;display:inline-block;margin-bottom:10px}
+.header h1{font-size:24px;font-weight:700;color:var(--t1);margin-bottom:6px;
+  display:flex;align-items:center;gap:8px}
+.header .sub{font-size:13px;color:var(--t2)}
+
+.section{margin-bottom:36px}
+.section-title{font-size:16px;font-weight:700;color:var(--t1);
+  margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:8px}
+.section-title .emoji{font-size:18px}
+.section-title .desc{font-size:12px;font-weight:400;color:var(--t3);margin-left:auto}
+
+/* 指标 */
+.metrics-card{background:var(--card-bg);border-radius:10px;padding:18px 24px;
+  border:1px solid var(--border);display:flex;align-items:center;
+  justify-content:space-between;flex-wrap:wrap;gap:8px}
+.metric-item{text-align:center;min-width:90px;padding:4px 8px}
+.metric-val{font-size:22px;font-weight:700;color:var(--t1)}
+.metric-lbl{font-size:11px;color:var(--t3);margin-top:2px}
+
+/* 6 步脚本框架 */
+.fw-section{background:var(--card-bg);border-radius:10px;padding:20px;
+  border:1px solid var(--border)}
+.fw-summary{font-size:13px;color:var(--t1);padding:10px 14px;
+  background:rgba(108,140,199,.08);border-radius:6px;margin-bottom:16px;
+  border-left:3px solid var(--accent);line-height:1.7}
+.fw-summary b{color:var(--accent)}
+.fw-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+@media(max-width:900px){.fw-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.fw-grid{grid-template-columns:repeat(2,1fr)}}
+.fw-card{background:rgba(255,255,255,.03);border-radius:8px;
+  border:1px solid var(--border-light);padding:14px 12px;position:relative}
+.fw-letter-badge{position:absolute;top:8px;right:10px;width:24px;height:24px;
+  border-radius:4px;display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:800;color:#fff}
+.badge-A{background:var(--badge-A)}.badge-B{background:var(--badge-B)}
+.badge-C{background:var(--badge-C)}.badge-D{background:var(--badge-D)}
+.badge-E{background:var(--badge-E)}.badge-F{background:var(--badge-F)}
+.fw-card-title{font-size:13.5px;font-weight:700;color:var(--t1);
+  margin:2px 0 4px 0;padding-right:32px}
+.fw-card-time{font-size:11.5px;color:var(--accent);margin-bottom:6px}
+
+/* Top 关键帧 */
+.mat-row{background:var(--card-bg);border:1px solid var(--border);
+  border-radius:10px;padding:16px 18px;margin-bottom:16px}
+.mat-row:last-child{margin-bottom:0}
+.mat-row-hdr{display:flex;align-items:center;gap:10px;margin-bottom:12px;
+  flex-wrap:wrap;font-size:12.5px}
+.mat-row-rank{font-size:12px;font-weight:700;color:#fff;background:var(--accent);
+  border-radius:3px;padding:2px 8px;flex-shrink:0}
+.mat-row-rank.r1{background:var(--badge-A)}
+.mat-row-rank.r2{background:var(--badge-B)}
+.mat-row-rank.r3{background:var(--badge-C)}
+.mat-row-name{font-weight:700;color:var(--t1);flex:1;min-width:200px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mat-row-mkt{color:var(--t3);font-size:12px}
+.mat-row-metrics{margin-left:auto;color:var(--t2);font-size:12px;
+  background:rgba(255,255,255,.03);padding:4px 10px;border-radius:4px}
+.mat-row-metrics b{color:var(--accent);font-weight:600}
+.mat-row-metrics .sep{color:var(--border-light);margin:0 8px}
+
+.frame-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:12px}
+@media(max-width:900px){.frame-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.frame-grid{grid-template-columns:repeat(2,1fr)}}
+.frame-cell{position:relative;background:#000;border-radius:6px;overflow:hidden;
+  aspect-ratio:9/16;display:flex;align-items:center;justify-content:center}
+.frame-cell img{width:100%;height:100%;object-fit:cover;display:block}
+.frame-cell .ph{font-size:11px;color:var(--t3);text-align:center;padding:8px;line-height:1.5}
+.frame-cell .step-tag{position:absolute;top:5px;left:5px;
+  background:rgba(0,0,0,.7);color:#fff;font-size:10px;font-weight:700;
+  padding:2px 6px;border-radius:3px;letter-spacing:.3px;
+  display:flex;align-items:center;gap:4px}
+.frame-cell .step-tag .l{display:inline-block;width:14px;height:14px;
+  border-radius:2px;font-size:9px;line-height:14px;text-align:center;font-weight:800}
+.frame-cell .step-time{position:absolute;bottom:5px;right:5px;
+  background:rgba(0,0,0,.7);color:#fff;font-size:10px;
+  padding:2px 5px;border-radius:3px}
+
+/* AI 解读 */
+.mat-interpretation{background:rgba(108,140,199,.04);border:1px solid var(--border-light);
+  border-radius:6px;padding:12px 14px;margin-top:10px;font-size:12.5px;line-height:1.75;color:var(--t2)}
+.mat-interpretation .label{font-weight:700;color:var(--accent);margin-right:6px}
+
+/* 黄金 3s prompt */
+.hp{background:#0a0e18;border-left:3px solid var(--info);border-radius:0 6px 6px 0;padding:10px 12px;margin-top:10px;border:1px solid var(--border)}
+.hp .hp-h{font-size:12px;font-weight:600;color:var(--info);margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hp .hp-actions{margin-left:auto;display:inline-flex;gap:6px}
+.hp .hp-btn{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;font-size:10px;color:#cbd2e0;background:#172033;border:1px solid var(--border-light);border-radius:4px;cursor:pointer;text-decoration:none;font-family:inherit}
+.hp .hp-btn:hover{background:#1e293b;color:#fff}
+.hp .hp-t{font-size:12px;color:#cbd2e0;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+
+.warn-sample{background:rgba(230,179,0,.06);border-radius:6px;padding:10px 14px;
+  font-size:13px;border-left:3px solid #e6b300;color:#c9a827;margin-bottom:14px}
+
+.footer{text-align:center;padding:24px 0;margin-top:32px;
+  border-top:1px solid var(--border);font-size:12px;color:var(--t3)}
+#_tip{position:fixed;left:50%;top:24px;transform:translateX(-50%);padding:8px 16px;border-radius:8px;font-size:12px;color:#fff;z-index:1000;display:none;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+#_tip.ok{background:#15803d}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="nav"><a href="index.html">← 返回首页</a> · <a href="group_眼镜.html">🕶️ 眼镜（大类）</a> · <a href="full.html">📋 完整报告</a></div>
+
+<div class="header">
+  <div class="grp-tag">🕶️ 眼镜（大类）</div>
+  <h1>🕶️ 墨镜/太阳镜</h1>
+  <div class="sub">89 条素材 · CTR 3.16% · 3s完播 35.8% · 平均播放时长 6.7s</div>
+</div>
+
+
+
+<div class="section">
+  <div class="section-title"><span class="emoji">📊</span>指标均值<span class="desc">该子品类 89 条素材的整体表现</span></div>
+  <div class="metrics-card">
+    <div class="metric-item"><div class="metric-val">89</div><div class="metric-lbl">素材数</div></div>
+    <div class="metric-item"><div class="metric-val">3.16%</div><div class="metric-lbl">CTR (均值)</div></div>
+    <div class="metric-item"><div class="metric-val">35.8%</div><div class="metric-lbl">3s完播 (均值)</div></div>
+    <div class="metric-item"><div class="metric-val">6.7s</div><div class="metric-lbl">播放时长 (均值)</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="emoji">📋</span>脚本框架 · 6 步起量套路<span class="desc">A→F 对应视频时间节奏</span></div>
+  <div class="fw-section">
+    <div class="fw-summary"><b>脚本框架：</b>颜值痛点开篇 → 佩戴效果反差 → 功能卖点演示 → 多场景实测 → 用户口碑背书 → 限时促销引导</div>
+    <div class="fw-grid"><div class="fw-card"><span class="fw-letter-badge badge-A">A</span><div class="fw-card-title">颜值痛点开篇</div><div class="fw-card-time">⏱ 0-3s</div></div><div class="fw-card"><span class="fw-letter-badge badge-B">B</span><div class="fw-card-title">佩戴效果反差</div><div class="fw-card-time">⏱ 3-12s</div></div><div class="fw-card"><span class="fw-letter-badge badge-C">C</span><div class="fw-card-title">功能卖点演示</div><div class="fw-card-time">⏱ 12-30s</div></div><div class="fw-card"><span class="fw-letter-badge badge-D">D</span><div class="fw-card-title">多场景实测</div><div class="fw-card-time">⏱ 30-50s</div></div><div class="fw-card"><span class="fw-letter-badge badge-E">E</span><div class="fw-card-title">用户口碑背书</div><div class="fw-card-time">⏱ 50-65s</div></div><div class="fw-card"><span class="fw-letter-badge badge-F">F</span><div class="fw-card-title">限时促销引导</div><div class="fw-card-time">⏱ 65s+</div></div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="emoji">🎬</span>Top5 素材关键帧拆解<span class="desc">5/5 条已抽帧 · 6 帧对应 A→F 脚本节奏</span></div>
+  <div class="mat-row">  <div class="mat-row-hdr">    <span class="mat-row-rank r1">TOP1</span>    <span class="mat-row-name" title="女款无框镶钻复古感百搭渐变">女款无框镶钻复古感百搭渐变</span>    <span class="mat-row-mkt">· 方形女太阳镜</span>    <span class="mat-row-metrics">CTR <b>5.21%</b><span class="sep">|</span>3s完播 <b>29.9%</b><span class="sep">|</span>播放 <b>7.7s</b></span>  </div>  <div class="frame-grid"><div class="frame-cell"><img src="frames/3ecdc3983e10b2e5779fa6b1598f758e/f1.jpg" alt="颜值痛点开篇" loading="lazy"><span class="step-tag"><span class="l badge-A">A</span>颜值痛点开篇</span><span class="step-time">0-3s</span></div><div class="frame-cell"><img src="frames/3ecdc3983e10b2e5779fa6b1598f758e/f2.jpg" alt="佩戴效果反差" loading="lazy"><span class="step-tag"><span class="l badge-B">B</span>佩戴效果反差</span><span class="step-time">3-12s</span></div><div class="frame-cell"><img src="frames/3ecdc3983e10b2e5779fa6b1598f758e/f3.jpg" alt="功能卖点演示" loading="lazy"><span class="step-tag"><span class="l badge-C">C</span>功能卖点演示</span><span class="step-time">12-30s</span></div><div class="frame-cell"><img src="frames/3ecdc3983e10b2e5779fa6b1598f758e/f4.jpg" alt="多场景实测" loading="lazy"><span class="step-tag"><span class="l badge-D">D</span>多场景实测</span><span class="step-time">30-50s</span></div><div class="frame-cell"><img src="frames/3ecdc3983e10b2e5779fa6b1598f758e/f5.jpg" alt="用户口碑背书" loading="lazy"><span class="step-tag"><span class="l badge-E">E</span>用户口碑背书</span><span class="step-time">50-65s</span></div><div class="frame-cell"><img src="frames/3ecdc3983e10b2e5779fa6b1598f758e/f6.jpg" alt="限时促销引导" loading="lazy"><span class="step-tag"><span class="l badge-F">F</span>限时促销引导</span><span class="step-time">65s+</span></div></div>  <div class="mat-interpretation"><span class="label">💡 脚本创意拆解与落地建议：</span>该素材为女款无框镶钻复古百搭渐变太阳镜。主打“高级感、显脸小”的视觉溢价。开篇（0-3s）以女主在户外强光下刺眼、手遮阳光、素颜显憔悴的痛点画面引入，引发爱美女性共鸣。中段（3-30s）通过高亮微距镜头特写镜片边缘的精致镶钻工艺与无框切割线条，呈现璀璨轻奢质感；随后切入上身实测，突出镜片大弧度剪裁对圆脸、方脸的包容性，营造“1秒变小脸”的视觉反差。后半段（30s-65s）融入海边度假、闺蜜下午茶等多个知性户外场景，并提供权威防UV400检测报告硬核背书。结尾（65s+）提供买一送多福利（送高档皮盒、擦镜布等），以绝佳性价比驱使下单。
+落地建议：1. 建议用聚光灯特写侧面镶钻的耀眼反光，放大工艺细节和视觉溢价。2. 片尾可展示极简风礼盒装，突出其高档送礼属性。</div>  <div class="hp">  <div class="hp-h">⚡ WorkRally 视频生成脚本    <span class="hp-actions">      <button class="hp-btn" data-hook-copy="近景镜头微距特写『女款无框镶钻复古感百搭渐变』的极佳材质反光与重工雕琢细节，画面极富奢华高级质感。第1.5秒上身佩戴，镜头前后拉伸，展现出佩戴后对颜值、气色或穿搭的瞬间提升巨大反差。配音用轻快昂扬的声音说『买它不踩坑！超高颜值和极高性价比，自用送礼都体面！』。第2.5秒下方弹出金色字幕『限时特惠 工厂放利』。节奏紧凑，以【高颜值反差】前3秒黄金视觉阻断用户划走。&#10;&#10;🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：&#10;宝子们一定要看完，质感超级好的，和我们当时帽子一样，开得都超级亲民的。然后你可以看一下，闹这样子。哇，浅色衣服帮了大家好漂亮，防紫外线，而且这个眼睛是我精挑严选上来的。">📋 复制</button>      <a class="hp-btn" href="https://zenvideo.qq.com/" target="_blank" rel="noopener">🚀 腾讯智影</a>    </span>  </div>  <div class="hp-t">近景镜头微距特写『女款无框镶钻复古感百搭渐变』的极佳材质反光与重工雕琢细节，画面极富奢华高级质感。第1.5秒上身佩戴，镜头前后拉伸，展现出佩戴后对颜值、气色或穿搭的瞬间提升巨大反差。配音用轻快昂扬的声音说『买它不踩坑！超高颜值和极高性价比，自用送礼都体面！』。第2.5秒下方弹出金色字幕『限时特惠 工厂放利』。节奏紧凑，以【高颜值反差】前3秒黄金视觉阻断用户划走。
+
+🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：
+宝子们一定要看完，质感超级好的，和我们当时帽子一样，开得都超级亲民的。然后你可以看一下，闹这样子。哇，浅色衣服帮了大家好漂亮，防紫外线，而且这个眼睛是我精挑严选上来的。</div></div></div><div class="mat-row">  <div class="mat-row-hdr">    <span class="mat-row-rank r2">TOP2</span>    <span class="mat-row-name" title="[智能感光变色墨镜]室内室外日用两用太阳镜时尚减龄无框显瘦太阳镜防紫外线大圆脸自带妆容滤镜女款">[智能感光变色墨镜]室内室外日用两用太阳镜时尚减龄无框显瘦太阳镜防紫外线大圆…</span>    <span class="mat-row-mkt">· 也古轻奢服配</span>    <span class="mat-row-metrics">CTR <b>1.68%</b><span class="sep">|</span>3s完播 <b>25.9%</b><span class="sep">|</span>播放 <b>4.4s</b></span>  </div>  <div class="frame-grid"><div class="frame-cell"><img src="frames/657f85885cb67695cfad975a82314043/f1.jpg" alt="颜值痛点开篇" loading="lazy"><span class="step-tag"><span class="l badge-A">A</span>颜值痛点开篇</span><span class="step-time">0-3s</span></div><div class="frame-cell"><img src="frames/657f85885cb67695cfad975a82314043/f2.jpg" alt="佩戴效果反差" loading="lazy"><span class="step-tag"><span class="l badge-B">B</span>佩戴效果反差</span><span class="step-time">3-12s</span></div><div class="frame-cell"><img src="frames/657f85885cb67695cfad975a82314043/f3.jpg" alt="功能卖点演示" loading="lazy"><span class="step-tag"><span class="l badge-C">C</span>功能卖点演示</span><span class="step-time">12-30s</span></div><div class="frame-cell"><img src="frames/657f85885cb67695cfad975a82314043/f4.jpg" alt="多场景实测" loading="lazy"><span class="step-tag"><span class="l badge-D">D</span>多场景实测</span><span class="step-time">30-50s</span></div><div class="frame-cell"><img src="frames/657f85885cb67695cfad975a82314043/f5.jpg" alt="用户口碑背书" loading="lazy"><span class="step-tag"><span class="l badge-E">E</span>用户口碑背书</span><span class="step-time">50-65s</span></div><div class="frame-cell"><img src="frames/657f85885cb67695cfad975a82314043/f6.jpg" alt="限时促销引导" loading="lazy"><span class="step-tag"><span class="l badge-F">F</span>限时促销引导</span><span class="step-time">65s+</span></div></div>  <div class="mat-interpretation"><span class="label">💡 脚本创意拆解与落地建议：</span>该素材同样为也古轻奢智能感光变色墨镜。主打“自带妆容滤镜+户外防晒”多功能场景。开篇（0-3s）以户外强光直射眼睛、女主频繁眨眼长细纹的防衰老痛点开门见山。中段（3-30s）聚焦渐变粉紫色镜片的“妆容修饰感”，展示戴上后素颜秒变精致的高颜值反差；微距展现超轻软鼻托和无框切边工艺，解决卡粉、压鼻梁的痛点。后半段（30s-65s）在阳光下实测室内（透明）与室外（粉紫深色）智能变色，展现全天候高可用性；提供防蓝光及防紫外线资质证书进行硬核背书。结尾（65s+）打出低门槛特惠、运费险保障等，以多买多折的极佳性价比完成临门一脚。
+落地建议：1. 针对“防压鼻、卡粉”痛点，建议做一个取下墨镜鼻梁无红印的特写，比语言解释更有说服力。2. 可在视频中加入对大圆脸女生的对比测试，证明产品的普适性。</div>  <div class="hp">  <div class="hp-h">⚡ WorkRally 视频生成脚本    <span class="hp-actions">      <button class="hp-btn" data-hook-copy="中景镜头拍摄精致女性户外出行特写，阳光强烈有些刺眼，她微微蹙眉用手遮阳。第1.5秒她戴上『[智能感光变色墨镜]室内室外日用两用』并回眸展颜，镜头推至近景特写，展示精致切割边框和微晶光泽，脸型瞬间显得小巧立体，散发高颅顶名媛气质。配音用轻快俏皮的女声说『戴上这副复古素颜镜，原相机直出都好看！』。第2.5秒侧面弹出金色动感字幕『素颜 vs 戴镜后 1秒显脸小』。整体画面光影高级柔和，通过【素颜显大脸痛点】前3秒黄金钩子瞬间捕获爱美女性停留好奇心。&#10;&#10;🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：&#10;宝子们一定要看完，我爱不得，我总觉得墨镜鸡肋呢，原来是我根本就没买。之前总觉得墨镜一佩戴上，除了视角黑涨，其他毫无作用。直到看到了故意的墨镜，一个像蒙了一层灰色薄膜，又黑又模糊。">📋 复制</button>      <a class="hp-btn" href="https://zenvideo.qq.com/" target="_blank" rel="noopener">🚀 腾讯智影</a>    </span>  </div>  <div class="hp-t">中景镜头拍摄精致女性户外出行特写，阳光强烈有些刺眼，她微微蹙眉用手遮阳。第1.5秒她戴上『[智能感光变色墨镜]室内室外日用两用』并回眸展颜，镜头推至近景特写，展示精致切割边框和微晶光泽，脸型瞬间显得小巧立体，散发高颅顶名媛气质。配音用轻快俏皮的女声说『戴上这副复古素颜镜，原相机直出都好看！』。第2.5秒侧面弹出金色动感字幕『素颜 vs 戴镜后 1秒显脸小』。整体画面光影高级柔和，通过【素颜显大脸痛点】前3秒黄金钩子瞬间捕获爱美女性停留好奇心。
+
+🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：
+宝子们一定要看完，我爱不得，我总觉得墨镜鸡肋呢，原来是我根本就没买。之前总觉得墨镜一佩戴上，除了视角黑涨，其他毫无作用。直到看到了故意的墨镜，一个像蒙了一层灰色薄膜，又黑又模糊。</div></div></div><div class="mat-row">  <div class="mat-row-hdr">    <span class="mat-row-rank r3">TOP3</span>    <span class="mat-row-name" title="[智能感光变色墨镜]室内室外日用两用太阳镜时尚减龄无框显瘦太阳镜防紫外线大圆脸自带妆容滤镜女款">[智能感光变色墨镜]室内室外日用两用太阳镜时尚减龄无框显瘦太阳镜防紫外线大圆…</span>    <span class="mat-row-mkt">· 也古轻奢服配</span>    <span class="mat-row-metrics">CTR <b>1.42%</b><span class="sep">|</span>3s完播 <b>69.8%</b><span class="sep">|</span>播放 <b>6.8s</b></span>  </div>  <div class="frame-grid"><div class="frame-cell"><img src="frames/c84d5a88d643c40c52ce5de2fdc005fd/f1.jpg" alt="颜值痛点开篇" loading="lazy"><span class="step-tag"><span class="l badge-A">A</span>颜值痛点开篇</span><span class="step-time">0-3s</span></div><div class="frame-cell"><img src="frames/c84d5a88d643c40c52ce5de2fdc005fd/f2.jpg" alt="佩戴效果反差" loading="lazy"><span class="step-tag"><span class="l badge-B">B</span>佩戴效果反差</span><span class="step-time">3-12s</span></div><div class="frame-cell"><img src="frames/c84d5a88d643c40c52ce5de2fdc005fd/f3.jpg" alt="功能卖点演示" loading="lazy"><span class="step-tag"><span class="l badge-C">C</span>功能卖点演示</span><span class="step-time">12-30s</span></div><div class="frame-cell"><img src="frames/c84d5a88d643c40c52ce5de2fdc005fd/f4.jpg" alt="多场景实测" loading="lazy"><span class="step-tag"><span class="l badge-D">D</span>多场景实测</span><span class="step-time">30-50s</span></div><div class="frame-cell"><img src="frames/c84d5a88d643c40c52ce5de2fdc005fd/f5.jpg" alt="用户口碑背书" loading="lazy"><span class="step-tag"><span class="l badge-E">E</span>用户口碑背书</span><span class="step-time">50-65s</span></div><div class="frame-cell"><img src="frames/c84d5a88d643c40c52ce5de2fdc005fd/f6.jpg" alt="限时促销引导" loading="lazy"><span class="step-tag"><span class="l badge-F">F</span>限时促销引导</span><span class="step-time">65s+</span></div></div>  <div class="mat-interpretation"><span class="label">💡 脚本创意拆解与落地建议：</span>视频以“圆脸显胖、阳光刺眼”的双重颜值与防晒痛点高能开篇，形成强烈视觉共鸣。3-12s重点突出戴镜前后的“视觉大降温”和“秒变巴掌脸”惊艳对比，颜值反差感极其强烈。中段通过紫外线感光变色测试与户外透光实测，硬核印证“室内外两用”的变色科技与防晒实力。结尾配合限时买赠促销，整体结构严密，功能展示与美学平衡度高，有效说服力极强。
+落地建议：建议进一步强化感光变色的动态过程，可在3s内使用倍速展示镜片从浅色到深色的瞬间变幻，极大化激发用户猎奇心。由于主打“自带妆容滤镜”，可针对“素颜出行、不画眼妆、一戴即走”等懒人场景定制一版高代入感脚本，配合无框轻盈的细节特写，打消大脸佩戴负担。</div>  <div class="hp">  <div class="hp-h">⚡ WorkRally 视频生成脚本    <span class="hp-actions">      <button class="hp-btn" data-hook-copy="中景镜头拍摄精致女性户外出行特写，阳光强烈有些刺眼，她微微蹙眉用手遮阳。第1.5秒她戴上『[智能感光变色墨镜]室内室外日用两用』并回眸展颜，镜头推至近景特写，展示精致切割边框和微晶光泽，脸型瞬间显得小巧立体，散发高颅顶名媛气质。配音用轻快俏皮的女声说『戴上这副复古素颜镜，原相机直出都好看！』。第2.5秒侧面弹出金色动感字幕『素颜 vs 戴镜后 1秒显脸小』。整体画面光影高级柔和，通过【素颜显大脸痛点】前3秒黄金钩子瞬间捕获爱美女性停留好奇心。&#10;&#10;🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：&#10;为什么变色日夜两用镜比墨镜好用﹐因为白天行车使用它是这样的﹐而墨镜只能白天使用﹐近隧道还需要摘墨镜﹐这款日夜两用镜根据此外线变色﹐白天遮阳防晒﹐晚上防眩光运光﹐虚弱远光﹐一副顶两幅...">📋 复制</button>      <a class="hp-btn" href="https://zenvideo.qq.com/" target="_blank" rel="noopener">🚀 腾讯智影</a>    </span>  </div>  <div class="hp-t">中景镜头拍摄精致女性户外出行特写，阳光强烈有些刺眼，她微微蹙眉用手遮阳。第1.5秒她戴上『[智能感光变色墨镜]室内室外日用两用』并回眸展颜，镜头推至近景特写，展示精致切割边框和微晶光泽，脸型瞬间显得小巧立体，散发高颅顶名媛气质。配音用轻快俏皮的女声说『戴上这副复古素颜镜，原相机直出都好看！』。第2.5秒侧面弹出金色动感字幕『素颜 vs 戴镜后 1秒显脸小』。整体画面光影高级柔和，通过【素颜显大脸痛点】前3秒黄金钩子瞬间捕获爱美女性停留好奇心。
+
+🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：
+为什么变色日夜两用镜比墨镜好用﹐因为白天行车使用它是这样的﹐而墨镜只能白天使用﹐近隧道还需要摘墨镜﹐这款日夜两用镜根据此外线变色﹐白天遮阳防晒﹐晚上防眩光运光﹐虚弱远光﹐一副顶两幅...</div></div></div><div class="mat-row">  <div class="mat-row-hdr">    <span class="mat-row-rank ">TOP4</span>    <span class="mat-row-name" title="巴宝莎Baporssa妆容感素颜墨镜无框复古高级感女士防紫外线太阳镜修饰脸型美颜太阳镜修容感">巴宝莎Baporssa妆容感素颜墨镜无框复古高级感女士防紫外线太阳镜修饰脸型…</span>    <span class="mat-row-mkt">· 巴宝莎韩老板</span>    <span class="mat-row-metrics">CTR <b>2.03%</b><span class="sep">|</span>3s完播 <b>27.9%</b><span class="sep">|</span>播放 <b>5.5s</b></span>  </div>  <div class="frame-grid"><div class="frame-cell"><img src="frames/2b52eec17a93613807ab18670b213a18/f1.jpg" alt="颜值痛点开篇" loading="lazy"><span class="step-tag"><span class="l badge-A">A</span>颜值痛点开篇</span><span class="step-time">0-3s</span></div><div class="frame-cell"><img src="frames/2b52eec17a93613807ab18670b213a18/f2.jpg" alt="佩戴效果反差" loading="lazy"><span class="step-tag"><span class="l badge-B">B</span>佩戴效果反差</span><span class="step-time">3-12s</span></div><div class="frame-cell"><img src="frames/2b52eec17a93613807ab18670b213a18/f3.jpg" alt="功能卖点演示" loading="lazy"><span class="step-tag"><span class="l badge-C">C</span>功能卖点演示</span><span class="step-time">12-30s</span></div><div class="frame-cell"><img src="frames/2b52eec17a93613807ab18670b213a18/f4.jpg" alt="多场景实测" loading="lazy"><span class="step-tag"><span class="l badge-D">D</span>多场景实测</span><span class="step-time">30-50s</span></div><div class="frame-cell"><img src="frames/2b52eec17a93613807ab18670b213a18/f5.jpg" alt="用户口碑背书" loading="lazy"><span class="step-tag"><span class="l badge-E">E</span>用户口碑背书</span><span class="step-time">50-65s</span></div><div class="frame-cell"><img src="frames/2b52eec17a93613807ab18670b213a18/f6.jpg" alt="限时促销引导" loading="lazy"><span class="step-tag"><span class="l badge-F">F</span>限时促销引导</span><span class="step-time">65s+</span></div></div>  <div class="mat-interpretation"><span class="label">💡 脚本创意拆解与落地建议：</span>该素材为巴宝莎Baporssa无框复古素颜墨镜。采用经典的“颜值痛点+反差变装”逻辑。开篇（0-3s）以女主角素颜、大脸显老、强光刺眼的尴尬出行视觉为钩子，直击女性容貌焦虑。中段（3-30s）先展示不戴镜 vs 戴镜后的巨大颜值反差，强调高颅顶和“自带妆容美颜滤镜”的脸型修饰效果；随后微距特写其无框轻量化设计和复古渐变镜片工艺，完美凸显大牌质感。后半段（30s-65s）将场景带入通勤开车、露营度假、商场街拍等，并融入抗紫外线检测实测，进行强品质背书。收尾阶段（65s+）抛出新品买一送一和专柜防伪包装福利，高性价比引导下单。
+落地建议：1. 建议将“素颜变装戴镜”的前后反差在开头2秒卡点切出，能大幅提升前3s留存率。2. 加入阳光下变色阻光的渐变特效，将变色科技点生动可视化。</div>  <div class="hp">  <div class="hp-h">⚡ WorkRally 视频生成脚本    <span class="hp-actions">      <button class="hp-btn" data-hook-copy="中景镜头拍摄精致女性户外出行特写，阳光强烈有些刺眼，她微微蹙眉用手遮阳。第1.5秒她戴上『巴宝莎Baporssa妆容感素颜墨镜』并回眸展颜，镜头推至近景特写，展示精致切割边框和微晶光泽，脸型瞬间显得小巧立体，散发高颅顶名媛气质。配音用轻快俏皮的女声说『戴上这副复古素颜镜，原相机直出都好看！』。第2.5秒侧面弹出金色动感字幕『素颜 vs 戴镜后 1秒显脸小』。整体画面光影高级柔和，通过【素颜显大脸痛点】前3秒黄金钩子瞬间捕获爱美女性停留好奇心。&#10;&#10;🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：&#10;姐妹们听好了！想要更漂亮年轻的，你就不要上身这种大黑框框的墨镜，这个显得多老气，多丑，所以只有惊艳的墨镜才能把你带漂亮。">📋 复制</button>      <a class="hp-btn" href="https://zenvideo.qq.com/" target="_blank" rel="noopener">🚀 腾讯智影</a>    </span>  </div>  <div class="hp-t">中景镜头拍摄精致女性户外出行特写，阳光强烈有些刺眼，她微微蹙眉用手遮阳。第1.5秒她戴上『巴宝莎Baporssa妆容感素颜墨镜』并回眸展颜，镜头推至近景特写，展示精致切割边框和微晶光泽，脸型瞬间显得小巧立体，散发高颅顶名媛气质。配音用轻快俏皮的女声说『戴上这副复古素颜镜，原相机直出都好看！』。第2.5秒侧面弹出金色动感字幕『素颜 vs 戴镜后 1秒显脸小』。整体画面光影高级柔和，通过【素颜显大脸痛点】前3秒黄金钩子瞬间捕获爱美女性停留好奇心。
+
+🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：
+姐妹们听好了！想要更漂亮年轻的，你就不要上身这种大黑框框的墨镜，这个显得多老气，多丑，所以只有惊艳的墨镜才能把你带漂亮。</div></div></div><div class="mat-row">  <div class="mat-row-hdr">    <span class="mat-row-rank ">TOP5</span>    <span class="mat-row-name" title="[智能感光变色墨镜]室内室外日用两用太阳镜时尚减龄无框显瘦太阳镜防紫外线大圆脸自带妆容滤镜女款">[智能感光变色墨镜]室内室外日用两用太阳镜时尚减龄无框显瘦太阳镜防紫外线大圆…</span>    <span class="mat-row-mkt">· 也古轻奢服配</span>    <span class="mat-row-metrics">CTR <b>1.47%</b><span class="sep">|</span>3s完播 <b>63.4%</b><span class="sep">|</span>播放 <b>6.2s</b></span>  </div>  <div class="frame-grid"><div class="frame-cell"><img src="frames/5d4977c606d8cb6dd4fd4371cc5c439e/f1.jpg" alt="颜值痛点开篇" loading="lazy"><span class="step-tag"><span class="l badge-A">A</span>颜值痛点开篇</span><span class="step-time">0-3s</span></div><div class="frame-cell"><img src="frames/5d4977c606d8cb6dd4fd4371cc5c439e/f2.jpg" alt="佩戴效果反差" loading="lazy"><span class="step-tag"><span class="l badge-B">B</span>佩戴效果反差</span><span class="step-time">3-12s</span></div><div class="frame-cell"><img src="frames/5d4977c606d8cb6dd4fd4371cc5c439e/f3.jpg" alt="功能卖点演示" loading="lazy"><span class="step-tag"><span class="l badge-C">C</span>功能卖点演示</span><span class="step-time">12-30s</span></div><div class="frame-cell"><img src="frames/5d4977c606d8cb6dd4fd4371cc5c439e/f4.jpg" alt="多场景实测" loading="lazy"><span class="step-tag"><span class="l badge-D">D</span>多场景实测</span><span class="step-time">30-50s</span></div><div class="frame-cell"><img src="frames/5d4977c606d8cb6dd4fd4371cc5c439e/f5.jpg" alt="用户口碑背书" loading="lazy"><span class="step-tag"><span class="l badge-E">E</span>用户口碑背书</span><span class="step-time">50-65s</span></div><div class="frame-cell"><img src="frames/5d4977c606d8cb6dd4fd4371cc5c439e/f6.jpg" alt="限时促销引导" loading="lazy"><span class="step-tag"><span class="l badge-F">F</span>限时促销引导</span><span class="step-time">65s+</span></div></div>  <div class="mat-interpretation"><span class="label">💡 脚本创意拆解与落地建议：</span>该素材为也古智能感光变色无框墨镜。采用“实测演示+场景化通勤”的双重说服逻辑。开篇（0-3s）以行车途中隧道进出视线忽明忽暗、突遇强光晃眼的行车危险痛点作为核心视觉钩子。中段（3-30s）特写展示镜片在紫外线灯照射下“一秒变深”的智能感光测试，以及无边框修容剪裁对女性圆脸的遮肉修饰效果；随后切换高对比度的视野对比，展现偏光阻光的强悍实力。后半段（30s-65s）覆盖女车主户外驾驶、沙滩遮阳、日常出街等多生活场景，并提供国家检测合格证和达人真实口碑证言。收尾阶段（65s+）以出厂特惠价和送运费险等利益点激发冲动购买，凸显极高性价比。
+落地建议：1. 建议把“紫外线灯照射下变色”的趣味实测剪切到开头前3秒，趣味吸睛，能拉升完播率。2. 增强驾驶室视线戴镜前后的色调对比，直观展现偏光护眼效果。</div>  <div class="hp">  <div class="hp-h">⚡ WorkRally 视频生成脚本    <span class="hp-actions">      <button class="hp-btn" data-hook-copy="中景镜头拍摄精致女性户外出行特写，阳光强烈有些刺眼，她微微蹙眉用手遮阳。第1.5秒她戴上『[智能感光变色墨镜]室内室外日用两用』并回眸展颜，镜头推至近景特写，展示精致切割边框和微晶光泽，脸型瞬间显得小巧立体，散发高颅顶名媛气质。配音用轻快俏皮的女声说『戴上这副复古素颜镜，原相机直出都好看！』。第2.5秒侧面弹出金色动感字幕『素颜 vs 戴镜后 1秒显脸小』。整体画面光影高级柔和，通过【高对比反差变装】前3秒黄金钩子瞬间捕获爱美女性停留好奇心。&#10;&#10;🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：&#10;实话告诉你，为什么变色日夜两用镜比墨镜好用﹐因为白天行车使用它是这样的﹐而墨镜只能白天使用﹐近隧道还需要摘墨镜﹐这款日夜两用镜根据此外线变色﹐白天遮阳防晒﹐晚上防眩光运光﹐削弱远光...">📋 复制</button>      <a class="hp-btn" href="https://zenvideo.qq.com/" target="_blank" rel="noopener">🚀 腾讯智影</a>    </span>  </div>  <div class="hp-t">中景镜头拍摄精致女性户外出行特写，阳光强烈有些刺眼，她微微蹙眉用手遮阳。第1.5秒她戴上『[智能感光变色墨镜]室内室外日用两用』并回眸展颜，镜头推至近景特写，展示精致切割边框和微晶光泽，脸型瞬间显得小巧立体，散发高颅顶名媛气质。配音用轻快俏皮的女声说『戴上这副复古素颜镜，原相机直出都好看！』。第2.5秒侧面弹出金色动感字幕『素颜 vs 戴镜后 1秒显脸小』。整体画面光影高级柔和，通过【高对比反差变装】前3秒黄金钩子瞬间捕获爱美女性停留好奇心。
+
+🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：
+实话告诉你，为什么变色日夜两用镜比墨镜好用﹐因为白天行车使用它是这样的﹐而墨镜只能白天使用﹐近隧道还需要摘墨镜﹐这款日夜两用镜根据此外线变色﹐白天遮阳防晒﹐晚上防眩光运光﹐削弱远光...</div></div></div>
+</div>
+
+<div class="footer">素材解析台 · 墨镜/太阳镜 · 20260601</div>
+</div>
+
+<div id="_tip"></div>
+
+<script>
+// 复制按钮事件代理
+document.addEventListener("click", function(e){
+  var btn = e.target.closest("[data-hook-copy]");
+  if(!btn) return;
+  e.preventDefault();
+  var txt = btn.getAttribute("data-hook-copy") || "";
+  var ta = document.createElement("textarea");
+  ta.innerHTML = txt;
+  var decoded = ta.value;
+  function ok(){
+    var t = document.getElementById("_tip");
+    t.textContent = "✓ 已复制 WorkRally 视频生成脚本";
+    t.className = "ok"; t.style.display = "block";
+    clearTimeout(window._tipT);
+    window._tipT = setTimeout(function(){ t.style.display="none"; }, 1800);
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(decoded).then(ok);
+  } else {
+    var t2 = document.createElement("textarea");
+    t2.value = decoded; t2.style.position="fixed"; t2.style.opacity="0";
+    document.body.appendChild(t2); t2.select();
+    try { document.execCommand("copy"); ok(); } catch(_){}
+    document.body.removeChild(t2);
+  }
+});
+</script>
+</body></html>
