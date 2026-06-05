@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🤍 珍珠项链 · 素材解析台</title>
+<style>
+:root{
+  --bg:#0f1219;--card-bg:#1a1f2e;--card-hover:#222840;
+  --t1:#e8eaed;--t2:#9aa0b0;--t3:#5c6370;
+  --accent:#6c8cc7;--accent2:#8faadc;--pink:#d64d73;--info:#9dbcff;
+  --border:#2a3042;--border-light:#333a50;--line:#1f2937;
+  --badge-A:#e74c3c;--badge-B:#f39c12;--badge-C:#27ae60;
+  --badge-D:#2980b9;--badge-E:#8e44ad;--badge-F:#16a085;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Microsoft YaHei","PingFang SC",-apple-system,sans-serif;
+     background:var(--bg);color:var(--t1);line-height:1.7;font-size:14px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;color:var(--accent2)}
+
+.container{max-width:1200px;margin:0 auto;padding:24px 20px}
+.nav{margin-bottom:16px;font-size:13px;color:var(--t2)}
+.nav a{color:var(--accent);margin-right:12px}
+.nav a:hover{color:var(--accent2)}
+
+.header{padding:24px 0 18px;margin-bottom:22px;border-bottom:1px solid var(--border)}
+.header .grp-tag{font-size:12px;color:var(--accent);background:rgba(108,140,199,.12);
+  padding:2px 10px;border-radius:3px;display:inline-block;margin-bottom:10px}
+.header h1{font-size:24px;font-weight:700;color:var(--t1);margin-bottom:6px;
+  display:flex;align-items:center;gap:8px}
+.header .sub{font-size:13px;color:var(--t2)}
+
+.section{margin-bottom:36px}
+.section-title{font-size:16px;font-weight:700;color:var(--t1);
+  margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:8px}
+.section-title .emoji{font-size:18px}
+.section-title .desc{font-size:12px;font-weight:400;color:var(--t3);margin-left:auto}
+
+/* 指标 */
+.metrics-card{background:var(--card-bg);border-radius:10px;padding:18px 24px;
+  border:1px solid var(--border);display:flex;align-items:center;
+  justify-content:space-between;flex-wrap:wrap;gap:8px}
+.metric-item{text-align:center;min-width:90px;padding:4px 8px}
+.metric-val{font-size:22px;font-weight:700;color:var(--t1)}
+.metric-lbl{font-size:11px;color:var(--t3);margin-top:2px}
+
+/* 6 步脚本框架 */
+.fw-section{background:var(--card-bg);border-radius:10px;padding:20px;
+  border:1px solid var(--border)}
+.fw-summary{font-size:13px;color:var(--t1);padding:10px 14px;
+  background:rgba(108,140,199,.08);border-radius:6px;margin-bottom:16px;
+  border-left:3px solid var(--accent);line-height:1.7}
+.fw-summary b{color:var(--accent)}
+.fw-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+@media(max-width:900px){.fw-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.fw-grid{grid-template-columns:repeat(2,1fr)}}
+.fw-card{background:rgba(255,255,255,.03);border-radius:8px;
+  border:1px solid var(--border-light);padding:14px 12px;position:relative}
+.fw-letter-badge{position:absolute;top:8px;right:10px;width:24px;height:24px;
+  border-radius:4px;display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:800;color:#fff}
+.badge-A{background:var(--badge-A)}.badge-B{background:var(--badge-B)}
+.badge-C{background:var(--badge-C)}.badge-D{background:var(--badge-D)}
+.badge-E{background:var(--badge-E)}.badge-F{background:var(--badge-F)}
+.fw-card-title{font-size:13.5px;font-weight:700;color:var(--t1);
+  margin:2px 0 4px 0;padding-right:32px}
+.fw-card-time{font-size:11.5px;color:var(--accent);margin-bottom:6px}
+
+/* Top 关键帧 */
+.mat-row{background:var(--card-bg);border:1px solid var(--border);
+  border-radius:10px;padding:16px 18px;margin-bottom:16px}
+.mat-row:last-child{margin-bottom:0}
+.mat-row-hdr{display:flex;align-items:center;gap:10px;margin-bottom:12px;
+  flex-wrap:wrap;font-size:12.5px}
+.mat-row-rank{font-size:12px;font-weight:700;color:#fff;background:var(--accent);
+  border-radius:3px;padding:2px 8px;flex-shrink:0}
+.mat-row-rank.r1{background:var(--badge-A)}
+.mat-row-rank.r2{background:var(--badge-B)}
+.mat-row-rank.r3{background:var(--badge-C)}
+.mat-row-name{font-weight:700;color:var(--t1);flex:1;min-width:200px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mat-row-mkt{color:var(--t3);font-size:12px}
+.mat-row-metrics{margin-left:auto;color:var(--t2);font-size:12px;
+  background:rgba(255,255,255,.03);padding:4px 10px;border-radius:4px}
+.mat-row-metrics b{color:var(--accent);font-weight:600}
+.mat-row-metrics .sep{color:var(--border-light);margin:0 8px}
+
+.frame-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:12px}
+@media(max-width:900px){.frame-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.frame-grid{grid-template-columns:repeat(2,1fr)}}
+.frame-cell{position:relative;background:#000;border-radius:6px;overflow:hidden;
+  aspect-ratio:9/16;display:flex;align-items:center;justify-content:center}
+.frame-cell img{width:100%;height:100%;object-fit:cover;display:block}
+.frame-cell .ph{font-size:11px;color:var(--t3);text-align:center;padding:8px;line-height:1.5}
+.frame-cell .step-tag{position:absolute;top:5px;left:5px;
+  background:rgba(0,0,0,.7);color:#fff;font-size:10px;font-weight:700;
+  padding:2px 6px;border-radius:3px;letter-spacing:.3px;
+  display:flex;align-items:center;gap:4px}
+.frame-cell .step-tag .l{display:inline-block;width:14px;height:14px;
+  border-radius:2px;font-size:9px;line-height:14px;text-align:center;font-weight:800}
+.frame-cell .step-time{position:absolute;bottom:5px;right:5px;
+  background:rgba(0,0,0,.7);color:#fff;font-size:10px;
+  padding:2px 5px;border-radius:3px}
+
+/* AI 解读 */
+.mat-interpretation{background:rgba(108,140,199,.04);border:1px solid var(--border-light);
+  border-radius:6px;padding:12px 14px;margin-top:10px;font-size:12.5px;line-height:1.75;color:var(--t2)}
+.mat-interpretation .label{font-weight:700;color:var(--accent);margin-right:6px}
+
+/* 黄金 3s prompt */
+.hp{background:#0a0e18;border-left:3px solid var(--info);border-radius:0 6px 6px 0;padding:10px 12px;margin-top:10px;border:1px solid var(--border)}
+.hp .hp-h{font-size:12px;font-weight:600;color:var(--info);margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hp .hp-actions{margin-left:auto;display:inline-flex;gap:6px}
+.hp .hp-btn{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;font-size:10px;color:#cbd2e0;background:#172033;border:1px solid var(--border-light);border-radius:4px;cursor:pointer;text-decoration:none;font-family:inherit}
+.hp .hp-btn:hover{background:#1e293b;color:#fff}
+.hp .hp-t{font-size:12px;color:#cbd2e0;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+
+.warn-sample{background:rgba(230,179,0,.06);border-radius:6px;padding:10px 14px;
+  font-size:13px;border-left:3px solid #e6b300;color:#c9a827;margin-bottom:14px}
+
+.footer{text-align:center;padding:24px 0;margin-top:32px;
+  border-top:1px solid var(--border);font-size:12px;color:var(--t3)}
+#_tip{position:fixed;left:50%;top:24px;transform:translateX(-50%);padding:8px 16px;border-radius:8px;font-size:12px;color:#fff;z-index:1000;display:none;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+#_tip.ok{background:#15803d}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="nav"><a href="index.html">← 返回首页</a> · <a href="group_时尚配饰.html">✨ 时尚配饰（大类）</a> · <a href="full.html">📋 完整报告</a></div>
+
+<div class="header">
+  <div class="grp-tag">✨ 时尚配饰（大类）</div>
+  <h1>🤍 珍珠项链</h1>
+  <div class="sub">53 条素材 · CTR 6.62% · 3s完播 42.9% · 平均播放时长 9.2s</div>
+</div>
+
+
+
+<div class="section">
+  <div class="section-title"><span class="emoji">📊</span>指标均值<span class="desc">该子品类 53 条素材的整体表现</span></div>
+  <div class="metrics-card">
+    <div class="metric-item"><div class="metric-val">53</div><div class="metric-lbl">素材数</div></div>
+    <div class="metric-item"><div class="metric-val">6.62%</div><div class="metric-lbl">CTR (均值)</div></div>
+    <div class="metric-item"><div class="metric-val">42.9%</div><div class="metric-lbl">3s完播 (均值)</div></div>
+    <div class="metric-item"><div class="metric-val">9.2s</div><div class="metric-lbl">播放时长 (均值)</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="emoji">📋</span>脚本框架 · 6 步起量套路<span class="desc">A→F 对应视频时间节奏</span></div>
+  <div class="fw-section">
+    <div class="fw-summary"><b>脚本框架：</b>气质痛点引入 → 产品光泽特写 → 佩戴上身效果 → 多场景搭配展示 → 品质品牌背书 → 限时优惠促单</div>
+    <div class="fw-grid"><div class="fw-card"><span class="fw-letter-badge badge-A">A</span><div class="fw-card-title">气质痛点引入</div><div class="fw-card-time">⏱ 0-3s</div></div><div class="fw-card"><span class="fw-letter-badge badge-B">B</span><div class="fw-card-title">产品光泽特写</div><div class="fw-card-time">⏱ 3-12s</div></div><div class="fw-card"><span class="fw-letter-badge badge-C">C</span><div class="fw-card-title">佩戴上身效果</div><div class="fw-card-time">⏱ 12-30s</div></div><div class="fw-card"><span class="fw-letter-badge badge-D">D</span><div class="fw-card-title">多场景搭配展示</div><div class="fw-card-time">⏱ 30-50s</div></div><div class="fw-card"><span class="fw-letter-badge badge-E">E</span><div class="fw-card-title">品质品牌背书</div><div class="fw-card-time">⏱ 50-65s</div></div><div class="fw-card"><span class="fw-letter-badge badge-F">F</span><div class="fw-card-title">限时优惠促单</div><div class="fw-card-time">⏱ 65s+</div></div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="emoji">🎬</span>Top5 素材关键帧拆解<span class="desc">5/5 条已抽帧 · 6 帧对应 A→F 脚本节奏</span></div>
+  <div class="mat-row">  <div class="mat-row-hdr">    <span class="mat-row-rank r1">TOP1</span>    <span class="mat-row-name" title="小米珠珍珠项链">小米珠珍珠项链</span>    <span class="mat-row-mkt">· 女项链</span>    <span class="mat-row-metrics">CTR <b>5.68%</b><span class="sep">|</span>3s完播 <b>28.7%</b><span class="sep">|</span>播放 <b>7.8s</b></span>  </div>  <div class="frame-grid"><div class="frame-cell"><img src="frames/3350ed46e24f6b96f663f19666d352be/f1.jpg" alt="气质痛点引入" loading="lazy"><span class="step-tag"><span class="l badge-A">A</span>气质痛点引入</span><span class="step-time">0-3s</span></div><div class="frame-cell"><img src="frames/3350ed46e24f6b96f663f19666d352be/f2.jpg" alt="产品光泽特写" loading="lazy"><span class="step-tag"><span class="l badge-B">B</span>产品光泽特写</span><span class="step-time">3-12s</span></div><div class="frame-cell"><img src="frames/3350ed46e24f6b96f663f19666d352be/f3.jpg" alt="佩戴上身效果" loading="lazy"><span class="step-tag"><span class="l badge-C">C</span>佩戴上身效果</span><span class="step-time">12-30s</span></div><div class="frame-cell"><img src="frames/3350ed46e24f6b96f663f19666d352be/f4.jpg" alt="多场景搭配展示" loading="lazy"><span class="step-tag"><span class="l badge-D">D</span>多场景搭配展示</span><span class="step-time">30-50s</span></div><div class="frame-cell"><img src="frames/3350ed46e24f6b96f663f19666d352be/f5.jpg" alt="品质品牌背书" loading="lazy"><span class="step-tag"><span class="l badge-E">E</span>品质品牌背书</span><span class="step-time">50-65s</span></div><div class="frame-cell"><img src="frames/3350ed46e24f6b96f663f19666d352be/f6.jpg" alt="限时优惠促单" loading="lazy"><span class="step-tag"><span class="l badge-F">F</span>限时优惠促单</span><span class="step-time">65s+</span></div></div>  <div class="mat-interpretation"><span class="label">💡 脚本创意拆解与落地建议：</span>该素材为小米珠复古天然珍珠项链。采取“气质蜕变+名媛风穿搭”的高质感种草套路。开篇（0-3s）直击脖颈空空、穿针织衫单调、送礼缺心意等“没气质、缺精致感”的细节痛点。中段（3-30s）柔光灯下展现每一颗4-5mm小米珠珍珠的强缎面光泽与链条排扣的细腻质感；随后模特上身，重点展示珍珠项链贴合锁骨、提亮面部气色和锁骨线条的“整容级”视觉前后反差。后半段（30s-65s）切入知性办公室、法式餐厅、浪漫约会等多风格穿搭场景，展现一镜多配的强百搭溢价能力；出具天然珍珠鉴定证书作为强品质背书。结尾（65s+）提供复古抽拉礼盒包装，配合厂家放利、低价体验等，用极致性价比催促买单。
+落地建议：1. 桑蚕丝衬衫配珍珠链的知性镜头非常有说服力，可以作为开场黄金前3秒的视觉冲击。2. 展示珍珠穿过钢针不留刮痕的硬核摩擦实测，极致体现珍珠的天然品质和硬度。</div>  <div class="hp">  <div class="hp-h">⚡ WorkRally 视频生成脚本    <span class="hp-actions">      <button class="hp-btn" data-hook-copy="中景镜头拍摄身穿黑色V领上衣的优雅女性面部及锁骨特写，微距展现她白皙修长的脖颈，光影高级柔和。第1.2秒她轻抚脖颈展示刚戴上的『小米珠珍珠项链』，灯光微距特写每一颗珍珠/吊坠的缎面流光质感，锁骨线条与肤色瞬间提亮，天鹅颈尽显。配音用轻快明朗的知性女声说『脖子空空的姐妹戴它，穿基础款也一秒显贵！』。第2.5秒右侧弹出烫金特效字幕『修饰锁骨 一戴显贵』。整体节奏高级舒缓，通过【颈部单调无气质痛点】在3秒内以极致高光颜值和显贵反差强力锁客。&#10;&#10;🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：&#10;这条项链收到你陪我一辈子，真的没白来，什么都好，我说了今晚缺点就是难抢，这条项链之前我连自己都没舍得佩戴过，前两个月我妈生日我给我妈也送了一条，每一颗都是深海贝壳妈妈肚子里的，养了...">📋 复制</button>      <a class="hp-btn" href="https://zenvideo.qq.com/" target="_blank" rel="noopener">🚀 腾讯智影</a>    </span>  </div>  <div class="hp-t">中景镜头拍摄身穿黑色V领上衣的优雅女性面部及锁骨特写，微距展现她白皙修长的脖颈，光影高级柔和。第1.2秒她轻抚脖颈展示刚戴上的『小米珠珍珠项链』，灯光微距特写每一颗珍珠/吊坠的缎面流光质感，锁骨线条与肤色瞬间提亮，天鹅颈尽显。配音用轻快明朗的知性女声说『脖子空空的姐妹戴它，穿基础款也一秒显贵！』。第2.5秒右侧弹出烫金特效字幕『修饰锁骨 一戴显贵』。整体节奏高级舒缓，通过【颈部单调无气质痛点】在3秒内以极致高光颜值和显贵反差强力锁客。
+
+🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：
+这条项链收到你陪我一辈子，真的没白来，什么都好，我说了今晚缺点就是难抢，这条项链之前我连自己都没舍得佩戴过，前两个月我妈生日我给我妈也送了一条，每一颗都是深海贝壳妈妈肚子里的，养了...</div></div></div><div class="mat-row">  <div class="mat-row-hdr">    <span class="mat-row-rank r2">TOP2</span>    <span class="mat-row-name" title="紫色皇冠珍珠项链">紫色皇冠珍珠项链</span>    <span class="mat-row-mkt">· 女项链</span>    <span class="mat-row-metrics">CTR <b>9.84%</b><span class="sep">|</span>3s完播 <b>43.7%</b><span class="sep">|</span>播放 <b>12.7s</b></span>  </div>  <div class="frame-grid"><div class="frame-cell"><img src="frames/be1b247e65f2cdee2875497abbb97932/f1.jpg" alt="气质痛点引入" loading="lazy"><span class="step-tag"><span class="l badge-A">A</span>气质痛点引入</span><span class="step-time">0-3s</span></div><div class="frame-cell"><img src="frames/be1b247e65f2cdee2875497abbb97932/f2.jpg" alt="产品光泽特写" loading="lazy"><span class="step-tag"><span class="l badge-B">B</span>产品光泽特写</span><span class="step-time">3-12s</span></div><div class="frame-cell"><img src="frames/be1b247e65f2cdee2875497abbb97932/f3.jpg" alt="佩戴上身效果" loading="lazy"><span class="step-tag"><span class="l badge-C">C</span>佩戴上身效果</span><span class="step-time">12-30s</span></div><div class="frame-cell"><img src="frames/be1b247e65f2cdee2875497abbb97932/f4.jpg" alt="多场景搭配展示" loading="lazy"><span class="step-tag"><span class="l badge-D">D</span>多场景搭配展示</span><span class="step-time">30-50s</span></div><div class="frame-cell"><img src="frames/be1b247e65f2cdee2875497abbb97932/f5.jpg" alt="品质品牌背书" loading="lazy"><span class="step-tag"><span class="l badge-E">E</span>品质品牌背书</span><span class="step-time">50-65s</span></div><div class="frame-cell"><img src="frames/be1b247e65f2cdee2875497abbb97932/f6.jpg" alt="限时优惠促单" loading="lazy"><span class="step-tag"><span class="l badge-F">F</span>限时优惠促单</span><span class="step-time">65s+</span></div></div>  <div class="mat-interpretation"><span class="label">💡 脚本创意拆解与落地建议：</span>该素材为法式轻奢“经典气质”淡水珍珠爱心耳圈。视频主打“法式赫本风、显脸小救星”的高点击路线。开篇（0-3s）以博主面部无配饰显得干瘪苍白、大脸无线条的手部动作切入，引起普通女孩的焦虑。中段（3-30s）展示佩戴上珍珠耳圈前后，面部气色和下巴弧线瞬间提升的巨大视觉反差，令人惊艳；镜头拉近，微距展现金属圆环的细腻抛光面与灵动的巴洛克淡水异形珍珠挂坠（每一颗都是独一无二），高级法式复古感呼之欲出。后半段（30s-65s）将穿搭融合进复古黑裙、日常通勤西装、温柔针织衫，高频植入超百搭气场，并提供纯银针防过敏证书和大量买家买秀好评。结尾（65s+）打出低门槛回馈价格、限时双件折上折并配送精美首饰袋，高性价比逼单。
+落地建议：1. 可将“甩头时，珍珠耳坠随风轻快晃动，呈现天鹅颈”的动态特写放在第2秒，极富灵动美感和吸睛力。2. 增加高密车针耳钩不松动的卡扣实测，向买家传递精雕细琢的工匠细节品质。</div>  <div class="hp">  <div class="hp-h">⚡ WorkRally 视频生成脚本    <span class="hp-actions">      <button class="hp-btn" data-hook-copy="中景镜头拍摄身穿黑色V领上衣的优雅女性面部及锁骨特写，微距展现她白皙修长的脖颈，光影高级柔和。第1.2秒她轻抚脖颈展示刚戴上的『紫色皇冠珍珠项链』，灯光微距特写每一颗珍珠/吊坠的缎面流光质感，锁骨线条与肤色瞬间提亮，天鹅颈尽显。配音用轻快明朗的知性女声说『脖子空空的姐妹戴它，穿基础款也一秒显贵！』。第2.5秒右侧弹出烫金特效字幕『修饰锁骨 一戴显贵』。整体节奏高级舒缓，通过【素颜显大脸痛点】在3秒内以极致高光颜值和显贵反差强力锁客。&#10;&#10;🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：&#10;姐妹们听好了！这条项链拿到你陪我一辈子，真的没白来，什么都好，我说了今晚缺点就是难抢，这条项链之前我连自己都没舍得上身过，前两个月我妈生日我给我妈也送了一条，每一颗都是深海贝壳妈妈...">📋 复制</button>      <a class="hp-btn" href="https://zenvideo.qq.com/" target="_blank" rel="noopener">🚀 腾讯智影</a>    </span>  </div>  <div class="hp-t">中景镜头拍摄身穿黑色V领上衣的优雅女性面部及锁骨特写，微距展现她白皙修长的脖颈，光影高级柔和。第1.2秒她轻抚脖颈展示刚戴上的『紫色皇冠珍珠项链』，灯光微距特写每一颗珍珠/吊坠的缎面流光质感，锁骨线条与肤色瞬间提亮，天鹅颈尽显。配音用轻快明朗的知性女声说『脖子空空的姐妹戴它，穿基础款也一秒显贵！』。第2.5秒右侧弹出烫金特效字幕『修饰锁骨 一戴显贵』。整体节奏高级舒缓，通过【素颜显大脸痛点】在3秒内以极致高光颜值和显贵反差强力锁客。
+
+🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：
+姐妹们听好了！这条项链拿到你陪我一辈子，真的没白来，什么都好，我说了今晚缺点就是难抢，这条项链之前我连自己都没舍得上身过，前两个月我妈生日我给我妈也送了一条，每一颗都是深海贝壳妈妈...</div></div></div><div class="mat-row">  <div class="mat-row-hdr">    <span class="mat-row-rank r3">TOP3</span>    <span class="mat-row-name" title="法式轻奢皇冠珍珠项链">法式轻奢皇冠珍珠项链</span>    <span class="mat-row-mkt">· 女项链</span>    <span class="mat-row-metrics">CTR <b>11.23%</b><span class="sep">|</span>3s完播 <b>43.1%</b><span class="sep">|</span>播放 <b>13.5s</b></span>  </div>  <div class="frame-grid"><div class="frame-cell"><img src="frames/cbe52624e3722d08b8d9586a82871ecf/f1.jpg" alt="气质痛点引入" loading="lazy"><span class="step-tag"><span class="l badge-A">A</span>气质痛点引入</span><span class="step-time">0-3s</span></div><div class="frame-cell"><img src="frames/cbe52624e3722d08b8d9586a82871ecf/f2.jpg" alt="产品光泽特写" loading="lazy"><span class="step-tag"><span class="l badge-B">B</span>产品光泽特写</span><span class="step-time">3-12s</span></div><div class="frame-cell"><img src="frames/cbe52624e3722d08b8d9586a82871ecf/f3.jpg" alt="佩戴上身效果" loading="lazy"><span class="step-tag"><span class="l badge-C">C</span>佩戴上身效果</span><span class="step-time">12-30s</span></div><div class="frame-cell"><img src="frames/cbe52624e3722d08b8d9586a82871ecf/f4.jpg" alt="多场景搭配展示" loading="lazy"><span class="step-tag"><span class="l badge-D">D</span>多场景搭配展示</span><span class="step-time">30-50s</span></div><div class="frame-cell"><img src="frames/cbe52624e3722d08b8d9586a82871ecf/f5.jpg" alt="品质品牌背书" loading="lazy"><span class="step-tag"><span class="l badge-E">E</span>品质品牌背书</span><span class="step-time">50-65s</span></div><div class="frame-cell"><img src="frames/cbe52624e3722d08b8d9586a82871ecf/f6.jpg" alt="限时优惠促单" loading="lazy"><span class="step-tag"><span class="l badge-F">F</span>限时优惠促单</span><span class="step-time">65s+</span></div></div>  <div class="mat-interpretation"><span class="label">💡 脚本创意拆解与落地建议：</span>该素材为法式轻奢“经典赫本风”复古爱心吊坠珍珠项链。主打“百搭显贵、赫本式知性优雅”。开篇（0-3s）针对博主戴普通链子显单薄、面部苍白无光泽等容貌和搭配痛点，快速吸引关注。中段（3-30s）微距展现18K金微镶锆石爱心吊坠在灯光下璀璨的光芒，搭配精心挑选、晕彩极佳的淡水珍珠链身，复古轻奢感跃然屏上；随后模特一键戴上，白皙肤色与锁骨线条瞬间提亮，前后反差令人心动。后半段（30s-65s）搭配黑裙子、高档大衣和知性毛衣等多衣品场景，展示超高优雅溢价，出具天然淡水珍珠鉴定书与防敏防褪色报告背书。结尾（65s+）推出爆款限时特惠、配高档复古红丝绒盒包装，高性价比促成拍单。
+落地建议：1. 可将“博主穿着黑色V领衫戴上项链、瞬间气质如赫本”的动态镜头作为前3s吸睛钩子，大幅提升完播。2. 增强打光特写展示吊坠爱心微镶锆石在阳光下熠熠生辉、七彩反光的璀璨感，传递高质感和视觉溢价。</div>  <div class="hp">  <div class="hp-h">⚡ WorkRally 视频生成脚本    <span class="hp-actions">      <button class="hp-btn" data-hook-copy="中景镜头拍摄身穿黑色V领上衣的优雅女性面部及锁骨特写，微距展现她白皙修长的脖颈，光影高级柔和。第1.2秒她轻抚脖颈展示刚戴上的『法式轻奢皇冠珍珠项链』，灯光微距特写每一颗珍珠/吊坠的缎面流光质感，锁骨线条与肤色瞬间提亮，天鹅颈尽显。配音用轻快明朗的知性女声说『脖子空空的姐妹戴它，穿基础款也一秒显贵！』。第2.5秒右侧弹出烫金特效字幕『修饰锁骨 一戴显贵』。整体节奏高级舒缓，通过【高对比反差变装】在3秒内以极致高光颜值和显贵反差强力锁客。&#10;&#10;🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：&#10;我跟你讲，拿这个两万多的吊坠，你看看有多少，我知道高奢。啊，你别，我说了你不要跟我再讲贵不贵了，你看下还有多少，知道它的好，知道它的贵，知道它的价值了，你们先去问一下。">📋 复制</button>      <a class="hp-btn" href="https://zenvideo.qq.com/" target="_blank" rel="noopener">🚀 腾讯智影</a>    </span>  </div>  <div class="hp-t">中景镜头拍摄身穿黑色V领上衣的优雅女性面部及锁骨特写，微距展现她白皙修长的脖颈，光影高级柔和。第1.2秒她轻抚脖颈展示刚戴上的『法式轻奢皇冠珍珠项链』，灯光微距特写每一颗珍珠/吊坠的缎面流光质感，锁骨线条与肤色瞬间提亮，天鹅颈尽显。配音用轻快明朗的知性女声说『脖子空空的姐妹戴它，穿基础款也一秒显贵！』。第2.5秒右侧弹出烫金特效字幕『修饰锁骨 一戴显贵』。整体节奏高级舒缓，通过【高对比反差变装】在3秒内以极致高光颜值和显贵反差强力锁客。
+
+🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：
+我跟你讲，拿这个两万多的吊坠，你看看有多少，我知道高奢。啊，你别，我说了你不要跟我再讲贵不贵了，你看下还有多少，知道它的好，知道它的贵，知道它的价值了，你们先去问一下。</div></div></div><div class="mat-row">  <div class="mat-row-hdr">    <span class="mat-row-rank ">TOP4</span>    <span class="mat-row-name" title="四叶花玻璃珍珠项链">四叶花玻璃珍珠项链</span>    <span class="mat-row-mkt">· 项链</span>    <span class="mat-row-metrics">CTR <b>9.14%</b><span class="sep">|</span>3s完播 <b>44.9%</b><span class="sep">|</span>播放 <b>12.2s</b></span>  </div>  <div class="frame-grid"><div class="frame-cell"><img src="frames/934ad1134a7224eb8fcaa9e9965d3fbf/f1.jpg" alt="气质痛点引入" loading="lazy"><span class="step-tag"><span class="l badge-A">A</span>气质痛点引入</span><span class="step-time">0-3s</span></div><div class="frame-cell"><img src="frames/934ad1134a7224eb8fcaa9e9965d3fbf/f2.jpg" alt="产品光泽特写" loading="lazy"><span class="step-tag"><span class="l badge-B">B</span>产品光泽特写</span><span class="step-time">3-12s</span></div><div class="frame-cell"><img src="frames/934ad1134a7224eb8fcaa9e9965d3fbf/f3.jpg" alt="佩戴上身效果" loading="lazy"><span class="step-tag"><span class="l badge-C">C</span>佩戴上身效果</span><span class="step-time">12-30s</span></div><div class="frame-cell"><img src="frames/934ad1134a7224eb8fcaa9e9965d3fbf/f4.jpg" alt="多场景搭配展示" loading="lazy"><span class="step-tag"><span class="l badge-D">D</span>多场景搭配展示</span><span class="step-time">30-50s</span></div><div class="frame-cell"><img src="frames/934ad1134a7224eb8fcaa9e9965d3fbf/f5.jpg" alt="品质品牌背书" loading="lazy"><span class="step-tag"><span class="l badge-E">E</span>品质品牌背书</span><span class="step-time">50-65s</span></div><div class="frame-cell"><img src="frames/934ad1134a7224eb8fcaa9e9965d3fbf/f6.jpg" alt="限时优惠促单" loading="lazy"><span class="step-tag"><span class="l badge-F">F</span>限时优惠促单</span><span class="step-time">65s+</span></div></div>  <div class="mat-interpretation"><span class="label">💡 脚本创意拆解与落地建议：</span>该视频成功地将珍珠定位为“拯救夏季平庸穿搭”的提气神器，取得了9.14%的超高点击率。开篇直击年轻女性“脖颈空荡显单调、穿衣缺乏亮点”的气质痛点，激发起极大的爱美共鸣。3-12s通过温润细腻的珍珠微距和精致光洁的四叶花吊坠逆光特写，拉满了产品的复古轻奢质感。模特佩戴后的颈部特写，完美展现了修饰锁骨、提亮肤色的效果。多套法式复古裙和日常通勤装的佩戴示范，让用户层层感知其无与伦比的百搭性。
+落地建议：极高的CTR说明该产品的法式减龄与高颜值珍珠视觉方向非常精准。落地改进可进一步凸显“戴珍珠显脸小、提亮面部气色”的视觉落差，在开篇第2s加入素人无首饰 vs 戴上四叶花项链瞬间，气质提亮的戏剧化剪辑。同时可在落地页加推“四叶花耳钉/手链”等同系列套装，并提供“叠戴穿搭指南”，利用关联推荐拉升平均客单价。</div>  <div class="hp">  <div class="hp-h">⚡ WorkRally 视频生成脚本    <span class="hp-actions">      <button class="hp-btn" data-hook-copy="中景镜头拍摄身穿黑色V领上衣的优雅女性面部及锁骨特写，微距展现她白皙修长的脖颈，光影高级柔和。第1.2秒她轻抚脖颈展示刚戴上的『四叶花玻璃珍珠项链』，灯光微距特写每一颗珍珠/吊坠的缎面流光质感，锁骨线条与肤色瞬间提亮，天鹅颈尽显。配音用轻快明朗的知性女声说『脖子空空的姐妹戴它，穿基础款也一秒显贵！』。第2.5秒右侧弹出烫金特效字幕『修饰锁骨 一戴显贵』。整体节奏高级舒缓，通过【高对比反差变装】在3秒内以极致高光颜值和显贵反差强力锁客。&#10;&#10;🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：&#10;实话告诉你，花钱大手大脚的女生一招教你，你啊，就选一条项链，像这样佩戴在脖子上。老祖宗的话，总是有他的道理的，寓意非常好。">📋 复制</button>      <a class="hp-btn" href="https://zenvideo.qq.com/" target="_blank" rel="noopener">🚀 腾讯智影</a>    </span>  </div>  <div class="hp-t">中景镜头拍摄身穿黑色V领上衣的优雅女性面部及锁骨特写，微距展现她白皙修长的脖颈，光影高级柔和。第1.2秒她轻抚脖颈展示刚戴上的『四叶花玻璃珍珠项链』，灯光微距特写每一颗珍珠/吊坠的缎面流光质感，锁骨线条与肤色瞬间提亮，天鹅颈尽显。配音用轻快明朗的知性女声说『脖子空空的姐妹戴它，穿基础款也一秒显贵！』。第2.5秒右侧弹出烫金特效字幕『修饰锁骨 一戴显贵』。整体节奏高级舒缓，通过【高对比反差变装】在3秒内以极致高光颜值和显贵反差强力锁客。
+
+🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：
+实话告诉你，花钱大手大脚的女生一招教你，你啊，就选一条项链，像这样佩戴在脖子上。老祖宗的话，总是有他的道理的，寓意非常好。</div></div></div><div class="mat-row">  <div class="mat-row-hdr">    <span class="mat-row-rank ">TOP5</span>    <span class="mat-row-name" title="小米珠珍珠项链">小米珠珍珠项链</span>    <span class="mat-row-mkt">· 女项链</span>    <span class="mat-row-metrics">CTR <b>9.65%</b><span class="sep">|</span>3s完播 <b>37.4%</b><span class="sep">|</span>播放 <b>9.9s</b></span>  </div>  <div class="frame-grid"><div class="frame-cell"><img src="frames/b75162aa0ecdf07ddbc2672ee0f37d5a/f1.jpg" alt="气质痛点引入" loading="lazy"><span class="step-tag"><span class="l badge-A">A</span>气质痛点引入</span><span class="step-time">0-3s</span></div><div class="frame-cell"><img src="frames/b75162aa0ecdf07ddbc2672ee0f37d5a/f2.jpg" alt="产品光泽特写" loading="lazy"><span class="step-tag"><span class="l badge-B">B</span>产品光泽特写</span><span class="step-time">3-12s</span></div><div class="frame-cell"><img src="frames/b75162aa0ecdf07ddbc2672ee0f37d5a/f3.jpg" alt="佩戴上身效果" loading="lazy"><span class="step-tag"><span class="l badge-C">C</span>佩戴上身效果</span><span class="step-time">12-30s</span></div><div class="frame-cell"><img src="frames/b75162aa0ecdf07ddbc2672ee0f37d5a/f4.jpg" alt="多场景搭配展示" loading="lazy"><span class="step-tag"><span class="l badge-D">D</span>多场景搭配展示</span><span class="step-time">30-50s</span></div><div class="frame-cell"><img src="frames/b75162aa0ecdf07ddbc2672ee0f37d5a/f5.jpg" alt="品质品牌背书" loading="lazy"><span class="step-tag"><span class="l badge-E">E</span>品质品牌背书</span><span class="step-time">50-65s</span></div><div class="frame-cell"><img src="frames/b75162aa0ecdf07ddbc2672ee0f37d5a/f6.jpg" alt="限时优惠促单" loading="lazy"><span class="step-tag"><span class="l badge-F">F</span>限时优惠促单</span><span class="step-time">65s+</span></div></div>  <div class="mat-interpretation"><span class="label">💡 脚本创意拆解与落地建议：</span>该素材为爆款天然极细小米珠双圈珍珠项链。主打“减龄不娇气、小珍珠大气质”的新名媛复古风。开篇（0-3s）以年轻女性“担心大颗珍珠显老气、不日常、戴着累赘”的痛点画面和文案，瞬间打消陈旧偏见。中段（3-30s）在偏冷柔和灯光下多角度呈现天然淡水珍珠（4-5mm）的强晕彩和高密度抛光质感，微距特写纯手工双钢线打结工艺（防断防磨）；模特上身佩戴，高光显白，突出小珍珠形成的精致链条对性感锁骨与天鹅颈的“完美点缀”，减龄满分。后半段（30s-65s）将场景带入海边吊带裙装、日常白色卫衣、知性职场白领装等，展示强大的日常实用性和百搭溢价；以质检院淡水珍珠鉴定证书、防褪色报告进行品质背书。结尾（65s+）配合高性价比体验折、精美高档抽拉绒布袋包装，让年轻女孩心动秒下。
+落地建议：1. 建议在视频第2秒展示“双圈戴法”与“单圈长款叠戴”的两戴变形，满足不同脖围的多用需求。2. 可在视频中展示用刀锋轻轻刮擦珍珠表面、一擦依然无暇闪耀的极限摩擦实验，凸显硬核淡水珍珠品质。</div>  <div class="hp">  <div class="hp-h">⚡ WorkRally 视频生成脚本    <span class="hp-actions">      <button class="hp-btn" data-hook-copy="中景镜头拍摄身穿黑色V领上衣的优雅女性面部及锁骨特写，微距展现她白皙修长的脖颈，光影高级柔和。第1.2秒她轻抚脖颈展示刚戴上的『小米珠珍珠项链』，灯光微距特写每一颗珍珠/吊坠的缎面流光质感，锁骨线条与肤色瞬间提亮，天鹅颈尽显。配音用轻快明朗的知性女声说『脖子空空的姐妹戴它，穿基础款也一秒显贵！』。第2.5秒右侧弹出烫金特效字幕『修饰锁骨 一戴显贵』。整体节奏高级舒缓，通过【频繁摘戴眼镜不便及显老痛点】在3秒内以极致高光颜值和显贵反差强力锁客。&#10;&#10;🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：&#10;这条项链入手到你陪我一辈子，真的没白来。">📋 复制</button>      <a class="hp-btn" href="https://zenvideo.qq.com/" target="_blank" rel="noopener">🚀 腾讯智影</a>    </span>  </div>  <div class="hp-t">中景镜头拍摄身穿黑色V领上衣的优雅女性面部及锁骨特写，微距展现她白皙修长的脖颈，光影高级柔和。第1.2秒她轻抚脖颈展示刚戴上的『小米珠珍珠项链』，灯光微距特写每一颗珍珠/吊坠的缎面流光质感，锁骨线条与肤色瞬间提亮，天鹅颈尽显。配音用轻快明朗的知性女声说『脖子空空的姐妹戴它，穿基础款也一秒显贵！』。第2.5秒右侧弹出烫金特效字幕『修饰锁骨 一戴显贵』。整体节奏高级舒缓，通过【频繁摘戴眼镜不便及显老痛点】在3秒内以极致高光颜值和显贵反差强力锁客。
+
+🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：
+这条项链入手到你陪我一辈子，真的没白来。</div></div></div>
+</div>
+
+<div class="footer">素材解析台 · 珍珠项链 · 20260601</div>
+</div>
+
+<div id="_tip"></div>
+
+<script>
+// 复制按钮事件代理
+document.addEventListener("click", function(e){
+  var btn = e.target.closest("[data-hook-copy]");
+  if(!btn) return;
+  e.preventDefault();
+  var txt = btn.getAttribute("data-hook-copy") || "";
+  var ta = document.createElement("textarea");
+  ta.innerHTML = txt;
+  var decoded = ta.value;
+  function ok(){
+    var t = document.getElementById("_tip");
+    t.textContent = "✓ 已复制 WorkRally 视频生成脚本";
+    t.className = "ok"; t.style.display = "block";
+    clearTimeout(window._tipT);
+    window._tipT = setTimeout(function(){ t.style.display="none"; }, 1800);
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(decoded).then(ok);
+  } else {
+    var t2 = document.createElement("textarea");
+    t2.value = decoded; t2.style.position="fixed"; t2.style.opacity="0";
+    document.body.appendChild(t2); t2.select();
+    try { document.execCommand("copy"); ok(); } catch(_){}
+    document.body.removeChild(t2);
+  }
+});
+</script>
+</body></html>
