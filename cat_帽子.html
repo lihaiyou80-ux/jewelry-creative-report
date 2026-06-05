@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🧢 帽子 · 素材解析台</title>
+<style>
+:root{
+  --bg:#0f1219;--card-bg:#1a1f2e;--card-hover:#222840;
+  --t1:#e8eaed;--t2:#9aa0b0;--t3:#5c6370;
+  --accent:#6c8cc7;--accent2:#8faadc;--pink:#d64d73;--info:#9dbcff;
+  --border:#2a3042;--border-light:#333a50;--line:#1f2937;
+  --badge-A:#e74c3c;--badge-B:#f39c12;--badge-C:#27ae60;
+  --badge-D:#2980b9;--badge-E:#8e44ad;--badge-F:#16a085;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Microsoft YaHei","PingFang SC",-apple-system,sans-serif;
+     background:var(--bg);color:var(--t1);line-height:1.7;font-size:14px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;color:var(--accent2)}
+
+.container{max-width:1200px;margin:0 auto;padding:24px 20px}
+.nav{margin-bottom:16px;font-size:13px;color:var(--t2)}
+.nav a{color:var(--accent);margin-right:12px}
+.nav a:hover{color:var(--accent2)}
+
+.header{padding:24px 0 18px;margin-bottom:22px;border-bottom:1px solid var(--border)}
+.header .grp-tag{font-size:12px;color:var(--accent);background:rgba(108,140,199,.12);
+  padding:2px 10px;border-radius:3px;display:inline-block;margin-bottom:10px}
+.header h1{font-size:24px;font-weight:700;color:var(--t1);margin-bottom:6px;
+  display:flex;align-items:center;gap:8px}
+.header .sub{font-size:13px;color:var(--t2)}
+
+.section{margin-bottom:36px}
+.section-title{font-size:16px;font-weight:700;color:var(--t1);
+  margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:8px}
+.section-title .emoji{font-size:18px}
+.section-title .desc{font-size:12px;font-weight:400;color:var(--t3);margin-left:auto}
+
+/* 指标 */
+.metrics-card{background:var(--card-bg);border-radius:10px;padding:18px 24px;
+  border:1px solid var(--border);display:flex;align-items:center;
+  justify-content:space-between;flex-wrap:wrap;gap:8px}
+.metric-item{text-align:center;min-width:90px;padding:4px 8px}
+.metric-val{font-size:22px;font-weight:700;color:var(--t1)}
+.metric-lbl{font-size:11px;color:var(--t3);margin-top:2px}
+
+/* 6 步脚本框架 */
+.fw-section{background:var(--card-bg);border-radius:10px;padding:20px;
+  border:1px solid var(--border)}
+.fw-summary{font-size:13px;color:var(--t1);padding:10px 14px;
+  background:rgba(108,140,199,.08);border-radius:6px;margin-bottom:16px;
+  border-left:3px solid var(--accent);line-height:1.7}
+.fw-summary b{color:var(--accent)}
+.fw-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+@media(max-width:900px){.fw-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.fw-grid{grid-template-columns:repeat(2,1fr)}}
+.fw-card{background:rgba(255,255,255,.03);border-radius:8px;
+  border:1px solid var(--border-light);padding:14px 12px;position:relative}
+.fw-letter-badge{position:absolute;top:8px;right:10px;width:24px;height:24px;
+  border-radius:4px;display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:800;color:#fff}
+.badge-A{background:var(--badge-A)}.badge-B{background:var(--badge-B)}
+.badge-C{background:var(--badge-C)}.badge-D{background:var(--badge-D)}
+.badge-E{background:var(--badge-E)}.badge-F{background:var(--badge-F)}
+.fw-card-title{font-size:13.5px;font-weight:700;color:var(--t1);
+  margin:2px 0 4px 0;padding-right:32px}
+.fw-card-time{font-size:11.5px;color:var(--accent);margin-bottom:6px}
+
+/* Top 关键帧 */
+.mat-row{background:var(--card-bg);border:1px solid var(--border);
+  border-radius:10px;padding:16px 18px;margin-bottom:16px}
+.mat-row:last-child{margin-bottom:0}
+.mat-row-hdr{display:flex;align-items:center;gap:10px;margin-bottom:12px;
+  flex-wrap:wrap;font-size:12.5px}
+.mat-row-rank{font-size:12px;font-weight:700;color:#fff;background:var(--accent);
+  border-radius:3px;padding:2px 8px;flex-shrink:0}
+.mat-row-rank.r1{background:var(--badge-A)}
+.mat-row-rank.r2{background:var(--badge-B)}
+.mat-row-rank.r3{background:var(--badge-C)}
+.mat-row-name{font-weight:700;color:var(--t1);flex:1;min-width:200px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mat-row-mkt{color:var(--t3);font-size:12px}
+.mat-row-metrics{margin-left:auto;color:var(--t2);font-size:12px;
+  background:rgba(255,255,255,.03);padding:4px 10px;border-radius:4px}
+.mat-row-metrics b{color:var(--accent);font-weight:600}
+.mat-row-metrics .sep{color:var(--border-light);margin:0 8px}
+
+.frame-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:12px}
+@media(max-width:900px){.frame-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.frame-grid{grid-template-columns:repeat(2,1fr)}}
+.frame-cell{position:relative;background:#000;border-radius:6px;overflow:hidden;
+  aspect-ratio:9/16;display:flex;align-items:center;justify-content:center}
+.frame-cell img{width:100%;height:100%;object-fit:cover;display:block}
+.frame-cell .ph{font-size:11px;color:var(--t3);text-align:center;padding:8px;line-height:1.5}
+.frame-cell .step-tag{position:absolute;top:5px;left:5px;
+  background:rgba(0,0,0,.7);color:#fff;font-size:10px;font-weight:700;
+  padding:2px 6px;border-radius:3px;letter-spacing:.3px;
+  display:flex;align-items:center;gap:4px}
+.frame-cell .step-tag .l{display:inline-block;width:14px;height:14px;
+  border-radius:2px;font-size:9px;line-height:14px;text-align:center;font-weight:800}
+.frame-cell .step-time{position:absolute;bottom:5px;right:5px;
+  background:rgba(0,0,0,.7);color:#fff;font-size:10px;
+  padding:2px 5px;border-radius:3px}
+
+/* AI 解读 */
+.mat-interpretation{background:rgba(108,140,199,.04);border:1px solid var(--border-light);
+  border-radius:6px;padding:12px 14px;margin-top:10px;font-size:12.5px;line-height:1.75;color:var(--t2)}
+.mat-interpretation .label{font-weight:700;color:var(--accent);margin-right:6px}
+
+/* 黄金 3s prompt */
+.hp{background:#0a0e18;border-left:3px solid var(--info);border-radius:0 6px 6px 0;padding:10px 12px;margin-top:10px;border:1px solid var(--border)}
+.hp .hp-h{font-size:12px;font-weight:600;color:var(--info);margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hp .hp-actions{margin-left:auto;display:inline-flex;gap:6px}
+.hp .hp-btn{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;font-size:10px;color:#cbd2e0;background:#172033;border:1px solid var(--border-light);border-radius:4px;cursor:pointer;text-decoration:none;font-family:inherit}
+.hp .hp-btn:hover{background:#1e293b;color:#fff}
+.hp .hp-t{font-size:12px;color:#cbd2e0;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+
+.warn-sample{background:rgba(230,179,0,.06);border-radius:6px;padding:10px 14px;
+  font-size:13px;border-left:3px solid #e6b300;color:#c9a827;margin-bottom:14px}
+
+.footer{text-align:center;padding:24px 0;margin-top:32px;
+  border-top:1px solid var(--border);font-size:12px;color:var(--t3)}
+#_tip{position:fixed;left:50%;top:24px;transform:translateX(-50%);padding:8px 16px;border-radius:8px;font-size:12px;color:#fff;z-index:1000;display:none;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+#_tip.ok{background:#15803d}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="nav"><a href="index.html">← 返回首页</a> · <a href="group_服饰配饰.html">👒 服饰配饰（大类）</a> · <a href="full.html">📋 完整报告</a></div>
+
+<div class="header">
+  <div class="grp-tag">👒 服饰配饰（大类）</div>
+  <h1>🧢 帽子</h1>
+  <div class="sub">2 条素材 · CTR 1.61% · 3s完播 30.5% · 平均播放时长 4.7s</div>
+</div>
+
+<div class="warn-sample">⚠ 样本不足（2 条 < 9 条），脚本框架仅供参考</div>
+
+<div class="section">
+  <div class="section-title"><span class="emoji">📊</span>指标均值<span class="desc">该子品类 2 条素材的整体表现</span></div>
+  <div class="metrics-card">
+    <div class="metric-item"><div class="metric-val">2</div><div class="metric-lbl">素材数</div></div>
+    <div class="metric-item"><div class="metric-val">1.61%</div><div class="metric-lbl">CTR (均值)</div></div>
+    <div class="metric-item"><div class="metric-val">30.5%</div><div class="metric-lbl">3s完播 (均值)</div></div>
+    <div class="metric-item"><div class="metric-val">4.7s</div><div class="metric-lbl">播放时长 (均值)</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="emoji">📋</span>脚本框架 · 6 步起量套路<span class="desc">A→F 对应视频时间节奏</span></div>
+  <div class="fw-section">
+    <div class="fw-summary"><b>脚本框架：</b>穿搭防晒痛点 → 产品款式展示 → 佩戴效果展示 → 场景化展示 → 品质背书 → 促销引导</div>
+    <div class="fw-grid"><div class="fw-card"><span class="fw-letter-badge badge-A">A</span><div class="fw-card-title">穿搭防晒痛点</div><div class="fw-card-time">⏱ 0-3s</div></div><div class="fw-card"><span class="fw-letter-badge badge-B">B</span><div class="fw-card-title">产品款式展示</div><div class="fw-card-time">⏱ 3-12s</div></div><div class="fw-card"><span class="fw-letter-badge badge-C">C</span><div class="fw-card-title">佩戴效果展示</div><div class="fw-card-time">⏱ 12-30s</div></div><div class="fw-card"><span class="fw-letter-badge badge-D">D</span><div class="fw-card-title">场景化展示</div><div class="fw-card-time">⏱ 30-50s</div></div><div class="fw-card"><span class="fw-letter-badge badge-E">E</span><div class="fw-card-title">品质背书</div><div class="fw-card-time">⏱ 50-65s</div></div><div class="fw-card"><span class="fw-letter-badge badge-F">F</span><div class="fw-card-title">促销引导</div><div class="fw-card-time">⏱ 65s+</div></div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="emoji">🎬</span>Top5 素材关键帧拆解<span class="desc">2/2 条已抽帧 · 6 帧对应 A→F 脚本节奏</span></div>
+  <div class="mat-row">  <div class="mat-row-hdr">    <span class="mat-row-rank r1">TOP1</span>    <span class="mat-row-name" title="新款夏季遮阳速干网帽男士户外时尚休闲防晒棒球帽轻薄透气帽子">新款夏季遮阳速干网帽男士户外时尚休闲防晒棒球帽轻薄透气帽子</span>    <span class="mat-row-mkt">· 男棒球帽</span>    <span class="mat-row-metrics">CTR <b>1.72%</b><span class="sep">|</span>3s完播 <b>27.0%</b><span class="sep">|</span>播放 <b>5.1s</b></span>  </div>  <div class="frame-grid"><div class="frame-cell"><img src="frames/0337db06ae1cebaf79bc6ce0ffc3a63d/f1.jpg" alt="穿搭防晒痛点" loading="lazy"><span class="step-tag"><span class="l badge-A">A</span>穿搭防晒痛点</span><span class="step-time">0-3s</span></div><div class="frame-cell"><img src="frames/0337db06ae1cebaf79bc6ce0ffc3a63d/f2.jpg" alt="产品款式展示" loading="lazy"><span class="step-tag"><span class="l badge-B">B</span>产品款式展示</span><span class="step-time">3-12s</span></div><div class="frame-cell"><img src="frames/0337db06ae1cebaf79bc6ce0ffc3a63d/f3.jpg" alt="佩戴效果展示" loading="lazy"><span class="step-tag"><span class="l badge-C">C</span>佩戴效果展示</span><span class="step-time">12-30s</span></div><div class="frame-cell"><img src="frames/0337db06ae1cebaf79bc6ce0ffc3a63d/f4.jpg" alt="场景化展示" loading="lazy"><span class="step-tag"><span class="l badge-D">D</span>场景化展示</span><span class="step-time">30-50s</span></div><div class="frame-cell"><img src="frames/0337db06ae1cebaf79bc6ce0ffc3a63d/f5.jpg" alt="品质背书" loading="lazy"><span class="step-tag"><span class="l badge-E">E</span>品质背书</span><span class="step-time">50-65s</span></div><div class="frame-cell"><img src="frames/0337db06ae1cebaf79bc6ce0ffc3a63d/f6.jpg" alt="促销引导" loading="lazy"><span class="step-tag"><span class="l badge-F">F</span>促销引导</span><span class="step-time">65s+</span></div></div>  <div class="mat-interpretation"><span class="label">💡 脚本创意拆解与落地建议：</span>该素材为夏季速干男士轻薄透气棒球网帽。视频切中男性客群对“功能、低调、硬挺”的需求痛点。开篇（0-3s）通过烈日户外钓鱼、汗流浃背和传统帽子厚重闷热起热痱、闷臭头发的痛点镜头切入。中段（3-30s）先近景透光特写后侧速干网眼布孔洞，滴水瞬吸蒸发实验演示其极致的吸湿速干透气性；随后特写展示硬挺软顶剪裁（折叠后一秒复原、不坍塌不显头大），不同脸型男模特上身展示，主打“高颅顶、显脸小、拉长脸型”的完美头包脸视觉设计。后半段（30s-65s）融合钓鱼、打高尔夫、户外跑步、夏日开车等多项动感户外场景，展现极其牢固不掉落的可调节设计；拿UPF50+和速干检测等第三方专业实验室权威报告，筑起强大的品质防线。结尾（65s+）打出两顶更划算、厂家包邮清仓的价格利诱，高性价比驱使钓鱼、运动男士快速买单。
+落地建议：1. 开篇3秒建议直接用“折叠不留痕、戴上高颅顶”作为文字钩子，完美化解男性对棒球帽显塌的顾虑。2. 针对多风户外钓鱼等场景，可以特别展示扣具调节和吸汗带的细节，增强细节满意度。</div>  <div class="hp">  <div class="hp-h">⚡ WorkRally 视频生成脚本    <span class="hp-actions">      <button class="hp-btn" data-hook-copy="中景镜头拍摄女性夏日骑车或在户外暴晒，塌顶帽子瞬间被风吹落、她有些狼狈遮脸的痛点画面。第1.5秒画面切到她稳稳戴上『遮阳速干网帽户外时尚休闲防晒棒球帽轻』，超大帽檐在面部形成大片防晒阴影，遮住眼角，同时高颅顶设计使脸型更显精致，神清气爽。配音用活泼女声说『塌顶帽子还容易被风吹？换这款双面高颅顶防晒帽，大风吹不掉，显脸小一圈！』。第2.5秒弹出大字幕『360°遮阳防晒 狂风不掉高颅顶』。整体节奏轻快，以【户外暴晒及闷热痛点】痛点直击完成强力留存。&#10;&#10;🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：&#10;我必须强调一下，清仓处理一批大品牌的春夏季薄款素干透、气棒球帽，一看到降价我立马给老公收了一件，他一开始还以为是普通货品，收到货才知道品质这么好，我又赶紧给老爸安排了一件，父子俩都...">📋 复制</button>      <a class="hp-btn" href="https://zenvideo.qq.com/" target="_blank" rel="noopener">🚀 腾讯智影</a>    </span>  </div>  <div class="hp-t">中景镜头拍摄女性夏日骑车或在户外暴晒，塌顶帽子瞬间被风吹落、她有些狼狈遮脸的痛点画面。第1.5秒画面切到她稳稳戴上『遮阳速干网帽户外时尚休闲防晒棒球帽轻』，超大帽檐在面部形成大片防晒阴影，遮住眼角，同时高颅顶设计使脸型更显精致，神清气爽。配音用活泼女声说『塌顶帽子还容易被风吹？换这款双面高颅顶防晒帽，大风吹不掉，显脸小一圈！』。第2.5秒弹出大字幕『360°遮阳防晒 狂风不掉高颅顶』。整体节奏轻快，以【户外暴晒及闷热痛点】痛点直击完成强力留存。
+
+🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：
+我必须强调一下，清仓处理一批大品牌的春夏季薄款素干透、气棒球帽，一看到降价我立马给老公收了一件，他一开始还以为是普通货品，收到货才知道品质这么好，我又赶紧给老爸安排了一件，父子俩都...</div></div></div><div class="mat-row">  <div class="mat-row-hdr">    <span class="mat-row-rank r2">TOP2</span>    <span class="mat-row-name" title="[轻薄透气]户外休闲运动帽春夏男女同款百搭轻薄透气速干棒球帽">[轻薄透气]户外休闲运动帽春夏男女同款百搭轻薄透气速干棒球帽</span>    <span class="mat-row-mkt">· 锦纶男女通用棒球帽</span>    <span class="mat-row-metrics">CTR <b>1.50%</b><span class="sep">|</span>3s完播 <b>34.0%</b><span class="sep">|</span>播放 <b>4.3s</b></span>  </div>  <div class="frame-grid"><div class="frame-cell"><img src="frames/c2e4a85d098cca3c670fe4ff3e217179/f1.jpg" alt="穿搭防晒痛点" loading="lazy"><span class="step-tag"><span class="l badge-A">A</span>穿搭防晒痛点</span><span class="step-time">0-3s</span></div><div class="frame-cell"><img src="frames/c2e4a85d098cca3c670fe4ff3e217179/f2.jpg" alt="产品款式展示" loading="lazy"><span class="step-tag"><span class="l badge-B">B</span>产品款式展示</span><span class="step-time">3-12s</span></div><div class="frame-cell"><img src="frames/c2e4a85d098cca3c670fe4ff3e217179/f3.jpg" alt="佩戴效果展示" loading="lazy"><span class="step-tag"><span class="l badge-C">C</span>佩戴效果展示</span><span class="step-time">12-30s</span></div><div class="frame-cell"><img src="frames/c2e4a85d098cca3c670fe4ff3e217179/f4.jpg" alt="场景化展示" loading="lazy"><span class="step-tag"><span class="l badge-D">D</span>场景化展示</span><span class="step-time">30-50s</span></div><div class="frame-cell"><img src="frames/c2e4a85d098cca3c670fe4ff3e217179/f5.jpg" alt="品质背书" loading="lazy"><span class="step-tag"><span class="l badge-E">E</span>品质背书</span><span class="step-time">50-65s</span></div><div class="frame-cell"><img src="frames/c2e4a85d098cca3c670fe4ff3e217179/f6.jpg" alt="促销引导" loading="lazy"><span class="step-tag"><span class="l badge-F">F</span>促销引导</span><span class="step-time">65s+</span></div></div>  <div class="mat-interpretation"><span class="label">💡 脚本创意拆解与落地建议：</span>该素材为防晒透气防紫外线男女款情侣棒球帽。视频精准打入“高颅顶、无感防晒”的日常刚需市场。开篇（0-3s）直击暴晒脸变黑、夏日骑车头顶闷热冒汗粘腻、甚至帽子坍塌显得头大等尴尬生活痛点作为吸睛。中段（3-30s）先微距特写帽身的多孔透气防晒黑科技速干面料（如水滴浸润瞬间扩散干爽实验），不闷不热；随后由多位男女主播实戴测试，重点呈现帽子独特的加高颅顶、加长帽檐完美剪裁，呈现“1秒脸小一圈、发型不塌”的前后高反差。后半段（30s-65s）将情侣出游、户外爬山、防晒通勤等多场景融于高动感音乐，展示男女戴上后强大的百搭活力感，提供权威防晒质检合格证和可水洗不变形报告背书。结尾（65s+）推出买两顶立减30元、买情侣套包邮送遮阳包福利，性价比极高。
+落地建议：1. 建议在视频第2-3秒展示用重力积压帽子、帽子瞬间强力回弹不坍塌的动作，视觉张力极强，打消买家对软顶帽易变形的顾虑。2. 针对多风户外活动，可以特别演示加宽吸汗带与可微调卡扣的配合细节，传递贴心的人性化设计。</div>  <div class="hp">  <div class="hp-h">⚡ WorkRally 视频生成脚本    <span class="hp-actions">      <button class="hp-btn" data-hook-copy="中景镜头拍摄女性夏日骑车或在户外暴晒，塌顶帽子瞬间被风吹落、她有些狼狈遮脸的痛点画面。第1.5秒画面切到她稳稳戴上『[轻薄透气]户外休闲运动帽春夏男女同』，超大帽檐在面部形成大片防晒阴影，遮住眼角，同时高颅顶设计使脸型更显精致，神清气爽。配音用活泼女声说『塌顶帽子还容易被风吹？换这款双面高颅顶防晒帽，大风吹不掉，显脸小一圈！』。第2.5秒弹出大字幕『360°遮阳防晒 狂风不掉高颅顶』。整体节奏轻快，以【户外暴晒及闷热痛点】痛点直击完成强力留存。&#10;&#10;🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：&#10;划重点，这是我拂起日记里，这是她的青春留下。">📋 复制</button>      <a class="hp-btn" href="https://zenvideo.qq.com/" target="_blank" rel="noopener">🚀 腾讯智影</a>    </span>  </div>  <div class="hp-t">中景镜头拍摄女性夏日骑车或在户外暴晒，塌顶帽子瞬间被风吹落、她有些狼狈遮脸的痛点画面。第1.5秒画面切到她稳稳戴上『[轻薄透气]户外休闲运动帽春夏男女同』，超大帽檐在面部形成大片防晒阴影，遮住眼角，同时高颅顶设计使脸型更显精致，神清气爽。配音用活泼女声说『塌顶帽子还容易被风吹？换这款双面高颅顶防晒帽，大风吹不掉，显脸小一圈！』。第2.5秒弹出大字幕『360°遮阳防晒 狂风不掉高颅顶』。整体节奏轻快，以【户外暴晒及闷热痛点】痛点直击完成强力留存。
+
+🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：
+划重点，这是我拂起日记里，这是她的青春留下。</div></div></div>
+</div>
+
+<div class="footer">素材解析台 · 帽子 · 20260601</div>
+</div>
+
+<div id="_tip"></div>
+
+<script>
+// 复制按钮事件代理
+document.addEventListener("click", function(e){
+  var btn = e.target.closest("[data-hook-copy]");
+  if(!btn) return;
+  e.preventDefault();
+  var txt = btn.getAttribute("data-hook-copy") || "";
+  var ta = document.createElement("textarea");
+  ta.innerHTML = txt;
+  var decoded = ta.value;
+  function ok(){
+    var t = document.getElementById("_tip");
+    t.textContent = "✓ 已复制 WorkRally 视频生成脚本";
+    t.className = "ok"; t.style.display = "block";
+    clearTimeout(window._tipT);
+    window._tipT = setTimeout(function(){ t.style.display="none"; }, 1800);
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(decoded).then(ok);
+  } else {
+    var t2 = document.createElement("textarea");
+    t2.value = decoded; t2.style.position="fixed"; t2.style.opacity="0";
+    document.body.appendChild(t2); t2.select();
+    try { document.execCommand("copy"); ok(); } catch(_){}
+    document.body.removeChild(t2);
+  }
+});
+</script>
+</body></html>
