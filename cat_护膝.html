@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🦵 护膝 · 素材解析台</title>
+<style>
+:root{
+  --bg:#0f1219;--card-bg:#1a1f2e;--card-hover:#222840;
+  --t1:#e8eaed;--t2:#9aa0b0;--t3:#5c6370;
+  --accent:#6c8cc7;--accent2:#8faadc;--pink:#d64d73;--info:#9dbcff;
+  --border:#2a3042;--border-light:#333a50;--line:#1f2937;
+  --badge-A:#e74c3c;--badge-B:#f39c12;--badge-C:#27ae60;
+  --badge-D:#2980b9;--badge-E:#8e44ad;--badge-F:#16a085;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Microsoft YaHei","PingFang SC",-apple-system,sans-serif;
+     background:var(--bg);color:var(--t1);line-height:1.7;font-size:14px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;color:var(--accent2)}
+
+.container{max-width:1200px;margin:0 auto;padding:24px 20px}
+.nav{margin-bottom:16px;font-size:13px;color:var(--t2)}
+.nav a{color:var(--accent);margin-right:12px}
+.nav a:hover{color:var(--accent2)}
+
+.header{padding:24px 0 18px;margin-bottom:22px;border-bottom:1px solid var(--border)}
+.header .grp-tag{font-size:12px;color:var(--accent);background:rgba(108,140,199,.12);
+  padding:2px 10px;border-radius:3px;display:inline-block;margin-bottom:10px}
+.header h1{font-size:24px;font-weight:700;color:var(--t1);margin-bottom:6px;
+  display:flex;align-items:center;gap:8px}
+.header .sub{font-size:13px;color:var(--t2)}
+
+.section{margin-bottom:36px}
+.section-title{font-size:16px;font-weight:700;color:var(--t1);
+  margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:8px}
+.section-title .emoji{font-size:18px}
+.section-title .desc{font-size:12px;font-weight:400;color:var(--t3);margin-left:auto}
+
+/* 指标 */
+.metrics-card{background:var(--card-bg);border-radius:10px;padding:18px 24px;
+  border:1px solid var(--border);display:flex;align-items:center;
+  justify-content:space-between;flex-wrap:wrap;gap:8px}
+.metric-item{text-align:center;min-width:90px;padding:4px 8px}
+.metric-val{font-size:22px;font-weight:700;color:var(--t1)}
+.metric-lbl{font-size:11px;color:var(--t3);margin-top:2px}
+
+/* 6 步脚本框架 */
+.fw-section{background:var(--card-bg);border-radius:10px;padding:20px;
+  border:1px solid var(--border)}
+.fw-summary{font-size:13px;color:var(--t1);padding:10px 14px;
+  background:rgba(108,140,199,.08);border-radius:6px;margin-bottom:16px;
+  border-left:3px solid var(--accent);line-height:1.7}
+.fw-summary b{color:var(--accent)}
+.fw-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+@media(max-width:900px){.fw-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.fw-grid{grid-template-columns:repeat(2,1fr)}}
+.fw-card{background:rgba(255,255,255,.03);border-radius:8px;
+  border:1px solid var(--border-light);padding:14px 12px;position:relative}
+.fw-letter-badge{position:absolute;top:8px;right:10px;width:24px;height:24px;
+  border-radius:4px;display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:800;color:#fff}
+.badge-A{background:var(--badge-A)}.badge-B{background:var(--badge-B)}
+.badge-C{background:var(--badge-C)}.badge-D{background:var(--badge-D)}
+.badge-E{background:var(--badge-E)}.badge-F{background:var(--badge-F)}
+.fw-card-title{font-size:13.5px;font-weight:700;color:var(--t1);
+  margin:2px 0 4px 0;padding-right:32px}
+.fw-card-time{font-size:11.5px;color:var(--accent);margin-bottom:6px}
+
+/* Top 关键帧 */
+.mat-row{background:var(--card-bg);border:1px solid var(--border);
+  border-radius:10px;padding:16px 18px;margin-bottom:16px}
+.mat-row:last-child{margin-bottom:0}
+.mat-row-hdr{display:flex;align-items:center;gap:10px;margin-bottom:12px;
+  flex-wrap:wrap;font-size:12.5px}
+.mat-row-rank{font-size:12px;font-weight:700;color:#fff;background:var(--accent);
+  border-radius:3px;padding:2px 8px;flex-shrink:0}
+.mat-row-rank.r1{background:var(--badge-A)}
+.mat-row-rank.r2{background:var(--badge-B)}
+.mat-row-rank.r3{background:var(--badge-C)}
+.mat-row-name{font-weight:700;color:var(--t1);flex:1;min-width:200px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mat-row-mkt{color:var(--t3);font-size:12px}
+.mat-row-metrics{margin-left:auto;color:var(--t2);font-size:12px;
+  background:rgba(255,255,255,.03);padding:4px 10px;border-radius:4px}
+.mat-row-metrics b{color:var(--accent);font-weight:600}
+.mat-row-metrics .sep{color:var(--border-light);margin:0 8px}
+
+.frame-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:12px}
+@media(max-width:900px){.frame-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.frame-grid{grid-template-columns:repeat(2,1fr)}}
+.frame-cell{position:relative;background:#000;border-radius:6px;overflow:hidden;
+  aspect-ratio:9/16;display:flex;align-items:center;justify-content:center}
+.frame-cell img{width:100%;height:100%;object-fit:cover;display:block}
+.frame-cell .ph{font-size:11px;color:var(--t3);text-align:center;padding:8px;line-height:1.5}
+.frame-cell .step-tag{position:absolute;top:5px;left:5px;
+  background:rgba(0,0,0,.7);color:#fff;font-size:10px;font-weight:700;
+  padding:2px 6px;border-radius:3px;letter-spacing:.3px;
+  display:flex;align-items:center;gap:4px}
+.frame-cell .step-tag .l{display:inline-block;width:14px;height:14px;
+  border-radius:2px;font-size:9px;line-height:14px;text-align:center;font-weight:800}
+.frame-cell .step-time{position:absolute;bottom:5px;right:5px;
+  background:rgba(0,0,0,.7);color:#fff;font-size:10px;
+  padding:2px 5px;border-radius:3px}
+
+/* AI 解读 */
+.mat-interpretation{background:rgba(108,140,199,.04);border:1px solid var(--border-light);
+  border-radius:6px;padding:12px 14px;margin-top:10px;font-size:12.5px;line-height:1.75;color:var(--t2)}
+.mat-interpretation .label{font-weight:700;color:var(--accent);margin-right:6px}
+
+/* 黄金 3s prompt */
+.hp{background:#0a0e18;border-left:3px solid var(--info);border-radius:0 6px 6px 0;padding:10px 12px;margin-top:10px;border:1px solid var(--border)}
+.hp .hp-h{font-size:12px;font-weight:600;color:var(--info);margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hp .hp-actions{margin-left:auto;display:inline-flex;gap:6px}
+.hp .hp-btn{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;font-size:10px;color:#cbd2e0;background:#172033;border:1px solid var(--border-light);border-radius:4px;cursor:pointer;text-decoration:none;font-family:inherit}
+.hp .hp-btn:hover{background:#1e293b;color:#fff}
+.hp .hp-t{font-size:12px;color:#cbd2e0;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+
+.warn-sample{background:rgba(230,179,0,.06);border-radius:6px;padding:10px 14px;
+  font-size:13px;border-left:3px solid #e6b300;color:#c9a827;margin-bottom:14px}
+
+.footer{text-align:center;padding:24px 0;margin-top:32px;
+  border-top:1px solid var(--border);font-size:12px;color:var(--t3)}
+#_tip{position:fixed;left:50%;top:24px;transform:translateX(-50%);padding:8px 16px;border-radius:8px;font-size:12px;color:#fff;z-index:1000;display:none;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+#_tip.ok{background:#15803d}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="nav"><a href="index.html">← 返回首页</a> · <a href="group_服饰配饰.html">👒 服饰配饰（大类）</a> · <a href="full.html">📋 完整报告</a></div>
+
+<div class="header">
+  <div class="grp-tag">👒 服饰配饰（大类）</div>
+  <h1>🦵 护膝</h1>
+  <div class="sub">26 条素材 · CTR 2.65% · 3s完播 32.6% · 平均播放时长 6.2s</div>
+</div>
+
+
+
+<div class="section">
+  <div class="section-title"><span class="emoji">📊</span>指标均值<span class="desc">该子品类 26 条素材的整体表现</span></div>
+  <div class="metrics-card">
+    <div class="metric-item"><div class="metric-val">26</div><div class="metric-lbl">素材数</div></div>
+    <div class="metric-item"><div class="metric-val">2.65%</div><div class="metric-lbl">CTR (均值)</div></div>
+    <div class="metric-item"><div class="metric-val">32.6%</div><div class="metric-lbl">3s完播 (均值)</div></div>
+    <div class="metric-item"><div class="metric-val">6.2s</div><div class="metric-lbl">播放时长 (均值)</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="emoji">📋</span>脚本框架 · 6 步起量套路<span class="desc">A→F 对应视频时间节奏</span></div>
+  <div class="fw-section">
+    <div class="fw-summary"><b>脚本框架：</b>膝盖疼痛痛点 → 产品功能展示 → 佩戴体验展示 → 场景化展示 → 专业背书 → 促销引导</div>
+    <div class="fw-grid"><div class="fw-card"><span class="fw-letter-badge badge-A">A</span><div class="fw-card-title">膝盖疼痛痛点</div><div class="fw-card-time">⏱ 0-3s</div></div><div class="fw-card"><span class="fw-letter-badge badge-B">B</span><div class="fw-card-title">产品功能展示</div><div class="fw-card-time">⏱ 3-12s</div></div><div class="fw-card"><span class="fw-letter-badge badge-C">C</span><div class="fw-card-title">佩戴体验展示</div><div class="fw-card-time">⏱ 12-30s</div></div><div class="fw-card"><span class="fw-letter-badge badge-D">D</span><div class="fw-card-title">场景化展示</div><div class="fw-card-time">⏱ 30-50s</div></div><div class="fw-card"><span class="fw-letter-badge badge-E">E</span><div class="fw-card-title">专业背书</div><div class="fw-card-time">⏱ 50-65s</div></div><div class="fw-card"><span class="fw-letter-badge badge-F">F</span><div class="fw-card-title">促销引导</div><div class="fw-card-time">⏱ 65s+</div></div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title"><span class="emoji">🎬</span>Top5 素材关键帧拆解<span class="desc">3/5 条已抽帧 · 6 帧对应 A→F 脚本节奏</span></div>
+  <div class="mat-row">  <div class="mat-row-hdr">    <span class="mat-row-rank r1">TOP1</span>    <span class="mat-row-name" title="[泊伊尚品 品牌正品]夏季必备无痕透气不闷高弹防滑护膝骑行穿戴装备">[泊伊尚品 品牌正品]夏季必备无痕透气不闷高弹防滑护膝骑行穿戴装备</span>    <span class="mat-row-mkt">· 泊伊尚品弥珀居家生活</span>    <span class="mat-row-metrics">CTR <b>1.23%</b><span class="sep">|</span>3s完播 <b>18.5%</b><span class="sep">|</span>播放 <b>4.1s</b></span>  </div>  <div class="frame-grid"><div class="frame-cell"><img src="frames/9f9fbb923920bc579665079032626a27/f1.jpg" alt="膝盖疼痛痛点" loading="lazy"><span class="step-tag"><span class="l badge-A">A</span>膝盖疼痛痛点</span><span class="step-time">0-3s</span></div><div class="frame-cell"><img src="frames/9f9fbb923920bc579665079032626a27/f2.jpg" alt="产品功能展示" loading="lazy"><span class="step-tag"><span class="l badge-B">B</span>产品功能展示</span><span class="step-time">3-12s</span></div><div class="frame-cell"><img src="frames/9f9fbb923920bc579665079032626a27/f3.jpg" alt="佩戴体验展示" loading="lazy"><span class="step-tag"><span class="l badge-C">C</span>佩戴体验展示</span><span class="step-time">12-30s</span></div><div class="frame-cell"><img src="frames/9f9fbb923920bc579665079032626a27/f4.jpg" alt="场景化展示" loading="lazy"><span class="step-tag"><span class="l badge-D">D</span>场景化展示</span><span class="step-time">30-50s</span></div><div class="frame-cell"><img src="frames/9f9fbb923920bc579665079032626a27/f5.jpg" alt="专业背书" loading="lazy"><span class="step-tag"><span class="l badge-E">E</span>专业背书</span><span class="step-time">50-65s</span></div><div class="frame-cell"><img src="frames/9f9fbb923920bc579665079032626a27/f6.jpg" alt="促销引导" loading="lazy"><span class="step-tag"><span class="l badge-F">F</span>促销引导</span><span class="step-time">65s+</span></div></div>  <div class="mat-interpretation"><span class="label">💡 脚本创意拆解与落地建议：</span>视频主打夏季功能防护，开篇通过中老年老寒腿、运动磨损和骑行迎风受凉等典型膝盖痛点切入，能够准确唤醒受众的自我防护意识。3-12s核心展示了“超薄、透气、高弹”的面料特性，通过布满微透气孔和大力双向拉伸的动态展示，有效打消了用户对夏天佩戴“厚重、闷热、勒腿”的担忧。真人穿着下的防滑条特写与多场景运动展示，突出了其在运动中不下滑、贴身隐形的无痕属性。
+落地建议：虽然痛点清晰，但3s完播和平均播放时长偏低，说明开篇视觉吸引力不足。建议将开篇3秒升级为更具视觉冲击力的硬核实验，如使用“吹风机穿透测试”或“干冰水汽穿透微孔”的高能视觉画面，瞬间体现“不闷热、超透气”特性。同时，在文案中增加“空调房保暖、骑行防风”等具体夏日高发场景，吸引更庞大的年轻上班族及户外骑行人群。</div>  <div class="hp">  <div class="hp-h">⚡ WorkRally 视频生成脚本    <span class="hp-actions">      <button class="hp-btn" data-hook-copy="中景镜头拍摄一位中年人久坐在空调房，冷风直吹双膝，他揉捏双膝、面带痛苦的关节受寒痛点场景。第1.5秒切至他佩戴上『[泊伊尚品』，石墨烯自发热织造质感微距特写，并在红外热成像下展示自热区域温度快速上升、屈伸自如不下滑的前后对比。配音用温暖厚实的男声说『膝盖发凉老寒腿？石墨烯自发热护膝，高弹保暖不下滑，给关节全天候温暖！』。第2.5秒弹出醒目暖色字幕『石墨烯自热 温暖不滑脱』。节奏温暖，直切【户外暴晒及闷热痛点】及送长辈/自用刚需。&#10;&#10;🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：&#10;不管有钱没钱，膝盖一定要泡，要不然老了，再有钱，你也是，哪儿也去不了。尤其是夏天吹空调的时候，一定要带上这款护膝。">📋 复制</button>      <a class="hp-btn" href="https://zenvideo.qq.com/" target="_blank" rel="noopener">🚀 腾讯智影</a>    </span>  </div>  <div class="hp-t">中景镜头拍摄一位中年人久坐在空调房，冷风直吹双膝，他揉捏双膝、面带痛苦的关节受寒痛点场景。第1.5秒切至他佩戴上『[泊伊尚品』，石墨烯自发热织造质感微距特写，并在红外热成像下展示自热区域温度快速上升、屈伸自如不下滑的前后对比。配音用温暖厚实的男声说『膝盖发凉老寒腿？石墨烯自发热护膝，高弹保暖不下滑，给关节全天候温暖！』。第2.5秒弹出醒目暖色字幕『石墨烯自热 温暖不滑脱』。节奏温暖，直切【户外暴晒及闷热痛点】及送长辈/自用刚需。
+
+🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：
+不管有钱没钱，膝盖一定要泡，要不然老了，再有钱，你也是，哪儿也去不了。尤其是夏天吹空调的时候，一定要带上这款护膝。</div></div></div><div class="mat-row">  <div class="mat-row-hdr">    <span class="mat-row-rank r2">TOP2</span>    <span class="mat-row-name" title="石墨烯护膝盖套保暖男女士远红外升温老人关节秋冬防寒防滑护腿套">石墨烯护膝盖套保暖男女士远红外升温老人关节秋冬防寒防滑护腿套</span>    <span class="mat-row-mkt">· 金禧康运动护膝</span>    <span class="mat-row-metrics">CTR <b>4.98%</b><span class="sep">|</span>3s完播 <b>38.2%</b><span class="sep">|</span>播放 <b>6.9s</b></span>  </div>  <div class="frame-grid"><div class="frame-cell"><img src="frames/71977708255f3596b01ff9a05d377f08/f1.jpg" alt="膝盖疼痛痛点" loading="lazy"><span class="step-tag"><span class="l badge-A">A</span>膝盖疼痛痛点</span><span class="step-time">0-3s</span></div><div class="frame-cell"><img src="frames/71977708255f3596b01ff9a05d377f08/f2.jpg" alt="产品功能展示" loading="lazy"><span class="step-tag"><span class="l badge-B">B</span>产品功能展示</span><span class="step-time">3-12s</span></div><div class="frame-cell"><img src="frames/71977708255f3596b01ff9a05d377f08/f3.jpg" alt="佩戴体验展示" loading="lazy"><span class="step-tag"><span class="l badge-C">C</span>佩戴体验展示</span><span class="step-time">12-30s</span></div><div class="frame-cell"><img src="frames/71977708255f3596b01ff9a05d377f08/f4.jpg" alt="场景化展示" loading="lazy"><span class="step-tag"><span class="l badge-D">D</span>场景化展示</span><span class="step-time">30-50s</span></div><div class="frame-cell"><img src="frames/71977708255f3596b01ff9a05d377f08/f5.jpg" alt="专业背书" loading="lazy"><span class="step-tag"><span class="l badge-E">E</span>专业背书</span><span class="step-time">50-65s</span></div><div class="frame-cell"><img src="frames/71977708255f3596b01ff9a05d377f08/f6.jpg" alt="促销引导" loading="lazy"><span class="step-tag"><span class="l badge-F">F</span>促销引导</span><span class="step-time">65s+</span></div></div>  <div class="mat-interpretation"><span class="label">💡 脚本创意拆解与落地建议：</span>该素材为石墨烯远红外自发热保暖男女通用防滑护膝。专门服务于中老年关节防寒以及青年保暖防护。开篇（0-3s）还原秋冬季节、久坐办公室或者骑车时“膝盖酸痛、关节发凉如灌寒风”的真实痛苦痛点，制造带入感。中段（3-30s）重点展示石墨烯自发热织造细节的微距镜头，热成像仪下自热前后温度大涨的自热科技实测；随后模特佩戴，演示下蹲、跑步等屈伸动作中“不下滑、不缩成一坨”的防滑抗折叠反差。后半段（30s-65s）将场景带入老人早起买菜防寒、办公室保暖加温、冬夜骑行防风等多情境，多维度提升其“保暖护腿、呵护全家”的使用功能；以石墨烯鉴定证书和大量康复口碑进行深度背书。结尾（65s+）推出家庭两双装立享折上折、包退包换高品质承诺，高性价比驱动下单。
+落地建议：1. 建议将“热成像图自热过程”和“用力拉扯测试（展示强弹力）”作为开篇2秒卡点，极具视觉冲击力。2. 针对老年客群，建议加大功能字体和加长加宽的舒适度实测，突出“送父母的暖心孝心首选”，极高破圈。</div>  <div class="hp">  <div class="hp-h">⚡ WorkRally 视频生成脚本    <span class="hp-actions">      <button class="hp-btn" data-hook-copy="中景镜头拍摄一位中年人久坐在空调房，冷风直吹双膝，他揉捏双膝、面带痛苦的关节受寒痛点场景。第1.5秒切至他佩戴上『石墨烯护膝盖套保暖男远红外升温老人关』，石墨烯自发热织造质感微距特写，并在红外热成像下展示自热区域温度快速上升、屈伸自如不下滑的前后对比。配音用温暖厚实的男声说『膝盖发凉老寒腿？石墨烯自发热护膝，高弹保暖不下滑，给关节全天候温暖！』。第2.5秒弹出醒目暖色字幕『石墨烯自热 温暖不滑脱』。节奏温暖，直切【关节受寒酸痛痛点】及送长辈/自用刚需。&#10;&#10;🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：&#10;如果晚上睡觉前，你都能佩戴上这个石墨烯护膝，等到你七十、八十了，你知道会有什么区别吗?先告诉你答案，区别会很大，人老腿先摔，护膝越早戴越好。">📋 复制</button>      <a class="hp-btn" href="https://zenvideo.qq.com/" target="_blank" rel="noopener">🚀 腾讯智影</a>    </span>  </div>  <div class="hp-t">中景镜头拍摄一位中年人久坐在空调房，冷风直吹双膝，他揉捏双膝、面带痛苦的关节受寒痛点场景。第1.5秒切至他佩戴上『石墨烯护膝盖套保暖男远红外升温老人关』，石墨烯自发热织造质感微距特写，并在红外热成像下展示自热区域温度快速上升、屈伸自如不下滑的前后对比。配音用温暖厚实的男声说『膝盖发凉老寒腿？石墨烯自发热护膝，高弹保暖不下滑，给关节全天候温暖！』。第2.5秒弹出醒目暖色字幕『石墨烯自热 温暖不滑脱』。节奏温暖，直切【关节受寒酸痛痛点】及送长辈/自用刚需。
+
+🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：
+如果晚上睡觉前，你都能佩戴上这个石墨烯护膝，等到你七十、八十了，你知道会有什么区别吗?先告诉你答案，区别会很大，人老腿先摔，护膝越早戴越好。</div></div></div><div class="mat-row">  <div class="mat-row-hdr">    <span class="mat-row-rank r3">TOP3</span>    <span class="mat-row-name" title="[新款护膝]夏季专用超薄无痕透气不闷汗防滑不起球户外骑行穿戴装备">[新款护膝]夏季专用超薄无痕透气不闷汗防滑不起球户外骑行穿戴装备</span>    <span class="mat-row-mkt">· 泊伊尚品丝佳居家生活</span>    <span class="mat-row-metrics">CTR <b>1.88%</b><span class="sep">|</span>3s完播 <b>27.4%</b><span class="sep">|</span>播放 <b>4.6s</b></span>  </div>  <div class="frame-grid"><div class="frame-cell"><img src="frames/a7f4598af6465fddd8dde4c37f620a44/f1.jpg" alt="膝盖疼痛痛点" loading="lazy"><span class="step-tag"><span class="l badge-A">A</span>膝盖疼痛痛点</span><span class="step-time">0-3s</span></div><div class="frame-cell"><img src="frames/a7f4598af6465fddd8dde4c37f620a44/f2.jpg" alt="产品功能展示" loading="lazy"><span class="step-tag"><span class="l badge-B">B</span>产品功能展示</span><span class="step-time">3-12s</span></div><div class="frame-cell"><img src="frames/a7f4598af6465fddd8dde4c37f620a44/f3.jpg" alt="佩戴体验展示" loading="lazy"><span class="step-tag"><span class="l badge-C">C</span>佩戴体验展示</span><span class="step-time">12-30s</span></div><div class="frame-cell"><img src="frames/a7f4598af6465fddd8dde4c37f620a44/f4.jpg" alt="场景化展示" loading="lazy"><span class="step-tag"><span class="l badge-D">D</span>场景化展示</span><span class="step-time">30-50s</span></div><div class="frame-cell"><img src="frames/a7f4598af6465fddd8dde4c37f620a44/f5.jpg" alt="专业背书" loading="lazy"><span class="step-tag"><span class="l badge-E">E</span>专业背书</span><span class="step-time">50-65s</span></div><div class="frame-cell"><img src="frames/a7f4598af6465fddd8dde4c37f620a44/f6.jpg" alt="促销引导" loading="lazy"><span class="step-tag"><span class="l badge-F">F</span>促销引导</span><span class="step-time">65s+</span></div></div>  <div class="mat-interpretation"><span class="label">💡 脚本创意拆解与落地建议：</span>该素材针对“夏季专用护膝”的隐形舒适体验进行了深度渲染，点击率达到不错的1.88%。视频开头聚焦于关节酸胀、吹空调着凉的日常细节，更容易引发家庭主妇、中老年等重度用户的共鸣。中期着重展示蜂窝式排汗孔、极轻面料与抗起球测试，极大增加了产品耐用可靠的品质感。模特上腿穿着后的实测特写，全方位展现了“超薄、隐形、边缘不卷边不勒肉”的特点，充分迎合了夏季轻薄穿搭的刚需。
+落地建议：建议在3s痛点部分加入“吹空调后膝盖冷冰冰、摸上去像冰块”的具象化感官口播，或者使用红外测温成像对比，强化受凉警告。中段可增加一组“戴前 vs 戴后”的隐形对比画面，展现穿着紧身裤/短裤时也完全看不出痕迹，彻底消除爱美用户“佩戴显臃肿、外露尴尬”的顾虑。</div>  <div class="hp">  <div class="hp-h">⚡ WorkRally 视频生成脚本    <span class="hp-actions">      <button class="hp-btn" data-hook-copy="中景镜头拍摄一位中年人久坐在空调房，冷风直吹双膝，他揉捏双膝、面带痛苦的关节受寒痛点场景。第1.5秒切至他佩戴上『[护膝]专用超薄无痕透气不闷汗防滑不』，石墨烯自发热织造质感微距特写，并在红外热成像下展示自热区域温度快速上升、屈伸自如不下滑的前后对比。配音用温暖厚实的男声说『膝盖发凉老寒腿？石墨烯自发热护膝，高弹保暖不下滑，给关节全天候温暖！』。第2.5秒弹出醒目暖色字幕『石墨烯自热 温暖不滑脱』。节奏温暖，直切【频繁摘戴眼镜不便及显老痛点】及送长辈/自用刚需。&#10;&#10;🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：&#10;下天一定要穿这个空调护膝，它可以防止我们的膝盖受凉，面料轻薄透气，穿着没有紧锋感。不管有钱没钱，膝盖一定要保养好，要不然老了，再有钱，你也是，哪儿也去不了。">📋 复制</button>      <a class="hp-btn" href="https://zenvideo.qq.com/" target="_blank" rel="noopener">🚀 腾讯智影</a>    </span>  </div>  <div class="hp-t">中景镜头拍摄一位中年人久坐在空调房，冷风直吹双膝，他揉捏双膝、面带痛苦的关节受寒痛点场景。第1.5秒切至他佩戴上『[护膝]专用超薄无痕透气不闷汗防滑不』，石墨烯自发热织造质感微距特写，并在红外热成像下展示自热区域温度快速上升、屈伸自如不下滑的前后对比。配音用温暖厚实的男声说『膝盖发凉老寒腿？石墨烯自发热护膝，高弹保暖不下滑，给关节全天候温暖！』。第2.5秒弹出醒目暖色字幕『石墨烯自热 温暖不滑脱』。节奏温暖，直切【频繁摘戴眼镜不便及显老痛点】及送长辈/自用刚需。
+
+🎙️ 爆款口播文案（前 10s · 基于原片 ASR 转写后改写，可直接复用做配音/字幕脚本）：
+下天一定要穿这个空调护膝，它可以防止我们的膝盖受凉，面料轻薄透气，穿着没有紧锋感。不管有钱没钱，膝盖一定要保养好，要不然老了，再有钱，你也是，哪儿也去不了。</div></div></div><div class="mat-row">  <div class="mat-row-hdr">    <span class="mat-row-rank ">TOP4</span>    <span class="mat-row-name" title="空调护膝新款艾草护膝保暖老寒腿男女通用关节热敷防寒护膝">空调护膝新款艾草护膝保暖老寒腿男女通用关节热敷防寒护膝</span>    <span class="mat-row-mkt">· 护膝用品</span>    <span class="mat-row-metrics">CTR <b>1.84%</b><span class="sep">|</span>3s完播 <b>31.4%</b><span class="sep">|</span>播放 <b>7.1s</b></span>  </div>  <div class="frame-grid"><div class="frame-cell"><div class="ph">膝盖疼痛痛点</div><span class="step-tag"><span class="l badge-A">A</span>膝盖疼痛痛点</span><span class="step-time">0-3s</span></div><div class="frame-cell"><div class="ph">产品功能展示</div><span class="step-tag"><span class="l badge-B">B</span>产品功能展示</span><span class="step-time">3-12s</span></div><div class="frame-cell"><div class="ph">佩戴体验展示</div><span class="step-tag"><span class="l badge-C">C</span>佩戴体验展示</span><span class="step-time">12-30s</span></div><div class="frame-cell"><div class="ph">场景化展示</div><span class="step-tag"><span class="l badge-D">D</span>场景化展示</span><span class="step-time">30-50s</span></div><div class="frame-cell"><div class="ph">专业背书</div><span class="step-tag"><span class="l badge-E">E</span>专业背书</span><span class="step-time">50-65s</span></div><div class="frame-cell"><div class="ph">促销引导</div><span class="step-tag"><span class="l badge-F">F</span>促销引导</span><span class="step-time">65s+</span></div></div>  <div class="mat-interpretation"><span class="label">💡 脚本创意拆解与落地建议：</span>等待 AI 多模态大模型分析该素材视频并生成专业解读...</div>  <div class="hp">  <div class="hp-h">⚡ WorkRally 视频生成脚本    <span class="hp-actions">      <button class="hp-btn" data-hook-copy="近景镜头微距特写商品【空调护膝新款艾草护膝保暖老寒腿】的工艺细节和流光溢彩的面料纹理，展现高质感。第1.5秒模特上身试戴展示高点击颜值反差，配音说『质感绝了，超高性价比！』，字幕弹出『限时福利 抢先体验』。整体画面节奏快、色彩亮眼吸睛。">📋 复制</button>      <a class="hp-btn" href="https://zenvideo.qq.com/" target="_blank" rel="noopener">🚀 腾讯智影</a>    </span>  </div>  <div class="hp-t">近景镜头微距特写商品【空调护膝新款艾草护膝保暖老寒腿】的工艺细节和流光溢彩的面料纹理，展现高质感。第1.5秒模特上身试戴展示高点击颜值反差，配音说『质感绝了，超高性价比！』，字幕弹出『限时福利 抢先体验』。整体画面节奏快、色彩亮眼吸睛。</div></div></div><div class="mat-row">  <div class="mat-row-hdr">    <span class="mat-row-rank ">TOP5</span>    <span class="mat-row-name" title="[泊伊尚品 品牌正品]夏季必备无痕透气不闷高弹防滑护膝骑行穿戴装备">[泊伊尚品 品牌正品]夏季必备无痕透气不闷高弹防滑护膝骑行穿戴装备</span>    <span class="mat-row-mkt">· 泊伊尚品弥珀居家生活</span>    <span class="mat-row-metrics">CTR <b>1.64%</b><span class="sep">|</span>3s完播 <b>18.7%</b><span class="sep">|</span>播放 <b>4.2s</b></span>  </div>  <div class="frame-grid"><div class="frame-cell"><div class="ph">膝盖疼痛痛点</div><span class="step-tag"><span class="l badge-A">A</span>膝盖疼痛痛点</span><span class="step-time">0-3s</span></div><div class="frame-cell"><div class="ph">产品功能展示</div><span class="step-tag"><span class="l badge-B">B</span>产品功能展示</span><span class="step-time">3-12s</span></div><div class="frame-cell"><div class="ph">佩戴体验展示</div><span class="step-tag"><span class="l badge-C">C</span>佩戴体验展示</span><span class="step-time">12-30s</span></div><div class="frame-cell"><div class="ph">场景化展示</div><span class="step-tag"><span class="l badge-D">D</span>场景化展示</span><span class="step-time">30-50s</span></div><div class="frame-cell"><div class="ph">专业背书</div><span class="step-tag"><span class="l badge-E">E</span>专业背书</span><span class="step-time">50-65s</span></div><div class="frame-cell"><div class="ph">促销引导</div><span class="step-tag"><span class="l badge-F">F</span>促销引导</span><span class="step-time">65s+</span></div></div>  <div class="mat-interpretation"><span class="label">💡 脚本创意拆解与落地建议：</span>等待 AI 多模态大模型分析该素材视频并生成专业解读...</div>  <div class="hp">  <div class="hp-h">⚡ WorkRally 视频生成脚本    <span class="hp-actions">      <button class="hp-btn" data-hook-copy="近景镜头微距特写商品【[泊伊尚品 品牌正品]夏季必备】的工艺细节和流光溢彩的面料纹理，展现高质感。第1.5秒模特上身试戴展示高点击颜值反差，配音说『质感绝了，超高性价比！』，字幕弹出『限时福利 抢先体验』。整体画面节奏快、色彩亮眼吸睛。">📋 复制</button>      <a class="hp-btn" href="https://zenvideo.qq.com/" target="_blank" rel="noopener">🚀 腾讯智影</a>    </span>  </div>  <div class="hp-t">近景镜头微距特写商品【[泊伊尚品 品牌正品]夏季必备】的工艺细节和流光溢彩的面料纹理，展现高质感。第1.5秒模特上身试戴展示高点击颜值反差，配音说『质感绝了，超高性价比！』，字幕弹出『限时福利 抢先体验』。整体画面节奏快、色彩亮眼吸睛。</div></div></div>
+</div>
+
+<div class="footer">素材解析台 · 护膝 · 20260601</div>
+</div>
+
+<div id="_tip"></div>
+
+<script>
+// 复制按钮事件代理
+document.addEventListener("click", function(e){
+  var btn = e.target.closest("[data-hook-copy]");
+  if(!btn) return;
+  e.preventDefault();
+  var txt = btn.getAttribute("data-hook-copy") || "";
+  var ta = document.createElement("textarea");
+  ta.innerHTML = txt;
+  var decoded = ta.value;
+  function ok(){
+    var t = document.getElementById("_tip");
+    t.textContent = "✓ 已复制 WorkRally 视频生成脚本";
+    t.className = "ok"; t.style.display = "block";
+    clearTimeout(window._tipT);
+    window._tipT = setTimeout(function(){ t.style.display="none"; }, 1800);
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(decoded).then(ok);
+  } else {
+    var t2 = document.createElement("textarea");
+    t2.value = decoded; t2.style.position="fixed"; t2.style.opacity="0";
+    document.body.appendChild(t2); t2.select();
+    try { document.execCommand("copy"); ok(); } catch(_){}
+    document.body.removeChild(t2);
+  }
+});
+</script>
+</body></html>
