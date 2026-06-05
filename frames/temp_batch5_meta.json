@@ -1,0 +1,574 @@
+{
+  "d5c753572e0fdbed2c6ce7d33e129493": {
+    "product_name": "轻奢高定扭扭发夹",
+    "category": "· 发夹/发卡",
+    "file_source": "cat_发饰.html",
+    "metrics": "CTR 1.36%|",
+    "frames": [
+      {
+        "src": "frames/d5c753572e0fdbed2c6ce7d33e129493/f1.jpg",
+        "alt": "发型痛点引入",
+        "tag": "A",
+        "time": "0-3s"
+      },
+      {
+        "src": "frames/d5c753572e0fdbed2c6ce7d33e129493/f2.jpg",
+        "alt": "产品功能展示",
+        "tag": "B",
+        "time": "3-12s"
+      },
+      {
+        "src": "frames/d5c753572e0fdbed2c6ce7d33e129493/f3.jpg",
+        "alt": "佩戴效果展示",
+        "tag": "C",
+        "time": "12-30s"
+      },
+      {
+        "src": "frames/d5c753572e0fdbed2c6ce7d33e129493/f4.jpg",
+        "alt": "场景化展示",
+        "tag": "D",
+        "time": "30-50s"
+      },
+      {
+        "src": "frames/d5c753572e0fdbed2c6ce7d33e129493/f5.jpg",
+        "alt": "品质口碑",
+        "tag": "E",
+        "time": "50-65s"
+      },
+      {
+        "src": "frames/d5c753572e0fdbed2c6ce7d33e129493/f6.jpg",
+        "alt": "促销引导",
+        "tag": "F",
+        "time": "65s+"
+      }
+    ]
+  },
+  "b6bd954857e510935c379cf4b744e2dc": {
+    "product_name": "[认准高定版]春夏串珠波点丝巾女系脖复古领巾高级感配饰百搭",
+    "category": "· 女围巾/丝巾",
+    "file_source": "cat_围巾-披肩.html",
+    "metrics": "CTR 5.61%|",
+    "frames": [
+      {
+        "src": "frames/b6bd954857e510935c379cf4b744e2dc/f1.jpg",
+        "alt": "穿搭痛点引入",
+        "tag": "A",
+        "time": "0-3s"
+      },
+      {
+        "src": "frames/b6bd954857e510935c379cf4b744e2dc/f2.jpg",
+        "alt": "产品质感特写",
+        "tag": "B",
+        "time": "3-12s"
+      },
+      {
+        "src": "frames/b6bd954857e510935c379cf4b744e2dc/f3.jpg",
+        "alt": "佩戴效果展示",
+        "tag": "C",
+        "time": "12-30s"
+      },
+      {
+        "src": "frames/b6bd954857e510935c379cf4b744e2dc/f4.jpg",
+        "alt": "多场景搭配",
+        "tag": "D",
+        "time": "30-50s"
+      },
+      {
+        "src": "frames/b6bd954857e510935c379cf4b744e2dc/f5.jpg",
+        "alt": "品质背书",
+        "tag": "E",
+        "time": "50-65s"
+      },
+      {
+        "src": "frames/b6bd954857e510935c379cf4b744e2dc/f6.jpg",
+        "alt": "促销引导",
+        "tag": "F",
+        "time": "65s+"
+      }
+    ]
+  },
+  "c84d5a88d643c40c52ce5de2fdc005fd": {
+    "product_name": "[智能感光变色墨镜]室内室外日用两用太阳镜时尚减龄无框显瘦太阳镜防紫外线大圆脸自带妆容滤镜女款",
+    "category": "· 也古轻奢服配",
+    "file_source": "cat_墨镜-太阳镜.html",
+    "metrics": "CTR 1.42%|",
+    "frames": [
+      {
+        "src": "frames/c84d5a88d643c40c52ce5de2fdc005fd/f1.jpg",
+        "alt": "颜值痛点开篇",
+        "tag": "A",
+        "time": "0-3s"
+      },
+      {
+        "src": "frames/c84d5a88d643c40c52ce5de2fdc005fd/f2.jpg",
+        "alt": "佩戴效果反差",
+        "tag": "B",
+        "time": "3-12s"
+      },
+      {
+        "src": "frames/c84d5a88d643c40c52ce5de2fdc005fd/f3.jpg",
+        "alt": "功能卖点演示",
+        "tag": "C",
+        "time": "12-30s"
+      },
+      {
+        "src": "frames/c84d5a88d643c40c52ce5de2fdc005fd/f4.jpg",
+        "alt": "多场景实测",
+        "tag": "D",
+        "time": "30-50s"
+      },
+      {
+        "src": "frames/c84d5a88d643c40c52ce5de2fdc005fd/f5.jpg",
+        "alt": "用户口碑背书",
+        "tag": "E",
+        "time": "50-65s"
+      },
+      {
+        "src": "frames/c84d5a88d643c40c52ce5de2fdc005fd/f6.jpg",
+        "alt": "限时促销引导",
+        "tag": "F",
+        "time": "65s+"
+      }
+    ]
+  },
+  "c2e4a85d098cca3c670fe4ff3e217179": {
+    "product_name": "[轻薄透气]户外休闲运动帽春夏男女同款百搭轻薄透气速干棒球帽",
+    "category": "· 锦纶男女通用棒球帽",
+    "file_source": "cat_帽子.html",
+    "metrics": "CTR 1.50%|",
+    "frames": [
+      {
+        "src": "frames/c2e4a85d098cca3c670fe4ff3e217179/f1.jpg",
+        "alt": "穿搭防晒痛点",
+        "tag": "A",
+        "time": "0-3s"
+      },
+      {
+        "src": "frames/c2e4a85d098cca3c670fe4ff3e217179/f2.jpg",
+        "alt": "产品款式展示",
+        "tag": "B",
+        "time": "3-12s"
+      },
+      {
+        "src": "frames/c2e4a85d098cca3c670fe4ff3e217179/f3.jpg",
+        "alt": "佩戴效果展示",
+        "tag": "C",
+        "time": "12-30s"
+      },
+      {
+        "src": "frames/c2e4a85d098cca3c670fe4ff3e217179/f4.jpg",
+        "alt": "场景化展示",
+        "tag": "D",
+        "time": "30-50s"
+      },
+      {
+        "src": "frames/c2e4a85d098cca3c670fe4ff3e217179/f5.jpg",
+        "alt": "品质背书",
+        "tag": "E",
+        "time": "50-65s"
+      },
+      {
+        "src": "frames/c2e4a85d098cca3c670fe4ff3e217179/f6.jpg",
+        "alt": "促销引导",
+        "tag": "F",
+        "time": "65s+"
+      }
+    ]
+  },
+  "c36972c5e0f24c25a93c9403285ba031": {
+    "product_name": "【师傅推荐】精美男士戒指时尚情侣经典可调节霸气金色绿宝石戒指",
+    "category": "· 男镀金戒指/指环",
+    "file_source": "cat_戒指.html",
+    "metrics": "CTR 40.28%|",
+    "frames": [
+      {
+        "src": "frames/c36972c5e0f24c25a93c9403285ba031/f1.jpg",
+        "alt": "寓意效果开篇",
+        "tag": "A",
+        "time": "0-3s"
+      },
+      {
+        "src": "frames/c36972c5e0f24c25a93c9403285ba031/f2.jpg",
+        "alt": "产品细节特写",
+        "tag": "B",
+        "time": "3-12s"
+      },
+      {
+        "src": "frames/c36972c5e0f24c25a93c9403285ba031/f3.jpg",
+        "alt": "佩戴手部效果",
+        "tag": "C",
+        "time": "12-30s"
+      },
+      {
+        "src": "frames/c36972c5e0f24c25a93c9403285ba031/f4.jpg",
+        "alt": "多场景展示",
+        "tag": "D",
+        "time": "30-50s"
+      },
+      {
+        "src": "frames/c36972c5e0f24c25a93c9403285ba031/f5.jpg",
+        "alt": "信任背书叠加",
+        "tag": "E",
+        "time": "50-65s"
+      },
+      {
+        "src": "frames/c36972c5e0f24c25a93c9403285ba031/f6.jpg",
+        "alt": "促销引导",
+        "tag": "F",
+        "time": "65s+"
+      }
+    ]
+  },
+  "b75162aa0ecdf07ddbc2672ee0f37d5a": {
+    "product_name": "小米珠珍珠项链",
+    "category": "· 女项链",
+    "file_source": "cat_珍珠项链.html",
+    "metrics": "CTR 9.65%|",
+    "frames": [
+      {
+        "src": "frames/b75162aa0ecdf07ddbc2672ee0f37d5a/f1.jpg",
+        "alt": "气质痛点引入",
+        "tag": "A",
+        "time": "0-3s"
+      },
+      {
+        "src": "frames/b75162aa0ecdf07ddbc2672ee0f37d5a/f2.jpg",
+        "alt": "产品光泽特写",
+        "tag": "B",
+        "time": "3-12s"
+      },
+      {
+        "src": "frames/b75162aa0ecdf07ddbc2672ee0f37d5a/f3.jpg",
+        "alt": "佩戴上身效果",
+        "tag": "C",
+        "time": "12-30s"
+      },
+      {
+        "src": "frames/b75162aa0ecdf07ddbc2672ee0f37d5a/f4.jpg",
+        "alt": "多场景搭配展示",
+        "tag": "D",
+        "time": "30-50s"
+      },
+      {
+        "src": "frames/b75162aa0ecdf07ddbc2672ee0f37d5a/f5.jpg",
+        "alt": "品质品牌背书",
+        "tag": "E",
+        "time": "50-65s"
+      },
+      {
+        "src": "frames/b75162aa0ecdf07ddbc2672ee0f37d5a/f6.jpg",
+        "alt": "限时优惠促单",
+        "tag": "F",
+        "time": "65s+"
+      }
+    ]
+  },
+  "be1b247e65f2cdee2875497abbb97932": {
+    "product_name": "紫色皇冠珍珠项链",
+    "category": "· 女项链",
+    "file_source": "cat_珍珠项链.html",
+    "metrics": "CTR 9.84%|",
+    "frames": [
+      {
+        "src": "frames/be1b247e65f2cdee2875497abbb97932/f1.jpg",
+        "alt": "气质痛点引入",
+        "tag": "A",
+        "time": "0-3s"
+      },
+      {
+        "src": "frames/be1b247e65f2cdee2875497abbb97932/f2.jpg",
+        "alt": "产品光泽特写",
+        "tag": "B",
+        "time": "3-12s"
+      },
+      {
+        "src": "frames/be1b247e65f2cdee2875497abbb97932/f3.jpg",
+        "alt": "佩戴上身效果",
+        "tag": "C",
+        "time": "12-30s"
+      },
+      {
+        "src": "frames/be1b247e65f2cdee2875497abbb97932/f4.jpg",
+        "alt": "多场景搭配展示",
+        "tag": "D",
+        "time": "30-50s"
+      },
+      {
+        "src": "frames/be1b247e65f2cdee2875497abbb97932/f5.jpg",
+        "alt": "品质品牌背书",
+        "tag": "E",
+        "time": "50-65s"
+      },
+      {
+        "src": "frames/be1b247e65f2cdee2875497abbb97932/f6.jpg",
+        "alt": "限时优惠促单",
+        "tag": "F",
+        "time": "65s+"
+      }
+    ]
+  },
+  "cbe52624e3722d08b8d9586a82871ecf": {
+    "product_name": "法式轻奢皇冠珍珠项链",
+    "category": "· 女项链",
+    "file_source": "cat_珍珠项链.html",
+    "metrics": "CTR 11.23%|",
+    "frames": [
+      {
+        "src": "frames/cbe52624e3722d08b8d9586a82871ecf/f1.jpg",
+        "alt": "气质痛点引入",
+        "tag": "A",
+        "time": "0-3s"
+      },
+      {
+        "src": "frames/cbe52624e3722d08b8d9586a82871ecf/f2.jpg",
+        "alt": "产品光泽特写",
+        "tag": "B",
+        "time": "3-12s"
+      },
+      {
+        "src": "frames/cbe52624e3722d08b8d9586a82871ecf/f3.jpg",
+        "alt": "佩戴上身效果",
+        "tag": "C",
+        "time": "12-30s"
+      },
+      {
+        "src": "frames/cbe52624e3722d08b8d9586a82871ecf/f4.jpg",
+        "alt": "多场景搭配展示",
+        "tag": "D",
+        "time": "30-50s"
+      },
+      {
+        "src": "frames/cbe52624e3722d08b8d9586a82871ecf/f5.jpg",
+        "alt": "品质品牌背书",
+        "tag": "E",
+        "time": "50-65s"
+      },
+      {
+        "src": "frames/cbe52624e3722d08b8d9586a82871ecf/f6.jpg",
+        "alt": "限时优惠促单",
+        "tag": "F",
+        "time": "65s+"
+      }
+    ]
+  },
+  "c6173bc9e9e7bbdda2f9e7568d994770": {
+    "product_name": "男女通用老花眼镜",
+    "category": "· 男女通用老花眼镜",
+    "file_source": "cat_老花镜.html",
+    "metrics": "CTR 1.85%|",
+    "frames": [
+      {
+        "src": "frames/c6173bc9e9e7bbdda2f9e7568d994770/f1.jpg",
+        "alt": "中老年用眼痛点",
+        "tag": "A",
+        "time": "0-3s"
+      },
+      {
+        "src": "frames/c6173bc9e9e7bbdda2f9e7568d994770/f2.jpg",
+        "alt": "产品功能亮相",
+        "tag": "B",
+        "time": "3-12s"
+      },
+      {
+        "src": "frames/c6173bc9e9e7bbdda2f9e7568d994770/f3.jpg",
+        "alt": "真实使用场景",
+        "tag": "C",
+        "time": "12-30s"
+      },
+      {
+        "src": "frames/c6173bc9e9e7bbdda2f9e7568d994770/f4.jpg",
+        "alt": "效果对比演示",
+        "tag": "D",
+        "time": "30-50s"
+      },
+      {
+        "src": "frames/c6173bc9e9e7bbdda2f9e7568d994770/f5.jpg",
+        "alt": "信任背书叠加",
+        "tag": "E",
+        "time": "50-65s"
+      },
+      {
+        "src": "frames/c6173bc9e9e7bbdda2f9e7568d994770/f6.jpg",
+        "alt": "促销引导下单",
+        "tag": "F",
+        "time": "65s+"
+      }
+    ]
+  },
+  "c687ddeee53cbe8dbb0f650091c980df": {
+    "product_name": "j冰丝挂耳防晒口罩",
+    "category": "· 女防晒口罩",
+    "file_source": "cat_防晒口罩.html",
+    "metrics": "CTR 1.46%|",
+    "frames": [
+      {
+        "src": "frames/c687ddeee53cbe8dbb0f650091c980df/f1.jpg",
+        "alt": "紫外线伤害痛点",
+        "tag": "A",
+        "time": "0-3s"
+      },
+      {
+        "src": "frames/c687ddeee53cbe8dbb0f650091c980df/f2.jpg",
+        "alt": "产品功能展示",
+        "tag": "B",
+        "time": "3-12s"
+      },
+      {
+        "src": "frames/c687ddeee53cbe8dbb0f650091c980df/f3.jpg",
+        "alt": "佩戴实测",
+        "tag": "C",
+        "time": "12-30s"
+      },
+      {
+        "src": "frames/c687ddeee53cbe8dbb0f650091c980df/f4.jpg",
+        "alt": "场景化展示",
+        "tag": "D",
+        "time": "30-50s"
+      },
+      {
+        "src": "frames/c687ddeee53cbe8dbb0f650091c980df/f5.jpg",
+        "alt": "品质口碑背书",
+        "tag": "E",
+        "time": "50-65s"
+      },
+      {
+        "src": "frames/c687ddeee53cbe8dbb0f650091c980df/f6.jpg",
+        "alt": "促销引导下单",
+        "tag": "F",
+        "time": "65s+"
+      }
+    ]
+  },
+  "d6124d2609f08b059289de79e1d74e62": {
+    "product_name": "护颈防晒口罩可喝水",
+    "category": "· 男女通用防晒口罩",
+    "file_source": "cat_防晒口罩.html",
+    "metrics": "CTR 1.67%|",
+    "frames": [
+      {
+        "src": "frames/d6124d2609f08b059289de79e1d74e62/f1.jpg",
+        "alt": "紫外线伤害痛点",
+        "tag": "A",
+        "time": "0-3s"
+      },
+      {
+        "src": "frames/d6124d2609f08b059289de79e1d74e62/f2.jpg",
+        "alt": "产品功能展示",
+        "tag": "B",
+        "time": "3-12s"
+      },
+      {
+        "src": "frames/d6124d2609f08b059289de79e1d74e62/f3.jpg",
+        "alt": "佩戴实测",
+        "tag": "C",
+        "time": "12-30s"
+      },
+      {
+        "src": "frames/d6124d2609f08b059289de79e1d74e62/f4.jpg",
+        "alt": "场景化展示",
+        "tag": "D",
+        "time": "30-50s"
+      },
+      {
+        "src": "frames/d6124d2609f08b059289de79e1d74e62/f5.jpg",
+        "alt": "品质口碑背书",
+        "tag": "E",
+        "time": "50-65s"
+      },
+      {
+        "src": "frames/d6124d2609f08b059289de79e1d74e62/f6.jpg",
+        "alt": "促销引导下单",
+        "tag": "F",
+        "time": "65s+"
+      }
+    ]
+  },
+  "d2e22bf814ed4de1f534e8b26467fc1e": {
+    "product_name": "韩版条纹防晒帽",
+    "category": "· 女防晒渔夫帽",
+    "file_source": "cat_防晒帽.html",
+    "metrics": "CTR 5.58%|",
+    "frames": [
+      {
+        "src": "frames/d2e22bf814ed4de1f534e8b26467fc1e/f1.jpg",
+        "alt": "防晒痛点引入",
+        "tag": "A",
+        "time": "0-3s"
+      },
+      {
+        "src": "frames/d2e22bf814ed4de1f534e8b26467fc1e/f2.jpg",
+        "alt": "产品功能展示",
+        "tag": "B",
+        "time": "3-12s"
+      },
+      {
+        "src": "frames/d2e22bf814ed4de1f534e8b26467fc1e/f3.jpg",
+        "alt": "佩戴效果展示",
+        "tag": "C",
+        "time": "12-30s"
+      },
+      {
+        "src": "frames/d2e22bf814ed4de1f534e8b26467fc1e/f4.jpg",
+        "alt": "场景化体验",
+        "tag": "D",
+        "time": "30-50s"
+      },
+      {
+        "src": "frames/d2e22bf814ed4de1f534e8b26467fc1e/f5.jpg",
+        "alt": "品质背书",
+        "tag": "E",
+        "time": "50-65s"
+      },
+      {
+        "src": "frames/d2e22bf814ed4de1f534e8b26467fc1e/f6.jpg",
+        "alt": "促销引导",
+        "tag": "F",
+        "time": "65s+"
+      }
+    ]
+  },
+  "bc77731f2d118f38ac3485eb49ec1838": {
+    "product_name": "【师傅推荐】2026款青绿色吊坠精工雕刻时尚吊坠男女随身挂件",
+    "category": "· 男女通用颈饰",
+    "file_source": "cat_项链.html",
+    "metrics": "CTR 35.00%|",
+    "frames": [
+      {
+        "src": "frames/bc77731f2d118f38ac3485eb49ec1838/f1.jpg",
+        "alt": "穿搭痛点引入",
+        "tag": "A",
+        "time": "0-3s"
+      },
+      {
+        "src": "frames/bc77731f2d118f38ac3485eb49ec1838/f2.jpg",
+        "alt": "产品质感特写",
+        "tag": "B",
+        "time": "3-12s"
+      },
+      {
+        "src": "frames/bc77731f2d118f38ac3485eb49ec1838/f3.jpg",
+        "alt": "锁骨效果展示",
+        "tag": "C",
+        "time": "12-30s"
+      },
+      {
+        "src": "frames/bc77731f2d118f38ac3485eb49ec1838/f4.jpg",
+        "alt": "多风格搭配",
+        "tag": "D",
+        "time": "30-50s"
+      },
+      {
+        "src": "frames/bc77731f2d118f38ac3485eb49ec1838/f5.jpg",
+        "alt": "品质背书",
+        "tag": "E",
+        "time": "50-65s"
+      },
+      {
+        "src": "frames/bc77731f2d118f38ac3485eb49ec1838/f6.jpg",
+        "alt": "促销引导下单",
+        "tag": "F",
+        "time": "65s+"
+      }
+    ]
+  }
+}
