@@ -1,0 +1,458 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>👓 老花镜/眼镜 · 素材解析台</title><style>
+:root{--bg:#F7F9FC;--card:#FFFFFF;--t1:#1A1A1A;--t2:#666666;--bdr:#E8ECF0;--bl:#1F4E79;--bm:#2E75B6;--blt:#8FAADC;--bp:#C7D8EE;--gn:#2E7D32;--rd:#C62828;--og:#E65100}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Microsoft YaHei","PingFang SC",-apple-system,sans-serif;background:var(--bg);color:var(--t1);line-height:1.6}
+a{color:var(--bm);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:24px 20px}
+.header{text-align:center;padding:32px 0 24px;border-bottom:2px solid var(--bl);margin-bottom:32px}
+.header h1{font-size:24px;font-weight:700;color:var(--bl);margin-bottom:4px}
+.header .sub{font-size:13px;color:var(--t2)}
+.stats-row{display:flex;justify-content:center;gap:28px;margin-top:16px}
+.stat-item{text-align:center}
+.stat-val{font-size:28px;font-weight:700;color:var(--bl)}
+.stat-lbl{font-size:12px;color:var(--t2)}
+.section{margin-bottom:40px}
+.section-title{font-size:18px;font-weight:700;color:var(--bl);margin-bottom:16px;padding-bottom:6px;border-bottom:1px solid var(--bdr)}
+.section-title .emoji{margin-right:6px}
+.section-title .count{font-size:13px;font-weight:400;color:var(--t2);margin-left:6px}
+/* Card */
+.cat-card{background:var(--card);border-radius:10px;padding:20px;margin-bottom:14px;box-shadow:0 1px 6px rgba(0,0,0,.06);border:1px solid var(--bdr);transition:box-shadow .2s}
+.cat-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.cat-hdr{display:flex;align-items:center;gap:8px;margin-bottom:12px;padding-bottom:10px;border-bottom:2px solid var(--bp)}
+.cat-emoji{font-size:22px}
+.cat-name{font-size:16px;font-weight:700;color:var(--bl)}
+.cat-count{font-size:12px;color:var(--t2);margin-left:auto}
+.cat-link{color:var(--bm);font-size:13px}
+/* Metrics */
+.metrics-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:12px}
+.metric{text-align:center;padding:8px 2px;background:#F0F4F8;border-radius:6px}
+.metric-val{font-size:14px;font-weight:700;color:var(--bl)}
+.metric-lbl{font-size:10px;color:var(--t2);margin-top:1px}
+/* Framework */
+.framework{background:linear-gradient(135deg,#F0F4F8,#E8ECF0);border-radius:6px;padding:10px 14px;margin-bottom:10px;font-size:13px}
+.fw-label{font-weight:600;color:var(--bl);margin-right:6px}
+.fw-steps{color:var(--t1);line-height:1.7}
+/* Styles */
+.style-tags{font-size:12px;color:var(--t2);margin-bottom:8px}
+.style-label{font-weight:600;color:var(--t1)}
+/* Detail page learning */
+.learning-card{background:var(--card);border-radius:10px;padding:20px;margin-bottom:14px;border:1px solid var(--bdr);box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.learning-title{font-size:15px;font-weight:700;color:var(--bl);margin-bottom:12px}
+.learning-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.learn-item{padding:10px 14px;background:#F0F4F8;border-radius:6px;border-left:3px solid var(--bm)}
+.learn-item .li-title{font-size:12px;font-weight:700;color:var(--bl);margin-bottom:4px}
+.learn-item .li-content{font-size:13px;color:var(--t1);line-height:1.7}
+/* Prompt box */
+.prompt-box{background:#FFF8E1;border-radius:8px;padding:14px 18px;margin:12px 0;border-left:4px solid #FFB300;font-size:13px;line-height:1.8}
+.prompt-label{font-weight:700;color:var(--og);margin-bottom:4px}
+/* Material card */
+.mat-card{background:var(--card);border-radius:10px;padding:18px;margin-bottom:14px;border:1px solid var(--bdr);box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.mat-hdr{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.mat-idx{font-size:13px;font-weight:700;color:var(--bm);background:#E8ECF0;border-radius:4px;padding:2px 8px}
+.mat-tags{display:flex;gap:4px;flex-wrap:wrap}
+.mat-tag{font-size:10px;padding:2px 6px;border-radius:3px;color:#fff;font-weight:600}
+.tag-消耗{background:var(--rd)}.tag-点击{background:var(--og)}.tag-转化{background:var(--gn)}.tag-留存{background:var(--bm)}
+.mat-dpa{font-size:13px;color:var(--t1);margin-bottom:4px;word-break:break-all}
+.mat-mkt{font-size:12px;color:var(--t2)}
+.mat-metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:10px 0}
+.mat-m{text-align:center;padding:6px 2px;background:#F0F4F8;border-radius:4px}
+.mat-m-val{font-size:13px;font-weight:700;color:var(--bl)}
+.mat-m-lbl{font-size:10px;color:var(--t2)}
+/* 3s structure timeline */
+.timeline{display:flex;gap:4px;margin:10px 0;flex-wrap:wrap}
+.tl-step{flex:1;min-width:80px;text-align:center;padding:8px 4px;background:var(--bp);border-radius:6px;font-size:11px}
+.tl-step .tl-time{font-weight:700;color:var(--bl);font-size:10px;display:block;margin-top:2px}
+.tl-step .tl-label{color:var(--t1);font-weight:600}
+/* Insight card */
+.insight-card{background:var(--card);border-radius:8px;padding:14px 18px;margin-bottom:10px;border-left:4px solid var(--bm);box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.insight-title{font-size:14px;font-weight:600;color:var(--bl);margin-bottom:4px}
+.insight-content{font-size:13px;color:var(--t1);line-height:1.7}
+/* Back link */
+.back-link{display:inline-block;margin-bottom:16px;font-size:13px;color:var(--bm)}
+.footer{text-align:center;padding:24px 0;margin-top:36px;border-top:1px solid var(--bdr);font-size:12px;color:var(--t2)}
+@media(max-width:768px){.metrics-grid,.mat-metrics{grid-template-columns:repeat(3,1fr)}.stats-row{gap:12px}.stat-val{font-size:22px}}
+</style></head><body><div class="container">
+<a class="back-link" href="index.html">← 返回首页</a>
+<div class="header"><h1>👓 老花镜/眼镜</h1>
+<div class="sub">📦 76 条素材 · 🔥 28 条起量</div>
+<div class="stats-row">
+    <div class="stat-item"><div class="stat-val">¥27.5万</div><div class="stat-lbl">总消耗</div></div>
+    <div class="stat-item"><div class="stat-val">3.62%</div><div class="stat-lbl">平均CTR<span style="color:var(--gn);font-size:12px;margin-left:6px">起量CTR 4.36% ↑20%</span></div></div>
+    <div class="stat-item"><div class="stat-val">39.1%</div><div class="stat-lbl">3s完播</div></div>
+    <div class="stat-item"><div class="stat-val">7.81%</div><div class="stat-lbl">播放时长</div></div>
+    <div class="stat-item"><div class="stat-val">1.68</div><div class="stat-lbl">ROI</div></div>
+</div></div>
+
+<!-- 脚本框架 -->
+<div class="section">
+    <div class="section-title"><span class="emoji">📋</span>起量素材脚本框架 · 5 段结构</div>
+    <div class="framework"><span class="fw-label">脚本框架：</span><span class="fw-steps">中老年用眼痛点 → 产品功能演示（防蓝光/远近两用）→ 真实使用场景 → 效果对比 → 限时优惠</span></div>
+    <div class="timeline"><div class="tl-step"><div class="tl-label">痛点引入</div><span class="tl-time">0-6s</span></div><div class="tl-step"><div class="tl-label">功能演示</div><span class="tl-time">6-12s</span></div><div class="tl-step"><div class="tl-label">使用场景</div><span class="tl-time">12-18s</span></div><div class="tl-step"><div class="tl-label">效果对比</div><span class="tl-time">18-24s</span></div><div class="tl-step"><div class="tl-label">限时优惠</div><span class="tl-time">24-30s</span></div></div>
+</div>
+
+<!-- 跑量Learning -->
+<div class="section">
+    <div class="section-title"><span class="emoji">💡</span>跑量 Learning · 5 维度共性归因</div>
+    <div class="learning-grid"><div class="learn-item">
+            <div class="li-title">👤 模特</div>
+            <div class="li-content">选用50-65岁中老年人真实佩戴，看书看手机场景增加代入感；品牌款选用明星/医生人设增加信任</div>
+        </div><div class="learn-item">
+            <div class="li-title">🎯 痛点表达</div>
+            <div class="li-content">精准击中「看手机字太小」「看书要摘了戴戴了摘」「蓝光伤眼」等高频痛点</div>
+        </div><div class="learn-item">
+            <div class="li-title">🎬 场景</div>
+            <div class="li-content">居家看书看报+看手机+户外场景，贴近中老年人日常</div>
+        </div><div class="learn-item">
+            <div class="li-title">✨ 效果呈现</div>
+            <div class="li-content">远近两用功能演示是核心——同一副眼镜看远看近都清晰；防蓝光功能用蓝光测试笔展示</div>
+        </div><div class="learn-item">
+            <div class="li-title">💬 爆款话术</div>
+            <div class="li-content">①痛点型：「看手机字小看不清？一副搞定远近」②功能型：「防蓝光+远近两用，一副顶三副」③品牌型：「ZIPPO品质，戴10年不坏」</div>
+        </div></div>
+</div>
+
+<!-- 黄金3s Prompt -->
+<div class="section">
+    <div class="section-title"><span class="emoji">⚡</span>黄金 3s Prompt</div>
+    <div class="prompt-box">
+        <div class="prompt-label">⚡ 前3秒脚本 Prompt</div>
+        中景镜头拍摄中老年人手拿报纸眯眼吃力阅读，画面叠加字幕「看字越来越费劲？」。1秒后快切为戴上老花镜后轻松阅读的表情，配音用亲切女声说「一副眼镜，看远看近都清晰」。节奏紧凑，用「痛点→解决」的反差制造停留钩子。
+    </div>
+</div>
+
+<!-- TOP客户 -->
+<div class="section">
+    <div class="section-title"><span class="emoji">👥</span>TOP 客户分布</div>
+    <div style="font-size:13px;color:var(--t1)">美妆老花镜(10条/¥71,522)、男女通用老花眼镜(15条/¥60,953)、男老花眼镜(11条/¥47,117)、方形男女通用老花眼镜(10条/¥24,691)、女老花眼镜(8条/¥18,839)</div>
+</div>
+
+<!-- 素材列表 -->
+<div class="section">
+    <div class="section-title"><span class="emoji">📦</span>全量素材 · 76 条</div>
+    
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#728</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span><span class="mat-tag tag-点击">高点击</span></div>
+            </div>
+            <div class="mat-dpa">时尚减龄高清养眼小字放大防蓝光花镜中老年专用老花眼镜</div>
+            <div class="mat-mkt">营销对象：美妆老花镜</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥2.3万</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.93%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">34.2%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">7.9s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.00</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥50</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#468</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span></div>
+            </div>
+            <div class="mat-dpa">高档老花镜时尚简约显年轻优雅大气时尚远近两用</div>
+            <div class="mat-mkt">营销对象：男女通用老花眼镜</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥2.2万</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.01%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">26.3%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">8.9s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.52</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥298</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#406</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">超轻无边框防蓝光老人老光老花镜1</div>
+            <div class="mat-mkt">营销对象：男老花眼镜</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1.8万</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.22%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">61.8%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">9.1s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.04</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥69</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#626</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">男女通用老花眼镜</div>
+            <div class="mat-mkt">营销对象：男女通用老花眼镜</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1.3万</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.85%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">34.7%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">6.7s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.02</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥69</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#726</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span></div>
+            </div>
+            <div class="mat-dpa">时尚减龄高清养眼小字放大防蓝光花镜中老年专用老花眼镜</div>
+            <div class="mat-mkt">营销对象：美妆老花镜</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥9,780</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.16%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">45.0%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">6.7s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.93</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥50</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#992</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">ZIPPO时尚品牌老花镜超轻柔韧防蓝光紫外线佩戴舒适不易折耐用男女正品8188</div>
+            <div class="mat-mkt">营销对象：芝宝/ZIPPO男女通用老花眼镜</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥9,583</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.83%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">21.1%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.8s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.88</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥62</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#725</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span><span class="mat-tag tag-点击">高点击</span></div>
+            </div>
+            <div class="mat-dpa">时尚减龄高清养眼小字放大防蓝光花镜中老年专用老花眼镜</div>
+            <div class="mat-mkt">营销对象：美妆老花镜</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥7,998</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.97%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">46.9%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">8.1s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.95</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥50</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#633</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span></div>
+            </div>
+            <div class="mat-dpa">男士老花镜时尚半框商务1</div>
+            <div class="mat-mkt">营销对象：男老花眼镜</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥7,891</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.50%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">38.1%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">9.8s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.00</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥69</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#197</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span></div>
+            </div>
+            <div class="mat-dpa">【轻盈时尚】减龄美颜气质老花美颜超轻气质时尚清晰超清老镜密封</div>
+            <div class="mat-mkt">营销对象：方形男女通用老花眼镜</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥7,445</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.41%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">23.3%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">6.4s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.61</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#732</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span><span class="mat-tag tag-点击">高点击</span><span class="mat-tag tag-转化">高转化</span><span class="mat-tag tag-留存">高留存</span></div>
+            </div>
+            <div class="mat-dpa">时尚减龄高清养眼小字放大防蓝光花镜中老年专用老花眼镜</div>
+            <div class="mat-mkt">营销对象：美妆老花镜</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥7,172</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.91%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">66.7%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">11.4s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.50</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥50</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#445</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">防蓝光老花镜-爆</div>
+            <div class="mat-mkt">营销对象：男老花眼镜</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥6,688</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.42%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">23.9%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">6.6s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.30</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥100</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#733</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span></div>
+            </div>
+            <div class="mat-dpa">时尚减龄高清养眼小字放大防蓝光花镜中老年专用老花眼镜</div>
+            <div class="mat-mkt">营销对象：美妆老花镜</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥6,458</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.33%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">44.0%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">7.9s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.87</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥50</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#896</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span><span class="mat-tag tag-留存">高留存</span></div>
+            </div>
+            <div class="mat-dpa">新款高档无框切边老花镜5</div>
+            <div class="mat-mkt">营销对象：多边形男女通用老花眼镜</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥6,087</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.94%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">72.5%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">14.3s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.01</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥69</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#748</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span></div>
+            </div>
+            <div class="mat-dpa">时尚新款中老年高清老花眼镜女时尚超轻老人防蓝光老光花镜</div>
+            <div class="mat-mkt">营销对象：蔚也眼镜1店</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥5,224</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.56%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">45.0%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">8.5s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.03</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥20</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#144</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span><span class="mat-tag tag-点击">高点击</span></div>
+            </div>
+            <div class="mat-dpa">【德式老花镜】男女同款 豹纹镜腿设计时尚百搭高清防蓝光老花镜</div>
+            <div class="mat-mkt">营销对象：男女通用老花眼镜</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥5,182</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.89%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">23.9%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">7.9s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.73</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥60</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#734</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span></div>
+            </div>
+            <div class="mat-dpa">时尚减龄高清养眼小字放大防蓝光花镜中老年专用老花眼镜</div>
+            <div class="mat-mkt">营销对象：美妆老花镜</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥5,093</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.27%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">26.7%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.4s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.11</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥50</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#730</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span><span class="mat-tag tag-点击">高点击</span></div>
+            </div>
+            <div class="mat-dpa">时尚减龄高清养眼小字放大防蓝光花镜中老年专用老花眼镜</div>
+            <div class="mat-mkt">营销对象：美妆老花镜</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥5,006</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.83%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">57.5%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">9.3s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.94</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥50</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#921</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">中老年高档无框老花镜1</div>
+            <div class="mat-mkt">营销对象：女老花眼镜</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥4,931</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.27%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">35.1%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">6.7s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.04</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥69</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#922</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">中老年高档无框老花镜2</div>
+            <div class="mat-mkt">营销对象：男女通用老花眼镜</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥4,916</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.70%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">31.0%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">6.3s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">0.98</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥69</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#186</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">【轻奢护目】复古文艺方框老花镜减龄无螺丝防蓝光防辐射阅读眼镜</div>
+            <div class="mat-mkt">营销对象：方形男女通用老花眼镜</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥3,930</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.74%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">21.2%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.4s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.69</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥288</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+</div>
+
+<div class="footer">素材解析台 · 珠宝饰品行业 · 老花镜/眼镜 · 20260601</div>
+</div></body></html>
