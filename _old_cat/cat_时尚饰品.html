@@ -1,0 +1,458 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>💎 时尚饰品 · 素材解析台</title><style>
+:root{--bg:#F7F9FC;--card:#FFFFFF;--t1:#1A1A1A;--t2:#666666;--bdr:#E8ECF0;--bl:#1F4E79;--bm:#2E75B6;--blt:#8FAADC;--bp:#C7D8EE;--gn:#2E7D32;--rd:#C62828;--og:#E65100}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Microsoft YaHei","PingFang SC",-apple-system,sans-serif;background:var(--bg);color:var(--t1);line-height:1.6}
+a{color:var(--bm);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:24px 20px}
+.header{text-align:center;padding:32px 0 24px;border-bottom:2px solid var(--bl);margin-bottom:32px}
+.header h1{font-size:24px;font-weight:700;color:var(--bl);margin-bottom:4px}
+.header .sub{font-size:13px;color:var(--t2)}
+.stats-row{display:flex;justify-content:center;gap:28px;margin-top:16px}
+.stat-item{text-align:center}
+.stat-val{font-size:28px;font-weight:700;color:var(--bl)}
+.stat-lbl{font-size:12px;color:var(--t2)}
+.section{margin-bottom:40px}
+.section-title{font-size:18px;font-weight:700;color:var(--bl);margin-bottom:16px;padding-bottom:6px;border-bottom:1px solid var(--bdr)}
+.section-title .emoji{margin-right:6px}
+.section-title .count{font-size:13px;font-weight:400;color:var(--t2);margin-left:6px}
+/* Card */
+.cat-card{background:var(--card);border-radius:10px;padding:20px;margin-bottom:14px;box-shadow:0 1px 6px rgba(0,0,0,.06);border:1px solid var(--bdr);transition:box-shadow .2s}
+.cat-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.cat-hdr{display:flex;align-items:center;gap:8px;margin-bottom:12px;padding-bottom:10px;border-bottom:2px solid var(--bp)}
+.cat-emoji{font-size:22px}
+.cat-name{font-size:16px;font-weight:700;color:var(--bl)}
+.cat-count{font-size:12px;color:var(--t2);margin-left:auto}
+.cat-link{color:var(--bm);font-size:13px}
+/* Metrics */
+.metrics-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:12px}
+.metric{text-align:center;padding:8px 2px;background:#F0F4F8;border-radius:6px}
+.metric-val{font-size:14px;font-weight:700;color:var(--bl)}
+.metric-lbl{font-size:10px;color:var(--t2);margin-top:1px}
+/* Framework */
+.framework{background:linear-gradient(135deg,#F0F4F8,#E8ECF0);border-radius:6px;padding:10px 14px;margin-bottom:10px;font-size:13px}
+.fw-label{font-weight:600;color:var(--bl);margin-right:6px}
+.fw-steps{color:var(--t1);line-height:1.7}
+/* Styles */
+.style-tags{font-size:12px;color:var(--t2);margin-bottom:8px}
+.style-label{font-weight:600;color:var(--t1)}
+/* Detail page learning */
+.learning-card{background:var(--card);border-radius:10px;padding:20px;margin-bottom:14px;border:1px solid var(--bdr);box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.learning-title{font-size:15px;font-weight:700;color:var(--bl);margin-bottom:12px}
+.learning-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.learn-item{padding:10px 14px;background:#F0F4F8;border-radius:6px;border-left:3px solid var(--bm)}
+.learn-item .li-title{font-size:12px;font-weight:700;color:var(--bl);margin-bottom:4px}
+.learn-item .li-content{font-size:13px;color:var(--t1);line-height:1.7}
+/* Prompt box */
+.prompt-box{background:#FFF8E1;border-radius:8px;padding:14px 18px;margin:12px 0;border-left:4px solid #FFB300;font-size:13px;line-height:1.8}
+.prompt-label{font-weight:700;color:var(--og);margin-bottom:4px}
+/* Material card */
+.mat-card{background:var(--card);border-radius:10px;padding:18px;margin-bottom:14px;border:1px solid var(--bdr);box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.mat-hdr{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.mat-idx{font-size:13px;font-weight:700;color:var(--bm);background:#E8ECF0;border-radius:4px;padding:2px 8px}
+.mat-tags{display:flex;gap:4px;flex-wrap:wrap}
+.mat-tag{font-size:10px;padding:2px 6px;border-radius:3px;color:#fff;font-weight:600}
+.tag-消耗{background:var(--rd)}.tag-点击{background:var(--og)}.tag-转化{background:var(--gn)}.tag-留存{background:var(--bm)}
+.mat-dpa{font-size:13px;color:var(--t1);margin-bottom:4px;word-break:break-all}
+.mat-mkt{font-size:12px;color:var(--t2)}
+.mat-metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:10px 0}
+.mat-m{text-align:center;padding:6px 2px;background:#F0F4F8;border-radius:4px}
+.mat-m-val{font-size:13px;font-weight:700;color:var(--bl)}
+.mat-m-lbl{font-size:10px;color:var(--t2)}
+/* 3s structure timeline */
+.timeline{display:flex;gap:4px;margin:10px 0;flex-wrap:wrap}
+.tl-step{flex:1;min-width:80px;text-align:center;padding:8px 4px;background:var(--bp);border-radius:6px;font-size:11px}
+.tl-step .tl-time{font-weight:700;color:var(--bl);font-size:10px;display:block;margin-top:2px}
+.tl-step .tl-label{color:var(--t1);font-weight:600}
+/* Insight card */
+.insight-card{background:var(--card);border-radius:8px;padding:14px 18px;margin-bottom:10px;border-left:4px solid var(--bm);box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.insight-title{font-size:14px;font-weight:600;color:var(--bl);margin-bottom:4px}
+.insight-content{font-size:13px;color:var(--t1);line-height:1.7}
+/* Back link */
+.back-link{display:inline-block;margin-bottom:16px;font-size:13px;color:var(--bm)}
+.footer{text-align:center;padding:24px 0;margin-top:36px;border-top:1px solid var(--bdr);font-size:12px;color:var(--t2)}
+@media(max-width:768px){.metrics-grid,.mat-metrics{grid-template-columns:repeat(3,1fr)}.stats-row{gap:12px}.stat-val{font-size:22px}}
+</style></head><body><div class="container">
+<a class="back-link" href="index.html">← 返回首页</a>
+<div class="header"><h1>💎 时尚饰品</h1>
+<div class="sub">📦 21 条素材 · 🔥 8 条起量</div>
+<div class="stats-row">
+    <div class="stat-item"><div class="stat-val">¥5.0万</div><div class="stat-lbl">总消耗</div></div>
+    <div class="stat-item"><div class="stat-val">44.02%</div><div class="stat-lbl">平均CTR<span style="color:var(--rd);font-size:12px;margin-left:6px">起量CTR 42.44% ↓4%</span></div></div>
+    <div class="stat-item"><div class="stat-val">42.7%</div><div class="stat-lbl">3s完播</div></div>
+    <div class="stat-item"><div class="stat-val">44.92%</div><div class="stat-lbl">播放时长</div></div>
+    <div class="stat-item"><div class="stat-val">1.29</div><div class="stat-lbl">ROI</div></div>
+</div></div>
+
+<!-- 脚本框架 -->
+<div class="section">
+    <div class="section-title"><span class="emoji">📋</span>起量素材脚本框架 · 5 段结构</div>
+    <div class="framework"><span class="fw-label">脚本框架：</span><span class="fw-steps">产品亮点开篇 → 功能/效果展示 → 场景化体验 → 用户口碑 → 促单收尾</span></div>
+    <div class="timeline"><div class="tl-step"><div class="tl-label">亮点开篇</div><span class="tl-time">0-13s</span></div><div class="tl-step"><div class="tl-label">效果展示</div><span class="tl-time">13-26s</span></div><div class="tl-step"><div class="tl-label">场景体验</div><span class="tl-time">26-40s</span></div><div class="tl-step"><div class="tl-label">用户口碑</div><span class="tl-time">40-53s</span></div><div class="tl-step"><div class="tl-label">促单收尾</div><span class="tl-time">53-67s</span></div></div>
+</div>
+
+<!-- 跑量Learning -->
+<div class="section">
+    <div class="section-title"><span class="emoji">💡</span>跑量 Learning · 5 维度共性归因</div>
+    <div class="learning-grid"><div class="learn-item">
+            <div class="li-title">👤 模特</div>
+            <div class="li-content">选用与目标客群年龄/气质匹配的模特，增强代入感</div>
+        </div><div class="learn-item">
+            <div class="li-title">🎯 痛点表达</div>
+            <div class="li-content">围绕品类核心痛点，用具象化语言放大痛感，让用户对号入座</div>
+        </div><div class="learn-item">
+            <div class="li-title">🎬 场景</div>
+            <div class="li-content">真实生活场景+产品使用场景交替，弱化广告感增强信任</div>
+        </div><div class="learn-item">
+            <div class="li-title">✨ 效果呈现</div>
+            <div class="li-content">使用前后对比+产品细节特写+用户证言，让效果可感知</div>
+        </div><div class="learn-item">
+            <div class="li-title">💬 爆款话术</div>
+            <div class="li-content">①悬念型：「你绝对想不到…」②反差型：「以前觉得…现在才知道…」③紧迫型：「手慢无/限时/断货」</div>
+        </div></div>
+</div>
+
+<!-- 黄金3s Prompt -->
+<div class="section">
+    <div class="section-title"><span class="emoji">⚡</span>黄金 3s Prompt</div>
+    <div class="prompt-box">
+        <div class="prompt-label">⚡ 前3秒脚本 Prompt</div>
+        产品出镜开篇，用核心卖点话术吸引停留，1秒内展示最吸引人的产品效果，3秒内完成痛点→解决方案的切换，制造「想继续看」的好奇心。
+    </div>
+</div>
+
+<!-- TOP客户 -->
+<div class="section">
+    <div class="section-title"><span class="emoji">👥</span>TOP 客户分布</div>
+    <div style="font-size:13px;color:var(--t1)">男女通用单吊坠(10条/¥24,415)、男女通用平安扣(5条/¥11,063)、时尚饰品(5条/¥7,121)、君御服饰配件(1条/¥7,097)</div>
+</div>
+
+<!-- 素材列表 -->
+<div class="section">
+    <div class="section-title"><span class="emoji">📦</span>全量素材 · 21 条</div>
+    
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#30</span>
+                <div class="mat-tags"><span class="mat-tag tag-转化">高转化</span></div>
+            </div>
+            <div class="mat-dpa">[君御]蝴蝶收腰扣时尚免打孔牛仔裤腰围改小收紧可拆卸调节神器</div>
+            <div class="mat-mkt">营销对象：君御服饰配件</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥7,097</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.64%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">33.5%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">7.1s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.67</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥30</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#722</span>
+                <div class="mat-tags"><span class="mat-tag tag-转化">高转化</span></div>
+            </div>
+            <div class="mat-dpa">时尚吊坠 【师傅推荐】龙凤呈祥吊坠国潮平安扣男女通用</div>
+            <div class="mat-mkt">营销对象：男女通用单吊坠</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥4,763</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">32.36%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">54.1%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">45.6s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.63</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#719</span>
+                <div class="mat-tags"><span class="mat-tag tag-转化">高转化</span></div>
+            </div>
+            <div class="mat-dpa">时尚吊坠 【师傅推荐】龙凤呈祥吊坠国潮平安扣男女通用</div>
+            <div class="mat-mkt">营销对象：男女通用单吊坠</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥4,169</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">32.19%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">47.5%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">45.6s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.79</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#247</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span><span class="mat-tag tag-点击">高点击</span></div>
+            </div>
+            <div class="mat-dpa">【师傅推荐】新款精美观音吊坠轻奢时尚百搭男女同款挂坠礼物</div>
+            <div class="mat-mkt">营销对象：男女通用单吊坠</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥3,220</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">52.73%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">47.0%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">54.2s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.21</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#566</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span><span class="mat-tag tag-点击">高点击</span></div>
+            </div>
+            <div class="mat-dpa">金色时尚吊坠 【师傅推荐】金色龙凤呈祥吊坠国潮平安扣男女通用</div>
+            <div class="mat-mkt">营销对象：男女通用平安扣</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥3,121</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">56.42%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">39.5%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">60.8s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.05</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#243</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span></div>
+            </div>
+            <div class="mat-dpa">【师傅推荐】马年新款福禄葫芦吊坠饰品树脂吊坠</div>
+            <div class="mat-mkt">营销对象：男女通用单吊坠</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥3,060</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">45.41%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">47.2%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">48.0s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">0.88</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#228</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">【师傅推荐】雕刻复古观音钥匙扣男女通用时尚钥匙扣</div>
+            <div class="mat-mkt">营销对象：时尚饰品</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥2,548</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">44.44%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">32.5%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">34.6s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.06</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#718</span>
+                <div class="mat-tags"><span class="mat-tag tag-点击">高点击</span><span class="mat-tag tag-转化">高转化</span></div>
+            </div>
+            <div class="mat-dpa">时尚吊坠 【师傅推荐】国潮貔貅平安扣创意吊坠男女通用</div>
+            <div class="mat-mkt">营销对象：男女通用平安扣</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥2,529</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">64.78%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">42.7%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">65.2s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.89</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#724</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">时尚吊坠 【师傅推荐】龙凤呈祥吊坠国潮平安扣男女通用</div>
+            <div class="mat-mkt">营销对象：男女通用单吊坠</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥2,382</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">37.10%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">47.5%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">32.7s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.13</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#717</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">时尚吊坠 【师傅推荐】国潮貔貅平安扣创意吊坠男女通用</div>
+            <div class="mat-mkt">营销对象：男女通用平安扣</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥2,024</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">39.68%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">33.9%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">45.0s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.33</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#716</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">时尚吊坠 【师傅推荐】国潮貔貅平安扣创意吊坠男女通用</div>
+            <div class="mat-mkt">营销对象：男女通用平安扣</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,838</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">38.06%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">45.1%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">35.2s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">0.81</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#516</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">合金吊坠【师傅推荐】镂空设计金色方牌龙牌吊坠霸气男款项坠时尚</div>
+            <div class="mat-mkt">营销对象：男女通用单吊坠</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,643</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">52.48%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">32.6%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">33.2s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">0.73</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#565</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">金色时尚吊坠 【师傅推荐】金色龙凤呈祥吊坠国潮平安扣男女通用</div>
+            <div class="mat-mkt">营销对象：男女通用平安扣</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,551</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">62.57%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">29.7%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">46.0s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.54</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#723</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">时尚吊坠 【师傅推荐】龙凤呈祥吊坠国潮平安扣男女通用</div>
+            <div class="mat-mkt">营销对象：男女通用单吊坠</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,396</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">49.61%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">45.8%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">58.4s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.28</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#232</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">【师傅推荐】福禄龙爷龙五爷龙佑五福钥匙扣 男女随身挂饰</div>
+            <div class="mat-mkt">营销对象：时尚饰品</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,361</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">38.44%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">55.6%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">34.5s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.76</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#721</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">时尚吊坠 【师傅推荐】龙凤呈祥吊坠国潮平安扣男女通用</div>
+            <div class="mat-mkt">营销对象：男女通用单吊坠</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,321</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">28.74%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">46.4%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">29.6s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.58</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#244</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">【师傅推荐】马年新款福禄葫芦吊坠饰品树脂吊坠</div>
+            <div class="mat-mkt">营销对象：男女通用单吊坠</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,287</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">61.67%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">37.3%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">60.3s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.63</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#720</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">时尚吊坠 【师傅推荐】龙凤呈祥吊坠国潮平安扣男女通用</div>
+            <div class="mat-mkt">营销对象：男女通用单吊坠</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,175</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">39.18%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">47.2%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">32.2s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">0.76</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#604</span>
+                <div class="mat-tags"><span class="mat-tag tag-留存">高留存</span></div>
+            </div>
+            <div class="mat-dpa">龙牌金钥匙扣龙年礼物挂饰男女士生日礼物送父母送孩子</div>
+            <div class="mat-mkt">营销对象：时尚饰品</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,163</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">53.99%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">49.1%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">83.8s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.29</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#517</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">合金吊坠【师傅推荐】新款时尚复古财库唐卡吊坠祈福饰品</div>
+            <div class="mat-mkt">营销对象：时尚饰品</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,109</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">49.32%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">26.1%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">60.4s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.35</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+</div>
+
+<div class="footer">素材解析台 · 珠宝饰品行业 · 时尚饰品 · 20260601</div>
+</div></body></html>
