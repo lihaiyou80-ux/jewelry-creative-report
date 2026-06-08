@@ -1,0 +1,458 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🦵 护膝/运动防护 · 素材解析台</title><style>
+:root{--bg:#F7F9FC;--card:#FFFFFF;--t1:#1A1A1A;--t2:#666666;--bdr:#E8ECF0;--bl:#1F4E79;--bm:#2E75B6;--blt:#8FAADC;--bp:#C7D8EE;--gn:#2E7D32;--rd:#C62828;--og:#E65100}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Microsoft YaHei","PingFang SC",-apple-system,sans-serif;background:var(--bg);color:var(--t1);line-height:1.6}
+a{color:var(--bm);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:24px 20px}
+.header{text-align:center;padding:32px 0 24px;border-bottom:2px solid var(--bl);margin-bottom:32px}
+.header h1{font-size:24px;font-weight:700;color:var(--bl);margin-bottom:4px}
+.header .sub{font-size:13px;color:var(--t2)}
+.stats-row{display:flex;justify-content:center;gap:28px;margin-top:16px}
+.stat-item{text-align:center}
+.stat-val{font-size:28px;font-weight:700;color:var(--bl)}
+.stat-lbl{font-size:12px;color:var(--t2)}
+.section{margin-bottom:40px}
+.section-title{font-size:18px;font-weight:700;color:var(--bl);margin-bottom:16px;padding-bottom:6px;border-bottom:1px solid var(--bdr)}
+.section-title .emoji{margin-right:6px}
+.section-title .count{font-size:13px;font-weight:400;color:var(--t2);margin-left:6px}
+/* Card */
+.cat-card{background:var(--card);border-radius:10px;padding:20px;margin-bottom:14px;box-shadow:0 1px 6px rgba(0,0,0,.06);border:1px solid var(--bdr);transition:box-shadow .2s}
+.cat-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.cat-hdr{display:flex;align-items:center;gap:8px;margin-bottom:12px;padding-bottom:10px;border-bottom:2px solid var(--bp)}
+.cat-emoji{font-size:22px}
+.cat-name{font-size:16px;font-weight:700;color:var(--bl)}
+.cat-count{font-size:12px;color:var(--t2);margin-left:auto}
+.cat-link{color:var(--bm);font-size:13px}
+/* Metrics */
+.metrics-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:12px}
+.metric{text-align:center;padding:8px 2px;background:#F0F4F8;border-radius:6px}
+.metric-val{font-size:14px;font-weight:700;color:var(--bl)}
+.metric-lbl{font-size:10px;color:var(--t2);margin-top:1px}
+/* Framework */
+.framework{background:linear-gradient(135deg,#F0F4F8,#E8ECF0);border-radius:6px;padding:10px 14px;margin-bottom:10px;font-size:13px}
+.fw-label{font-weight:600;color:var(--bl);margin-right:6px}
+.fw-steps{color:var(--t1);line-height:1.7}
+/* Styles */
+.style-tags{font-size:12px;color:var(--t2);margin-bottom:8px}
+.style-label{font-weight:600;color:var(--t1)}
+/* Detail page learning */
+.learning-card{background:var(--card);border-radius:10px;padding:20px;margin-bottom:14px;border:1px solid var(--bdr);box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.learning-title{font-size:15px;font-weight:700;color:var(--bl);margin-bottom:12px}
+.learning-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.learn-item{padding:10px 14px;background:#F0F4F8;border-radius:6px;border-left:3px solid var(--bm)}
+.learn-item .li-title{font-size:12px;font-weight:700;color:var(--bl);margin-bottom:4px}
+.learn-item .li-content{font-size:13px;color:var(--t1);line-height:1.7}
+/* Prompt box */
+.prompt-box{background:#FFF8E1;border-radius:8px;padding:14px 18px;margin:12px 0;border-left:4px solid #FFB300;font-size:13px;line-height:1.8}
+.prompt-label{font-weight:700;color:var(--og);margin-bottom:4px}
+/* Material card */
+.mat-card{background:var(--card);border-radius:10px;padding:18px;margin-bottom:14px;border:1px solid var(--bdr);box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.mat-hdr{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.mat-idx{font-size:13px;font-weight:700;color:var(--bm);background:#E8ECF0;border-radius:4px;padding:2px 8px}
+.mat-tags{display:flex;gap:4px;flex-wrap:wrap}
+.mat-tag{font-size:10px;padding:2px 6px;border-radius:3px;color:#fff;font-weight:600}
+.tag-消耗{background:var(--rd)}.tag-点击{background:var(--og)}.tag-转化{background:var(--gn)}.tag-留存{background:var(--bm)}
+.mat-dpa{font-size:13px;color:var(--t1);margin-bottom:4px;word-break:break-all}
+.mat-mkt{font-size:12px;color:var(--t2)}
+.mat-metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:10px 0}
+.mat-m{text-align:center;padding:6px 2px;background:#F0F4F8;border-radius:4px}
+.mat-m-val{font-size:13px;font-weight:700;color:var(--bl)}
+.mat-m-lbl{font-size:10px;color:var(--t2)}
+/* 3s structure timeline */
+.timeline{display:flex;gap:4px;margin:10px 0;flex-wrap:wrap}
+.tl-step{flex:1;min-width:80px;text-align:center;padding:8px 4px;background:var(--bp);border-radius:6px;font-size:11px}
+.tl-step .tl-time{font-weight:700;color:var(--bl);font-size:10px;display:block;margin-top:2px}
+.tl-step .tl-label{color:var(--t1);font-weight:600}
+/* Insight card */
+.insight-card{background:var(--card);border-radius:8px;padding:14px 18px;margin-bottom:10px;border-left:4px solid var(--bm);box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.insight-title{font-size:14px;font-weight:600;color:var(--bl);margin-bottom:4px}
+.insight-content{font-size:13px;color:var(--t1);line-height:1.7}
+/* Back link */
+.back-link{display:inline-block;margin-bottom:16px;font-size:13px;color:var(--bm)}
+.footer{text-align:center;padding:24px 0;margin-top:36px;border-top:1px solid var(--bdr);font-size:12px;color:var(--t2)}
+@media(max-width:768px){.metrics-grid,.mat-metrics{grid-template-columns:repeat(3,1fr)}.stats-row{gap:12px}.stat-val{font-size:22px}}
+</style></head><body><div class="container">
+<a class="back-link" href="index.html">← 返回首页</a>
+<div class="header"><h1>🦵 护膝/运动防护</h1>
+<div class="sub">📦 35 条素材 · 🔥 13 条起量</div>
+<div class="stats-row">
+    <div class="stat-item"><div class="stat-val">¥9.7万</div><div class="stat-lbl">总消耗</div></div>
+    <div class="stat-item"><div class="stat-val">2.83%</div><div class="stat-lbl">平均CTR<span style="color:var(--gn);font-size:12px;margin-left:6px">起量CTR 3.41% ↑21%</span></div></div>
+    <div class="stat-item"><div class="stat-val">31.1%</div><div class="stat-lbl">3s完播</div></div>
+    <div class="stat-item"><div class="stat-val">5.91%</div><div class="stat-lbl">播放时长</div></div>
+    <div class="stat-item"><div class="stat-val">2.20</div><div class="stat-lbl">ROI</div></div>
+</div></div>
+
+<!-- 脚本框架 -->
+<div class="section">
+    <div class="section-title"><span class="emoji">📋</span>起量素材脚本框架 · 5 段结构</div>
+    <div class="framework"><span class="fw-label">脚本框架：</span><span class="fw-steps">产品亮点开篇 → 功能/效果展示 → 场景化体验 → 用户口碑 → 促单收尾</span></div>
+    <div class="timeline"><div class="tl-step"><div class="tl-label">亮点开篇</div><span class="tl-time">0-6s</span></div><div class="tl-step"><div class="tl-label">效果展示</div><span class="tl-time">6-12s</span></div><div class="tl-step"><div class="tl-label">场景体验</div><span class="tl-time">12-18s</span></div><div class="tl-step"><div class="tl-label">用户口碑</div><span class="tl-time">18-24s</span></div><div class="tl-step"><div class="tl-label">促单收尾</div><span class="tl-time">24-30s</span></div></div>
+</div>
+
+<!-- 跑量Learning -->
+<div class="section">
+    <div class="section-title"><span class="emoji">💡</span>跑量 Learning · 5 维度共性归因</div>
+    <div class="learning-grid"><div class="learn-item">
+            <div class="li-title">👤 模特</div>
+            <div class="li-content">选用与目标客群年龄/气质匹配的模特，增强代入感</div>
+        </div><div class="learn-item">
+            <div class="li-title">🎯 痛点表达</div>
+            <div class="li-content">围绕品类核心痛点，用具象化语言放大痛感，让用户对号入座</div>
+        </div><div class="learn-item">
+            <div class="li-title">🎬 场景</div>
+            <div class="li-content">真实生活场景+产品使用场景交替，弱化广告感增强信任</div>
+        </div><div class="learn-item">
+            <div class="li-title">✨ 效果呈现</div>
+            <div class="li-content">使用前后对比+产品细节特写+用户证言，让效果可感知</div>
+        </div><div class="learn-item">
+            <div class="li-title">💬 爆款话术</div>
+            <div class="li-content">①悬念型：「你绝对想不到…」②反差型：「以前觉得…现在才知道…」③紧迫型：「手慢无/限时/断货」</div>
+        </div></div>
+</div>
+
+<!-- 黄金3s Prompt -->
+<div class="section">
+    <div class="section-title"><span class="emoji">⚡</span>黄金 3s Prompt</div>
+    <div class="prompt-box">
+        <div class="prompt-label">⚡ 前3秒脚本 Prompt</div>
+        产品出镜开篇，用核心卖点话术吸引停留，1秒内展示最吸引人的产品效果，3秒内完成痛点→解决方案的切换，制造「想继续看」的好奇心。
+    </div>
+</div>
+
+<!-- TOP客户 -->
+<div class="section">
+    <div class="section-title"><span class="emoji">👥</span>TOP 客户分布</div>
+    <div style="font-size:13px;color:var(--t1)">康舒运动店(9条/¥28,112)、泊伊尚品丝佳居家生活(9条/¥22,793)、泊伊尚品弥珀居家生活(4条/¥19,831)、金禧康运动护膝(2条/¥6,423)、金禧康腰膝护理(2条/¥5,185)</div>
+</div>
+
+<!-- 素材列表 -->
+<div class="section">
+    <div class="section-title"><span class="emoji">📦</span>全量素材 · 35 条</div>
+    
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#53</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">[泊伊尚品 品牌正品]夏季必备无痕透气不闷高弹防滑护膝骑行穿戴装备</div>
+            <div class="mat-mkt">营销对象：泊伊尚品弥珀居家生活</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1.4万</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.23%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">18.5%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.1s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.67</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥30</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#397</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span></div>
+            </div>
+            <div class="mat-dpa">髌骨带男夏季专业级跑步羽毛球膝盖保护带女运动髌护带透气不闷汗</div>
+            <div class="mat-mkt">营销对象：康舒运动店</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥6,022</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.41%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">24.8%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.7s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.66</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥106</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#390</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span><span class="mat-tag tag-点击">高点击</span></div>
+            </div>
+            <div class="mat-dpa">髌骨带男夏季专业级跑步羽毛球膝盖保护带女运动髌护带透气不闷汗</div>
+            <div class="mat-mkt">营销对象：康舒运动店</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥5,791</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.31%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">29.7%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">6.2s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.42</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥110</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#707</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span><span class="mat-tag tag-点击">高点击</span><span class="mat-tag tag-转化">高转化</span><span class="mat-tag tag-留存">高留存</span></div>
+            </div>
+            <div class="mat-dpa">石墨烯护膝盖套保暖男女士远红外升温老人关节秋冬防寒防滑护腿套</div>
+            <div class="mat-mkt">营销对象：金禧康运动护膝</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥5,103</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.98%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">38.2%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">6.9s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.91</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥50</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#68</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">[新款护膝]夏季专用超薄无痕透气不闷汗防滑不起球户外骑行穿戴装备</div>
+            <div class="mat-mkt">营销对象：泊伊尚品丝佳居家生活</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥4,772</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.88%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">27.4%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.6s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.85</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥14</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#391</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">髌骨带男夏季专业级跑步羽毛球膝盖保护带女运动髌护带透气不闷汗</div>
+            <div class="mat-mkt">营销对象：康舒运动店</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥4,749</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.67%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">29.5%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.7s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.52</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥108</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#383</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">薄款弯护膝盖春夏保暖老寒腿男女膝关节保护神器无痕户外骑行穿戴装备</div>
+            <div class="mat-mkt">营销对象：泊伊尚品丝佳居家生活</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥4,694</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.25%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">28.4%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.4s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.87</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥14</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#862</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span><span class="mat-tag tag-点击">高点击</span><span class="mat-tag tag-转化">高转化</span><span class="mat-tag tag-留存">高留存</span></div>
+            </div>
+            <div class="mat-dpa">夏季空调房石墨烯护膝防滑远红外抗菌男女士老人关节护腿套</div>
+            <div class="mat-mkt">营销对象：金禧康腰膝护理</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥4,238</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.18%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">37.8%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">7.2s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.28</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥51</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#396</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span></div>
+            </div>
+            <div class="mat-dpa">髌骨带男夏季专业级跑步羽毛球膝盖保护带女运动髌护带透气不闷汗</div>
+            <div class="mat-mkt">营销对象：康舒运动店</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥4,225</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.35%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">35.6%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">6.1s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.22</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥108</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#591</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">空调护膝新款艾草护膝保暖老寒腿男女通用关节热敷防寒护膝</div>
+            <div class="mat-mkt">营销对象：护膝用品</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥4,142</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.84%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">31.4%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">7.1s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.39</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥40</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#54</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">[泊伊尚品 品牌正品]夏季必备无痕透气不闷高弹防滑护膝骑行穿戴装备</div>
+            <div class="mat-mkt">营销对象：泊伊尚品弥珀居家生活</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥4,028</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.64%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">18.7%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.2s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.65</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥30</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#66</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">[新款护膝]夏季专用超薄无痕透气不闷汗防滑不起球户外骑行穿戴装备</div>
+            <div class="mat-mkt">营销对象：泊伊尚品丝佳居家生活</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥3,789</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.53%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">24.2%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.2s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.08</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥14</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#65</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">[新款护膝]夏季专用超薄无痕透气不闷汗防滑不起球户外骑行穿戴装备</div>
+            <div class="mat-mkt">营销对象：泊伊尚品丝佳居家生活</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥2,356</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.42%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">39.9%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">6.0s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.94</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥14</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#8</span>
+                <div class="mat-tags"><span class="mat-tag tag-留存">高留存</span></div>
+            </div>
+            <div class="mat-dpa">[第八代半月板护膝]专业防护绑带无痕护膝防滑透气中老年护膝盖汽摩托车配件装备护具</div>
+            <div class="mat-mkt">营销对象：泊伊尚品酬佰个人防护</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥2,031</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.13%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">64.3%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">11.3s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.59</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥62</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#860</span>
+                <div class="mat-tags"><span class="mat-tag tag-转化">高转化</span></div>
+            </div>
+            <div class="mat-dpa">夏季薄款蚕丝护膝盖套保暖透气男女士关节老年人无痕秋冬防寒护腿</div>
+            <div class="mat-mkt">营销对象：金禧康卓嘉腰膝护理</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥2,007</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.29%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">30.4%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.7s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.89</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥37</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#64</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">[新款护膝]夏季专用超薄无痕透气不闷汗防滑不起球户外骑行穿戴装备</div>
+            <div class="mat-mkt">营销对象：泊伊尚品丝佳居家生活</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,922</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.61%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">22.3%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.0s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.03</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥14</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#389</span>
+                <div class="mat-tags"><span class="mat-tag tag-点击">高点击</span><span class="mat-tag tag-转化">高转化</span></div>
+            </div>
+            <div class="mat-dpa">髌骨带男夏季专业级跑步羽毛球膝盖保护带女运动髌护带透气不闷汗</div>
+            <div class="mat-mkt">营销对象：康舒运动店</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,810</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.77%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">28.1%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.3s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.72</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥100</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#392</span>
+                <div class="mat-tags"><span class="mat-tag tag-转化">高转化</span></div>
+            </div>
+            <div class="mat-dpa">髌骨带男夏季专业级跑步羽毛球膝盖保护带女运动髌护带透气不闷汗</div>
+            <div class="mat-mkt">营销对象：康舒运动店</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,755</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.72%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">25.6%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.2s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.86</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥112</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#67</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">[新款护膝]夏季专用超薄无痕透气不闷汗防滑不起球户外骑行穿戴装备</div>
+            <div class="mat-mkt">营销对象：泊伊尚品丝佳居家生活</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,665</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.55%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">18.5%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.4s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.90</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥14</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#380</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">薄款弯护膝盖春夏保暖老寒腿男女膝关节保护神器无痕户外骑行穿戴装备</div>
+            <div class="mat-mkt">营销对象：泊伊尚品丝佳居家生活</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,652</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.33%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">22.0%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.4s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.01</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥14</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+</div>
+
+<div class="footer">素材解析台 · 珠宝饰品行业 · 护膝/运动防护 · 20260601</div>
+</div></body></html>
