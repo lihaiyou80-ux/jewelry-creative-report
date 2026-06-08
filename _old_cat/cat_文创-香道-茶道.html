@@ -1,0 +1,458 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🏮 文创/香道/茶道 · 素材解析台</title><style>
+:root{--bg:#F7F9FC;--card:#FFFFFF;--t1:#1A1A1A;--t2:#666666;--bdr:#E8ECF0;--bl:#1F4E79;--bm:#2E75B6;--blt:#8FAADC;--bp:#C7D8EE;--gn:#2E7D32;--rd:#C62828;--og:#E65100}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Microsoft YaHei","PingFang SC",-apple-system,sans-serif;background:var(--bg);color:var(--t1);line-height:1.6}
+a{color:var(--bm);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:24px 20px}
+.header{text-align:center;padding:32px 0 24px;border-bottom:2px solid var(--bl);margin-bottom:32px}
+.header h1{font-size:24px;font-weight:700;color:var(--bl);margin-bottom:4px}
+.header .sub{font-size:13px;color:var(--t2)}
+.stats-row{display:flex;justify-content:center;gap:28px;margin-top:16px}
+.stat-item{text-align:center}
+.stat-val{font-size:28px;font-weight:700;color:var(--bl)}
+.stat-lbl{font-size:12px;color:var(--t2)}
+.section{margin-bottom:40px}
+.section-title{font-size:18px;font-weight:700;color:var(--bl);margin-bottom:16px;padding-bottom:6px;border-bottom:1px solid var(--bdr)}
+.section-title .emoji{margin-right:6px}
+.section-title .count{font-size:13px;font-weight:400;color:var(--t2);margin-left:6px}
+/* Card */
+.cat-card{background:var(--card);border-radius:10px;padding:20px;margin-bottom:14px;box-shadow:0 1px 6px rgba(0,0,0,.06);border:1px solid var(--bdr);transition:box-shadow .2s}
+.cat-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.cat-hdr{display:flex;align-items:center;gap:8px;margin-bottom:12px;padding-bottom:10px;border-bottom:2px solid var(--bp)}
+.cat-emoji{font-size:22px}
+.cat-name{font-size:16px;font-weight:700;color:var(--bl)}
+.cat-count{font-size:12px;color:var(--t2);margin-left:auto}
+.cat-link{color:var(--bm);font-size:13px}
+/* Metrics */
+.metrics-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:12px}
+.metric{text-align:center;padding:8px 2px;background:#F0F4F8;border-radius:6px}
+.metric-val{font-size:14px;font-weight:700;color:var(--bl)}
+.metric-lbl{font-size:10px;color:var(--t2);margin-top:1px}
+/* Framework */
+.framework{background:linear-gradient(135deg,#F0F4F8,#E8ECF0);border-radius:6px;padding:10px 14px;margin-bottom:10px;font-size:13px}
+.fw-label{font-weight:600;color:var(--bl);margin-right:6px}
+.fw-steps{color:var(--t1);line-height:1.7}
+/* Styles */
+.style-tags{font-size:12px;color:var(--t2);margin-bottom:8px}
+.style-label{font-weight:600;color:var(--t1)}
+/* Detail page learning */
+.learning-card{background:var(--card);border-radius:10px;padding:20px;margin-bottom:14px;border:1px solid var(--bdr);box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.learning-title{font-size:15px;font-weight:700;color:var(--bl);margin-bottom:12px}
+.learning-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.learn-item{padding:10px 14px;background:#F0F4F8;border-radius:6px;border-left:3px solid var(--bm)}
+.learn-item .li-title{font-size:12px;font-weight:700;color:var(--bl);margin-bottom:4px}
+.learn-item .li-content{font-size:13px;color:var(--t1);line-height:1.7}
+/* Prompt box */
+.prompt-box{background:#FFF8E1;border-radius:8px;padding:14px 18px;margin:12px 0;border-left:4px solid #FFB300;font-size:13px;line-height:1.8}
+.prompt-label{font-weight:700;color:var(--og);margin-bottom:4px}
+/* Material card */
+.mat-card{background:var(--card);border-radius:10px;padding:18px;margin-bottom:14px;border:1px solid var(--bdr);box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.mat-hdr{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.mat-idx{font-size:13px;font-weight:700;color:var(--bm);background:#E8ECF0;border-radius:4px;padding:2px 8px}
+.mat-tags{display:flex;gap:4px;flex-wrap:wrap}
+.mat-tag{font-size:10px;padding:2px 6px;border-radius:3px;color:#fff;font-weight:600}
+.tag-消耗{background:var(--rd)}.tag-点击{background:var(--og)}.tag-转化{background:var(--gn)}.tag-留存{background:var(--bm)}
+.mat-dpa{font-size:13px;color:var(--t1);margin-bottom:4px;word-break:break-all}
+.mat-mkt{font-size:12px;color:var(--t2)}
+.mat-metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:10px 0}
+.mat-m{text-align:center;padding:6px 2px;background:#F0F4F8;border-radius:4px}
+.mat-m-val{font-size:13px;font-weight:700;color:var(--bl)}
+.mat-m-lbl{font-size:10px;color:var(--t2)}
+/* 3s structure timeline */
+.timeline{display:flex;gap:4px;margin:10px 0;flex-wrap:wrap}
+.tl-step{flex:1;min-width:80px;text-align:center;padding:8px 4px;background:var(--bp);border-radius:6px;font-size:11px}
+.tl-step .tl-time{font-weight:700;color:var(--bl);font-size:10px;display:block;margin-top:2px}
+.tl-step .tl-label{color:var(--t1);font-weight:600}
+/* Insight card */
+.insight-card{background:var(--card);border-radius:8px;padding:14px 18px;margin-bottom:10px;border-left:4px solid var(--bm);box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.insight-title{font-size:14px;font-weight:600;color:var(--bl);margin-bottom:4px}
+.insight-content{font-size:13px;color:var(--t1);line-height:1.7}
+/* Back link */
+.back-link{display:inline-block;margin-bottom:16px;font-size:13px;color:var(--bm)}
+.footer{text-align:center;padding:24px 0;margin-top:36px;border-top:1px solid var(--bdr);font-size:12px;color:var(--t2)}
+@media(max-width:768px){.metrics-grid,.mat-metrics{grid-template-columns:repeat(3,1fr)}.stats-row{gap:12px}.stat-val{font-size:22px}}
+</style></head><body><div class="container">
+<a class="back-link" href="index.html">← 返回首页</a>
+<div class="header"><h1>🏮 文创/香道/茶道</h1>
+<div class="sub">📦 46 条素材 · 🔥 14 条起量</div>
+<div class="stats-row">
+    <div class="stat-item"><div class="stat-val">¥18.8万</div><div class="stat-lbl">总消耗</div></div>
+    <div class="stat-item"><div class="stat-val">7.10%</div><div class="stat-lbl">平均CTR<span style="color:var(--gn);font-size:12px;margin-left:6px">起量CTR 17.56% ↑147%</span></div></div>
+    <div class="stat-item"><div class="stat-val">36.5%</div><div class="stat-lbl">3s完播</div></div>
+    <div class="stat-item"><div class="stat-val">13.81%</div><div class="stat-lbl">播放时长</div></div>
+    <div class="stat-item"><div class="stat-val">5.20</div><div class="stat-lbl">ROI</div></div>
+</div></div>
+
+<!-- 脚本框架 -->
+<div class="section">
+    <div class="section-title"><span class="emoji">📋</span>起量素材脚本框架 · 5 段结构</div>
+    <div class="framework"><span class="fw-label">脚本框架：</span><span class="fw-steps">文化场景/意境开篇 → 工艺细节展示 → 使用仪式感展示 → 寓意解读 → 礼盒/送礼场景</span></div>
+    <div class="timeline"><div class="tl-step"><div class="tl-label">文化意境</div><span class="tl-time">0-6s</span></div><div class="tl-step"><div class="tl-label">工艺细节</div><span class="tl-time">6-12s</span></div><div class="tl-step"><div class="tl-label">仪式感</div><span class="tl-time">12-18s</span></div><div class="tl-step"><div class="tl-label">寓意解读</div><span class="tl-time">18-24s</span></div><div class="tl-step"><div class="tl-label">礼盒场景</div><span class="tl-time">24-30s</span></div></div>
+</div>
+
+<!-- 跑量Learning -->
+<div class="section">
+    <div class="section-title"><span class="emoji">💡</span>跑量 Learning · 5 维度共性归因</div>
+    <div class="learning-grid"><div class="learn-item">
+            <div class="li-title">👤 模特</div>
+            <div class="li-content">选用有文化气质的中年人（茶道/香道）或年轻文艺群体（文创）</div>
+        </div><div class="learn-item">
+            <div class="li-title">🎯 痛点表达</div>
+            <div class="li-content">围绕「送礼有文化」「修身养性」「佛缘祈福」等精神需求</div>
+        </div><div class="learn-item">
+            <div class="li-title">🎬 场景</div>
+            <div class="li-content">茶室/禅房/文创展+送礼场景，仪式感场景强化品类调性</div>
+        </div><div class="learn-item">
+            <div class="li-title">✨ 效果呈现</div>
+            <div class="li-content">工艺细节微距+仪式感使用过程+礼盒开箱展示</div>
+        </div><div class="learn-item">
+            <div class="li-title">💬 爆款话术</div>
+            <div class="li-content">①文化型：「普陀山开光，佛缘保平安」②仪式型：「一壶好茶，品的是心境」③送礼型：「送有文化的人，就送这个」</div>
+        </div></div>
+</div>
+
+<!-- 黄金3s Prompt -->
+<div class="section">
+    <div class="section-title"><span class="emoji">⚡</span>黄金 3s Prompt</div>
+    <div class="prompt-box">
+        <div class="prompt-label">⚡ 前3秒脚本 Prompt</div>
+        暖光禅意场景，一缕青烟从香炉中缓缓升起，镜头缓慢推进展示精致的手工香珠。配音用沉稳男声说「普陀山直发，开光祈福」，字幕弹出。1秒后切到佩戴香珠手串的文雅画面。节奏古朴缓慢，用「禅意仪式感」制造停留。
+    </div>
+</div>
+
+<!-- TOP客户 -->
+<div class="section">
+    <div class="section-title"><span class="emoji">👥</span>TOP 客户分布</div>
+    <div style="font-size:13px;color:var(--t1)">普陀禅海文创阁(6条/¥88,841)、普陀圣境文创(5条/¥16,419)、文化创意礼品(4条/¥16,338)、男女通用单吊坠(5条/¥11,327)、豆豆姐姐Rahma(1条/¥9,024)</div>
+</div>
+
+<!-- 素材列表 -->
+<div class="section">
+    <div class="section-title"><span class="emoji">📦</span>全量素材 · 46 条</div>
+    
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#50</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">[年香福绕]普陀直发文创新款小老虎宝宝手工编织绳端午节五彩绳亲子</div>
+            <div class="mat-mkt">营销对象：普陀禅海文创阁</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥4.4万</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.96%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">25.2%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.5s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.92</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥99</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#46</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span></div>
+            </div>
+            <div class="mat-dpa">[年香福绕]普陀直发文创新款小老虎宝宝手工编织绳端午节五彩绳亲子</div>
+            <div class="mat-mkt">营销对象：普陀禅海文创阁</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥3.0万</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.97%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">59.2%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">6.3s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.53</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥85</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#48</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">[年香福绕]普陀直发文创新款小老虎宝宝手工编织绳端午节五彩绳亲子</div>
+            <div class="mat-mkt">营销对象：普陀禅海文创阁</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥9,244</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.08%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">30.7%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.1s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.19</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥87</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#5</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span><span class="mat-tag tag-点击">高点击</span><span class="mat-tag tag-转化">高转化</span></div>
+            </div>
+            <div class="mat-dpa">[程雷专属]【新西兰头茬皇后红玫瑰苹果】果香浓郁 酸脆爆汁 顺丰包邮</div>
+            <div class="mat-mkt">营销对象：豆豆姐姐Rahma</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥9,024</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.53%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">—</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">—</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.29</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥71</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#44</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span></div>
+            </div>
+            <div class="mat-dpa">[年香福绕]普陀直发文创新款小老虎宝宝手工编织绳端午节五彩绳亲子</div>
+            <div class="mat-mkt">营销对象：文化创意礼品</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥8,074</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.67%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">25.7%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.0s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.47</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥85</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#664</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">普陀文创《金榜题名》纯黄铜文昌塔香袋高考中考学生考研考公上岸金榜题名包挂件书包礼物逢考必过</div>
+            <div class="mat-mkt">营销对象：普陀圣境文创</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥7,501</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.03%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">50.8%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.7s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.75</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥81</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#100</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span><span class="mat-tag tag-点击">高点击</span></div>
+            </div>
+            <div class="mat-dpa">《上岸锦鲤》普陀山文创上岸锦鲤手绳 传统手工编织文创手绳</div>
+            <div class="mat-mkt">营销对象：文化创意礼品</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥5,616</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.93%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">47.2%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">6.2s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.13</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥96</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#61</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">[桃木挂]普陀山桃木宝宝2026新年桃篮如意桃木平安</div>
+            <div class="mat-mkt">营销对象：普陀山雕刻工艺品</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥5,104</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.61%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">32.4%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.4s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.80</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥79</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#4</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">[柴房雅器]滕王阁序云炉壶宜兴原矿古铜泥容量250ml手工刻绘紫砂壶出水稳当</div>
+            <div class="mat-mkt">营销对象：柴房雅器紫砂壶</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥4,920</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.09%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">34.0%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.7s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.01</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥381</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#715</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span><span class="mat-tag tag-点击">高点击</span><span class="mat-tag tag-留存">高留存</span></div>
+            </div>
+            <div class="mat-dpa">时尚吊坠 【师傅推荐】古法爆闪八方来才印章小合金吊坠男女同款</div>
+            <div class="mat-mkt">营销对象：男女通用单吊坠</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥4,012</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">43.57%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">54.5%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">71.2s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.42</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#198</span>
+                <div class="mat-tags"><span class="mat-tag tag-转化">高转化</span></div>
+            </div>
+            <div class="mat-dpa">【求索专属】寻味百年【香港陈春兰 见礼如面】混合体验装50克</div>
+            <div class="mat-mkt">营销对象：北京工艺美术博物馆非遗陶茶文化</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥3,558</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.62%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">—</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">—</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">14.97</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥419</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#668</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">普陀文创《金榜题名》纯黄铜文昌塔香袋高考中考学生考研考公上岸金榜题名包挂件书包礼物逢考必过</div>
+            <div class="mat-mkt">营销对象：普陀圣境文创</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥3,349</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.02%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">40.4%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.0s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.43</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥89</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#712</span>
+                <div class="mat-tags"><span class="mat-tag tag-点击">高点击</span><span class="mat-tag tag-留存">高留存</span></div>
+            </div>
+            <div class="mat-dpa">时尚吊坠 【师傅推荐】古法爆闪八方来才印章小合金吊坠男女同款</div>
+            <div class="mat-mkt">营销对象：男女通用单吊坠</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥3,177</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">47.06%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">53.7%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">74.8s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.69</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#603</span>
+                <div class="mat-tags"><span class="mat-tag tag-转化">高转化</span></div>
+            </div>
+            <div class="mat-dpa">龙虎山文创马年贴纸创意贴纸</div>
+            <div class="mat-mkt">营销对象：龙虎山文创官方号</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥3,167</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.67%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">16.1%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.4s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.17</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥189</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#45</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">[年香福绕]普陀直发文创新款小老虎宝宝手工编织绳端午节五彩绳亲子</div>
+            <div class="mat-mkt">营销对象：普陀禅海文创阁</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥3,146</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.97%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">36.2%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.5s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.36</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥84</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#942</span>
+                <div class="mat-tags"><span class="mat-tag tag-转化">高转化</span></div>
+            </div>
+            <div class="mat-dpa">紫砂壶137</div>
+            <div class="mat-mkt">营销对象：春秋紫砂陶茶文化</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥2,775</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.70%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">33.3%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">14.2s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">44.16</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥1,005</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#666</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">普陀文创《金榜题名》纯黄铜文昌塔香袋高考中考学生考研考公上岸金榜题名包挂件书包礼物逢考必过</div>
+            <div class="mat-mkt">营销对象：普陀圣境文创</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥2,721</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.24%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">27.1%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.4s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.75</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥85</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#98</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">《吉绳遂愿》普陀文创2026新款马年端午手绳古法编织五彩儿童亲子手编绳宝宝</div>
+            <div class="mat-mkt">营销对象：普陀禅意文创</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥2,344</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.10%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">29.8%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.0s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.13</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥83</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#665</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">普陀文创《金榜题名》纯黄铜文昌塔香袋高考中考学生考研考公上岸金榜题名包挂件书包礼物逢考必过</div>
+            <div class="mat-mkt">营销对象：普陀圣境文创</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,909</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.93%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">20.4%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.6s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.63</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥78</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#713</span>
+                <div class="mat-tags"><span class="mat-tag tag-点击">高点击</span><span class="mat-tag tag-留存">高留存</span></div>
+            </div>
+            <div class="mat-dpa">时尚吊坠 【师傅推荐】古法爆闪八方来才印章小合金吊坠男女同款</div>
+            <div class="mat-mkt">营销对象：男女通用单吊坠</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,729</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">45.44%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">56.3%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">72.8s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.04</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+</div>
+
+<div class="footer">素材解析台 · 珠宝饰品行业 · 文创/香道/茶道 · 20260601</div>
+</div></body></html>
