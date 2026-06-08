@@ -1,0 +1,458 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🧴 防晒口罩/面罩 · 素材解析台</title><style>
+:root{--bg:#F7F9FC;--card:#FFFFFF;--t1:#1A1A1A;--t2:#666666;--bdr:#E8ECF0;--bl:#1F4E79;--bm:#2E75B6;--blt:#8FAADC;--bp:#C7D8EE;--gn:#2E7D32;--rd:#C62828;--og:#E65100}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Microsoft YaHei","PingFang SC",-apple-system,sans-serif;background:var(--bg);color:var(--t1);line-height:1.6}
+a{color:var(--bm);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:24px 20px}
+.header{text-align:center;padding:32px 0 24px;border-bottom:2px solid var(--bl);margin-bottom:32px}
+.header h1{font-size:24px;font-weight:700;color:var(--bl);margin-bottom:4px}
+.header .sub{font-size:13px;color:var(--t2)}
+.stats-row{display:flex;justify-content:center;gap:28px;margin-top:16px}
+.stat-item{text-align:center}
+.stat-val{font-size:28px;font-weight:700;color:var(--bl)}
+.stat-lbl{font-size:12px;color:var(--t2)}
+.section{margin-bottom:40px}
+.section-title{font-size:18px;font-weight:700;color:var(--bl);margin-bottom:16px;padding-bottom:6px;border-bottom:1px solid var(--bdr)}
+.section-title .emoji{margin-right:6px}
+.section-title .count{font-size:13px;font-weight:400;color:var(--t2);margin-left:6px}
+/* Card */
+.cat-card{background:var(--card);border-radius:10px;padding:20px;margin-bottom:14px;box-shadow:0 1px 6px rgba(0,0,0,.06);border:1px solid var(--bdr);transition:box-shadow .2s}
+.cat-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.cat-hdr{display:flex;align-items:center;gap:8px;margin-bottom:12px;padding-bottom:10px;border-bottom:2px solid var(--bp)}
+.cat-emoji{font-size:22px}
+.cat-name{font-size:16px;font-weight:700;color:var(--bl)}
+.cat-count{font-size:12px;color:var(--t2);margin-left:auto}
+.cat-link{color:var(--bm);font-size:13px}
+/* Metrics */
+.metrics-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:12px}
+.metric{text-align:center;padding:8px 2px;background:#F0F4F8;border-radius:6px}
+.metric-val{font-size:14px;font-weight:700;color:var(--bl)}
+.metric-lbl{font-size:10px;color:var(--t2);margin-top:1px}
+/* Framework */
+.framework{background:linear-gradient(135deg,#F0F4F8,#E8ECF0);border-radius:6px;padding:10px 14px;margin-bottom:10px;font-size:13px}
+.fw-label{font-weight:600;color:var(--bl);margin-right:6px}
+.fw-steps{color:var(--t1);line-height:1.7}
+/* Styles */
+.style-tags{font-size:12px;color:var(--t2);margin-bottom:8px}
+.style-label{font-weight:600;color:var(--t1)}
+/* Detail page learning */
+.learning-card{background:var(--card);border-radius:10px;padding:20px;margin-bottom:14px;border:1px solid var(--bdr);box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.learning-title{font-size:15px;font-weight:700;color:var(--bl);margin-bottom:12px}
+.learning-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.learn-item{padding:10px 14px;background:#F0F4F8;border-radius:6px;border-left:3px solid var(--bm)}
+.learn-item .li-title{font-size:12px;font-weight:700;color:var(--bl);margin-bottom:4px}
+.learn-item .li-content{font-size:13px;color:var(--t1);line-height:1.7}
+/* Prompt box */
+.prompt-box{background:#FFF8E1;border-radius:8px;padding:14px 18px;margin:12px 0;border-left:4px solid #FFB300;font-size:13px;line-height:1.8}
+.prompt-label{font-weight:700;color:var(--og);margin-bottom:4px}
+/* Material card */
+.mat-card{background:var(--card);border-radius:10px;padding:18px;margin-bottom:14px;border:1px solid var(--bdr);box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.mat-hdr{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.mat-idx{font-size:13px;font-weight:700;color:var(--bm);background:#E8ECF0;border-radius:4px;padding:2px 8px}
+.mat-tags{display:flex;gap:4px;flex-wrap:wrap}
+.mat-tag{font-size:10px;padding:2px 6px;border-radius:3px;color:#fff;font-weight:600}
+.tag-消耗{background:var(--rd)}.tag-点击{background:var(--og)}.tag-转化{background:var(--gn)}.tag-留存{background:var(--bm)}
+.mat-dpa{font-size:13px;color:var(--t1);margin-bottom:4px;word-break:break-all}
+.mat-mkt{font-size:12px;color:var(--t2)}
+.mat-metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:10px 0}
+.mat-m{text-align:center;padding:6px 2px;background:#F0F4F8;border-radius:4px}
+.mat-m-val{font-size:13px;font-weight:700;color:var(--bl)}
+.mat-m-lbl{font-size:10px;color:var(--t2)}
+/* 3s structure timeline */
+.timeline{display:flex;gap:4px;margin:10px 0;flex-wrap:wrap}
+.tl-step{flex:1;min-width:80px;text-align:center;padding:8px 4px;background:var(--bp);border-radius:6px;font-size:11px}
+.tl-step .tl-time{font-weight:700;color:var(--bl);font-size:10px;display:block;margin-top:2px}
+.tl-step .tl-label{color:var(--t1);font-weight:600}
+/* Insight card */
+.insight-card{background:var(--card);border-radius:8px;padding:14px 18px;margin-bottom:10px;border-left:4px solid var(--bm);box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.insight-title{font-size:14px;font-weight:600;color:var(--bl);margin-bottom:4px}
+.insight-content{font-size:13px;color:var(--t1);line-height:1.7}
+/* Back link */
+.back-link{display:inline-block;margin-bottom:16px;font-size:13px;color:var(--bm)}
+.footer{text-align:center;padding:24px 0;margin-top:36px;border-top:1px solid var(--bdr);font-size:12px;color:var(--t2)}
+@media(max-width:768px){.metrics-grid,.mat-metrics{grid-template-columns:repeat(3,1fr)}.stats-row{gap:12px}.stat-val{font-size:22px}}
+</style></head><body><div class="container">
+<a class="back-link" href="index.html">← 返回首页</a>
+<div class="header"><h1>🧴 防晒口罩/面罩</h1>
+<div class="sub">📦 27 条素材 · 🔥 9 条起量</div>
+<div class="stats-row">
+    <div class="stat-item"><div class="stat-val">¥9.5万</div><div class="stat-lbl">总消耗</div></div>
+    <div class="stat-item"><div class="stat-val">2.19%</div><div class="stat-lbl">平均CTR<span style="color:var(--gn);font-size:12px;margin-left:6px">起量CTR 2.49% ↑13%</span></div></div>
+    <div class="stat-item"><div class="stat-val">29.3%</div><div class="stat-lbl">3s完播</div></div>
+    <div class="stat-item"><div class="stat-val">6.73%</div><div class="stat-lbl">播放时长</div></div>
+    <div class="stat-item"><div class="stat-val">1.58</div><div class="stat-lbl">ROI</div></div>
+</div></div>
+
+<!-- 脚本框架 -->
+<div class="section">
+    <div class="section-title"><span class="emoji">📋</span>起量素材脚本框架 · 5 段结构</div>
+    <div class="framework"><span class="fw-label">脚本框架：</span><span class="fw-steps">紫外线伤害痛点 → 产品功能展示（护眼角/透气）→ 佩戴实测 → 妆容不蹭实测 → 限时促销</span></div>
+    <div class="timeline"><div class="tl-step"><div class="tl-label">痛点引入</div><span class="tl-time">0-6s</span></div><div class="tl-step"><div class="tl-label">功能展示</div><span class="tl-time">6-12s</span></div><div class="tl-step"><div class="tl-label">佩戴实测</div><span class="tl-time">12-18s</span></div><div class="tl-step"><div class="tl-label">妆容实测</div><span class="tl-time">18-24s</span></div><div class="tl-step"><div class="tl-label">限时促销</div><span class="tl-time">24-30s</span></div></div>
+</div>
+
+<!-- 跑量Learning -->
+<div class="section">
+    <div class="section-title"><span class="emoji">💡</span>跑量 Learning · 5 维度共性归因</div>
+    <div class="learning-grid"><div class="learn-item">
+            <div class="li-title">👤 模特</div>
+            <div class="li-content">选用通勤/户外女性，展示日常防晒需求；美妆博主展示「不蹭妆」卖点</div>
+        </div><div class="learn-item">
+            <div class="li-title">🎯 痛点表达</div>
+            <div class="li-content">精准击中「夏天出门晒黑」「普通口罩不防晒」「化了妆口罩蹭花」等高频痛点</div>
+        </div><div class="learn-item">
+            <div class="li-title">🎬 场景</div>
+            <div class="li-content">户外强光+开车+骑行场景，贴近真实防晒需求</div>
+        </div><div class="learn-item">
+            <div class="li-title">✨ 效果呈现</div>
+            <div class="li-content">紫外线测试卡展示防晒效果+佩戴前后妆容对比+透气性演示是核心差异点</div>
+        </div><div class="learn-item">
+            <div class="li-title">💬 爆款话术</div>
+            <div class="li-content">①功能型：「护眼角设计，全脸无死角防晒」②美妆型：「化了妆也不蹭，通勤必备」③冰感型：「冰丝面料，戴上有凉感」</div>
+        </div></div>
+</div>
+
+<!-- 黄金3s Prompt -->
+<div class="section">
+    <div class="section-title"><span class="emoji">⚡</span>黄金 3s Prompt</div>
+    <div class="prompt-box">
+        <div class="prompt-label">⚡ 前3秒脚本 Prompt</div>
+        户外强光下，女性用手遮挡阳光表情痛苦，画面叠加字幕「夏天出门5分钟，晒黑一整月」。1秒后快切为戴上防晒面罩后自信行走的画面，配音说「有了它，全脸防晒还不蹭妆」。节奏快速，用「晒黑焦虑→防晒方案」的反差制造停留。
+    </div>
+</div>
+
+<!-- TOP客户 -->
+<div class="section">
+    <div class="section-title"><span class="emoji">👥</span>TOP 客户分布</div>
+    <div style="font-size:13px;color:var(--t1)">男女通用防晒口罩(6条/¥36,048)、女防晒口罩(14条/¥34,822)、莫代尔/MADALLO防晒口罩/防晒脖套(3条/¥15,732)、男女通用防晒帽(1条/¥2,596)、男女通用防晒口罩/防晒脖套(1条/¥2,330)</div>
+</div>
+
+<!-- 素材列表 -->
+<div class="section">
+    <div class="section-title"><span class="emoji">📦</span>全量素材 · 27 条</div>
+    
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#553</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">护颈防晒口罩可喝水</div>
+            <div class="mat-mkt">营销对象：男女通用防晒口罩</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1.6万</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.60%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">22.7%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.5s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.43</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥438</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#552</span>
+                <div class="mat-tags"><span class="mat-tag tag-留存">高留存</span></div>
+            </div>
+            <div class="mat-dpa">护颈防晒口罩可喝水</div>
+            <div class="mat-mkt">营销对象：男女通用防晒口罩</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1.2万</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.67%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">49.9%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">18.1s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.48</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥408</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#612</span>
+                <div class="mat-tags"><span class="mat-tag tag-转化">高转化</span></div>
+            </div>
+            <div class="mat-dpa">莫代尔冰丝防晒口罩全脸防紫外线全脸遮挡夏季透气脸基尼</div>
+            <div class="mat-mkt">营销对象：莫代尔/MADALLO防晒口罩/防晒脖套</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥9,578</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.91%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">23.0%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.9s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.94</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥60</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#972</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">j冰丝挂耳防晒口罩</div>
+            <div class="mat-mkt">营销对象：女防晒口罩</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥9,127</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.46%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">35.0%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">6.9s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.58</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥60</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#548</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">护颈防晒口罩可喝水</div>
+            <div class="mat-mkt">营销对象：男女通用防晒口罩</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥4,586</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">0.79%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">15.7%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.2s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.13</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥399</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#611</span>
+                <div class="mat-tags"><span class="mat-tag tag-消耗">高消耗</span><span class="mat-tag tag-转化">高转化</span></div>
+            </div>
+            <div class="mat-dpa">莫代尔冰丝防晒口罩全脸防紫外线全脸遮挡夏季透气脸基尼</div>
+            <div class="mat-mkt">营销对象：莫代尔/MADALLO防晒口罩/防晒脖套</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥4,276</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.47%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">23.0%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.2s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.26</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥60</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#299</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">2026新款冰丝无痕帽面罩二合一防晒面罩女夏季遮阳帽透气口罩</div>
+            <div class="mat-mkt">营销对象：女防晒口罩</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥3,574</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">0.97%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">15.9%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.2s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">0.92</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#317</span>
+                <div class="mat-tags"><span class="mat-tag tag-点击">高点击</span><span class="mat-tag tag-转化">高转化</span><span class="mat-tag tag-留存">高留存</span></div>
+            </div>
+            <div class="mat-dpa">26新款防晒面罩披肩女夏季遮阳防紫外线护颈透气户外骑行挂耳套头</div>
+            <div class="mat-mkt">营销对象：女防晒口罩</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥2,756</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.97%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">39.9%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">8.5s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.66</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥40</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#447</span>
+                <div class="mat-tags"><span class="mat-tag tag-点击">高点击</span></div>
+            </div>
+            <div class="mat-dpa">防晒面罩2026新款透气小香风女高品质夏季透气护眼角防晒薄款</div>
+            <div class="mat-mkt">营销对象：女防晒口罩</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥2,623</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.67%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">29.0%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">6.5s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.73</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥22</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#400</span>
+                <div class="mat-tags"><span class="mat-tag tag-留存">高留存</span></div>
+            </div>
+            <div class="mat-dpa">冰丝防晒面罩口罩女骑行护全脸防紫外线遮脖子遮阳面纱户外男防晒帽</div>
+            <div class="mat-mkt">营销对象：男女通用防晒帽</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥2,596</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.32%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">51.0%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">7.8s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">0.76</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥30</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#130</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">【超透气可喝水】脸基尼全脸护脖颈防晒面罩夏季摩托车面罩</div>
+            <div class="mat-mkt">营销对象：男女通用防晒口罩/防晒脖套</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥2,330</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.90%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">19.3%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.0s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">0.51</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥299</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#974</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">jd冰感透气防晒口罩</div>
+            <div class="mat-mkt">营销对象：女防晒口罩</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥2,229</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.33%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">29.6%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.9s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">0.92</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥49</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#63</span>
+                <div class="mat-tags"><span class="mat-tag tag-转化">高转化</span></div>
+            </div>
+            <div class="mat-dpa">[无痕小凉皮防晒口罩]夏季护眼角防紫外线轻薄速干立体不蹭妆透气</div>
+            <div class="mat-mkt">营销对象：女防晒口罩</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥2,184</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.48%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">23.1%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">6.0s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.28</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥10</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#401</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">冰丝挂耳全脸防晒口罩</div>
+            <div class="mat-mkt">营销对象：女防晒口罩</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥2,170</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.02%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">20.9%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.3s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.16</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥60</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#449</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">防晒面罩2026新款透气小香风女高品质夏季透气护眼角防晒薄款</div>
+            <div class="mat-mkt">营销对象：女防晒口罩</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,931</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.73%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">23.9%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">6.9s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.52</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥21</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#610</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">莫代尔冰丝防晒口罩全脸防紫外线全脸遮挡夏季透气脸基尼</div>
+            <div class="mat-mkt">营销对象：莫代尔/MADALLO防晒口罩/防晒脖套</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,878</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.11%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">25.6%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.0s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.62</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥60</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#975</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">jd全遮脸防晒面罩</div>
+            <div class="mat-mkt">营销对象：女防晒口罩/防晒脖套</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,870</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.21%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">25.3%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">4.8s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">0.76</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥49</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#450</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">防晒面罩2026新款透气小香风女高品质夏季透气护眼角防晒薄款</div>
+            <div class="mat-mkt">营销对象：女防晒口罩</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,787</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.81%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">24.4%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">5.8s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.65</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥22</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#311</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">2026新款软骨支撑防晒遮阳全脸面罩夏季户外开车女透气脸基尼</div>
+            <div class="mat-mkt">营销对象：女防晒口罩</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,477</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.82%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">18.7%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">3.9s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.08</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥399</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+        <div class="mat-card">
+            <div class="mat-hdr">
+                <span class="mat-idx">#451</span>
+                <div class="mat-tags"></div>
+            </div>
+            <div class="mat-dpa">防晒面罩2026新款透气小香风女高品质夏季透气护眼角防晒薄款</div>
+            <div class="mat-mkt">营销对象：女防晒口罩</div>
+            <div class="mat-metrics">
+                <div class="mat-m"><div class="mat-m-val">¥1,440</div><div class="mat-m-lbl">消耗</div></div>
+                <div class="mat-m"><div class="mat-m-val">2.77%</div><div class="mat-m-lbl">CTR</div></div>
+                <div class="mat-m"><div class="mat-m-val">26.0%</div><div class="mat-m-lbl">3s完播</div></div>
+                <div class="mat-m"><div class="mat-m-val">6.0s</div><div class="mat-m-lbl">播放时长</div></div>
+                <div class="mat-m"><div class="mat-m-val">1.73</div><div class="mat-m-lbl">ROI</div></div>
+                <div class="mat-m"><div class="mat-m-val">¥21</div><div class="mat-m-lbl">下单单价</div></div>
+            </div>
+        </div>
+</div>
+
+<div class="footer">素材解析台 · 珠宝饰品行业 · 防晒口罩/面罩 · 20260601</div>
+</div></body></html>
